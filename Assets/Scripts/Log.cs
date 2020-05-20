@@ -20,7 +20,7 @@ namespace Assets.Scripts
             textBox.text = displayText;
         }
 
-        void Add(string line)
+        internal void Add(string line)
         {
             if (log.Count >= maxLines)
             {

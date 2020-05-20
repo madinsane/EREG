@@ -13,7 +13,7 @@ namespace Assets.Scripts
 
         }
 
-        public UnitStats LoadStats(int id)
+        internal UnitStats LoadStats(int id)
         {
             if (stats == null)
             {
