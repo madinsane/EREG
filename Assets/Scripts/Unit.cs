@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+namespace Assets.Scripts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Unit : MonoBehaviour
     {
-        
-    }
+        public int CurrentHealth { get; private set; }
+        public int CurrentMana { get; private set; }
+        public UnitStats Stats { get; private set; }
+        void Awake()
+        {
+            Stats = new UnitStats();
+            GetStatsByID(0);
+            InitStats();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
+
+        void GetStatsByID(int id)
+        {
+
+        }
+
+        void InitStats()
+        {
+            CurrentHealth = Stats.MaxHealth;
+            CurrentMana = Stats.MaxMana;
+        }
     }
 }

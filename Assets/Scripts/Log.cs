@@ -4,32 +4,35 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Log : MonoBehaviour
+namespace Assets.Scripts
 {
-    private List<string> log;
-    private string displayText;
-    public int maxLines = 50;
-    public Text textBox;
-    // Start is called before the first frame update
-    void Awake()
+    public class Log : MonoBehaviour
     {
-        log = new List<string>();
-        displayText = "";
-        textBox.text = displayText;
-    }
+        private List<string> log;
+        private string displayText;
+        public int maxLines = 50;
+        public Text textBox;
+        // Start is called before the first frame update
+        void Awake()
+        {
+            log = new List<string>();
+            displayText = "";
+            textBox.text = displayText;
+        }
 
-    void Add(string line)
-    {
-        if (log.Count >= maxLines)
+        void Add(string line)
         {
-            log.RemoveAt(0);
+            if (log.Count >= maxLines)
+            {
+                log.RemoveAt(0);
+            }
+            log.Add(line);
+            displayText = "";
+            foreach (string entry in log)
+            {
+                displayText += entry;
+            }
+            textBox.text = displayText;
         }
-        log.Add(line);
-        displayText = "";
-        foreach (string entry in log)
-        {
-            displayText += entry;
-        }
-        textBox.text = displayText;
     }
 }
