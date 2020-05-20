@@ -18,6 +18,7 @@ namespace Assets.Scripts
             log = new List<string>();
             displayText = "";
             textBox.text = displayText;
+            DataManager.ReadCSV(Application.dataPath + Constants.DATA_PATH + Constants.UNIT_PATH);
         }
 
         void Add(string line)

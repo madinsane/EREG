@@ -1,2 +1,2 @@
-id	name	health	mana
+Id	Name	MaxHealth	MaxMana
 0	player	1000	1000

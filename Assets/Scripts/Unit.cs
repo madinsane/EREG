@@ -9,16 +9,11 @@ namespace Assets.Scripts
         public int CurrentHealth { get; private set; }
         public int CurrentMana { get; private set; }
         public UnitStats Stats { get; private set; }
+        public UnitManager unitManager;
         void Awake()
         {
-            Stats = new UnitStats();
-            GetStatsByID(0);
+            Stats = unitManager.LoadStats(0);
             InitStats();
-
-        }
-
-        void GetStatsByID(int id)
-        {
 
         }
 
