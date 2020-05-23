@@ -7,6 +7,7 @@ namespace Assets.Scripts
     public class UnitManager : MonoBehaviour
     {
         private Dictionary<int, UnitStats> stats;
+        private Dictionary<int, SkillStats> skills;
         // Start is called before the first frame update
         void Start()
         {
@@ -40,6 +41,35 @@ namespace Assets.Scripts
                 }
             }
             return stats[id];
+        }
+
+        internal SkillStats LoadSkills(int id)
+        {
+            if (skills == null)
+            {
+                skills = new Dictionary<int, SkillStats>();
+            }
+            if (skills.ContainsKey(id))
+            {
+                if (skills[id].Id == id)
+                {
+                    return skills[id];
+                }
+            }
+            IEnumerable<SkillStats> statEnumerable = (IEnumerable<SkillStats>)DataManager.ReadUnits(Application.dataPath + Constants.DATA_PATH + Constants.SKILL_PATH);
+            foreach (SkillStats skill in statEnumerable)
+            {
+                if (skills.ContainsKey(skill.Id))
+                {
+                    continue;
+                }
+                skills.Add(skill.Id, skill);
+                if (skill.Id == id)
+                {
+                    break;
+                }
+            }
+            return skills[id];
         }
 
         // Update is called once per frame

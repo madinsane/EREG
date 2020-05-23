@@ -19,5 +19,17 @@ namespace Assets.Scripts
                 return records;
             }
         }
+
+        public static IEnumerable ReadSkills(string path)
+        {
+            using (var reader = new StreamReader(path))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                csv.Configuration.PrepareHeaderForMatch = (string header, int index) => header.ToLower();
+                csv.Configuration.Delimiter = "\t";
+                IEnumerable records = csv.GetRecords<SkillStats>();
+                return records;
+            }
+        }
     }
 }
