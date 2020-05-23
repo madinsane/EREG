@@ -17,5 +17,6 @@ namespace Assets.Scripts
         public int CritMulti { get; set; }
         public Constants.StatusTypes StatusType { get; set; }
         public int StatusChance { get; set; }
+        public int StatusPower { get; set; }
     }
 }

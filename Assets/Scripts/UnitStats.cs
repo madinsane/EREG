@@ -20,6 +20,7 @@ namespace Assets.Scripts
         public int IncCritChance { get; set; }
         public int TypeStatusChance { get; set; }
         public int MentalStatusChance { get; set; }
+        public int StatusPower { get; set; }
         public int IncTypeStatus { get; set; }
         public int IncMentalStatus { get; set; }
         public int ResistPhysical { get; set; }

@@ -10,13 +10,28 @@ namespace Assets.Scripts
 
         internal struct DamagePacket
         {
-            int damage;
-            bool isWeak;
-            bool isTechnical;
-            bool removeStatus;
-            Constants.StatusTypes status;
-            Constants.StatusTypes returnStatus;
-            bool isCrit;
+            public bool hit;
+            public int damage;
+            public int statusPower;
+            public bool isWeak;
+            public bool isTechnical;
+            public bool removeStatus;
+            public Constants.StatusTypes status;
+            public Constants.StatusTypes returnStatus;
+            public bool isCrit;
+
+            public DamagePacket(bool hit, int power = 0, int statusPower = 0, bool isWeak = false, bool isTechnical = false, bool removeStatus = false, Constants.StatusTypes status = Constants.StatusTypes.None, Constants.StatusTypes returnStatus = Constants.StatusTypes.None, bool isCrit = false) : this()
+            {
+                this.hit = hit;
+                damage = power;
+                this.statusPower = statusPower;
+                this.isWeak = isWeak;
+                this.isTechnical = isTechnical;
+                this.removeStatus = removeStatus;
+                this.status = status;
+                this.returnStatus = returnStatus;
+                this.isCrit = isCrit;
+            }
         }
 
         internal static int RandomInt(int min, int max)
@@ -43,25 +58,22 @@ namespace Assets.Scripts
         internal static DamagePacket Hit(SkillStats skill, UnitStats attacker, UnitStats defender)
         {
             //Check evasion
-            int accuracy = skill.Accuracy * (attacker.Accuracy / 100);
-            if (defender.Evasion <= 0)
+            float accuracy = skill.Accuracy * ((float)attacker.Accuracy / 100);
+            //Always hit if evasion <= 0
+            if (defender.Evasion > 0)
             {
-                accuracy = 0;
-            }
-            else
-            {
-                accuracy /= (defender.Evasion / 100);
-            }
-            int evasionRoll = RandomInt(1, 100);
-            if (accuracy < evasionRoll)
-            {
-                //miss
+                accuracy /= (float)defender.Evasion / 100;
+                int evasionRoll = RandomInt(1, 100);
+                if (accuracy < evasionRoll)
+                {
+                    return new DamagePacket(false);
+                }
             }
             //Hit
             //Set Type
-            int power = 0;
-            int defense = 0;
-            int resist = 0;
+            float power = 0;
+            float defense = 0;
+            float resist = 0;
             switch (skill.DamageType)
             {
                 case Constants.DamageTypes.Physical:
@@ -211,12 +223,11 @@ namespace Assets.Scripts
             if (TryChance(skill.CritChance, attacker.CritChance, defender.IncCritChance))
             {
                 isCrit = true;
-                int critMulti = attacker.CritMulti * (skill.CritMulti / 100);
+                float critMulti = attacker.CritMulti * ((float)skill.CritMulti / 100);
                 power *= critMulti / 100;
             }
             //Check Status
             int statusChance = skill.StatusChance;
-            bool statusAttempt = false;
             Constants.StatusTypes status = Constants.StatusTypes.None;
             if (!isTechnical)
             {
@@ -226,6 +237,7 @@ namespace Assets.Scripts
                     {
                         statusChance = (int)(statusChance * Constants.CRITICAL_STATUS_MULTI);
                     }
+                    bool statusAttempt;
                     if (skill.StatusType >= Constants.StatusTypes.Sleep)
                     {
                         statusAttempt = TryChance(statusChance, attacker.MentalStatusChance, defender.IncMentalStatus);
@@ -239,7 +251,22 @@ namespace Assets.Scripts
                     }
                 }
             }
-            return new DamagePacket();
+            //Calculate final power
+            power *= 100 - resist;
+            float statusPower = 0;
+            if (status != Constants.StatusTypes.None)
+            {
+                statusPower = power;
+                statusPower *= (float)attacker.StatusPower / 100;
+                statusPower *= (float)skill.StatusPower / 100;
+            }
+            if (defense > 0)
+            {
+                power /= defense / 100;
+            }
+            power *= (float)skill.Power / 100;
+            DamagePacket packet = new DamagePacket(true, (int)power, (int)statusPower, isWeak, isTechnical, removeStatus, status, returnStatus, isCrit);
+            return packet;
         }
     }
 }

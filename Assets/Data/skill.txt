@@ -1,2 +1,2 @@
-Id	Name	Cost	SkillType	TargetType	DamageType	Power	Accuracy	CritChance	CritMulti	StatusType	StatusChance
-0	attack	0	0	0	0	100	100	100	100	0	0
+Id	Name	Cost	SkillType	TargetType	DamageType	Power	Accuracy	CritChance	CritMulti	StatusType	StatusChance	StatusPower
+0	attack	0	0	0	0	100	100	100	100	0	0	0
