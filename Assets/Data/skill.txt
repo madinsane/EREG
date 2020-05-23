@@ -1,2 +1,2 @@
-Id	Name	Cost	SkillType	TargetType	DamageType	Power	Accuracy	CritChance	CritMulti
-0	attack	0	0	0	0	100	100	100	100
+Id	Name	Cost	SkillType	TargetType	DamageType	Power	Accuracy	CritChance	CritMulti	TypeStatus	Sleep
+0	attack	0	0	0	0	100	100	100	100	0	0

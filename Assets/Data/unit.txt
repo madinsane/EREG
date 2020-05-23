@@ -1,2 +1,2 @@
-Id	Name	MaxHealth	MaxMana	AttackPower	MagicPower	AttackDefense	MagicDefense	Accuracy	Evasion	CritChance	CritMulti	IncCritChance	ResistPhysical	ResistProjectile	ResistElectric	ResistCold	ResistFire
-0	player	1000	1000	100	100	100	100	100	100	100	100	100	0	0	0	0	0
+Id	Name	MaxHealth	MaxMana	AttackPower	MagicPower	AttackDefense	MagicDefense	Accuracy	Evasion	CritChance	CritMulti	IncCritChance	TypeStatusChance	MentalStatusChance	IncTypeStatus	IncMentalStatus	ResistPhysical	ResistProjectile	ResistElectric	ResistCold	ResistFire	ResistWind	ResistArcane	ResistPsychic	ResistLight	ResistDark
+0	player	1000	1000	100	100	100	100	100	100	100	100	100	100	100	100	100	0	0	0	0	0	0	0	0	0	0

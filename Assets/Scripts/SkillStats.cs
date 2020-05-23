@@ -15,5 +15,7 @@ namespace Assets.Scripts
         public int Accuracy { get; set; }
         public int CritChance { get; set; }
         public int CritMulti { get; set; }
+        public int TypeStatus { get; set; }
+        public int Sleep { get; set; }
     }
 }
