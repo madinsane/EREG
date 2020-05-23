@@ -43,9 +43,9 @@ namespace Assets.Scripts
             return random.Next(min, max+1);
         }
 
-        static bool TryChance(int outSkillChance, int outUnitChance, int incChance)
+        static bool TryChance(float outSkillChance, float outUnitChance, float incChance)
         {
-            int chance = outSkillChance * (outUnitChance / 100);
+            float chance = outSkillChance * (outUnitChance / 100);
             chance *= incChance / 100;
             int roll = RandomInt(1, 100);
             if (chance >= roll)
