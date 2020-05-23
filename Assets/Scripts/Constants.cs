@@ -6,6 +6,7 @@
         public const string UNIT_PATH = "/unit.txt";
 
         public const float TECHNICAL_MULTI = 2f;
+        public const float CRITICAL_STATUS_MULTI = 2f;
 
         public enum SkillTypes
         {

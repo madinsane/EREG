@@ -206,11 +206,6 @@ namespace Assets.Scripts
                     }
                     break;
             }
-            //Check Status
-            if (!isTechnical)
-            {
-
-            }
             //Check Crit
             bool isCrit = false;
             if (TryChance(skill.CritChance, attacker.CritChance, defender.IncCritChance))
@@ -218,6 +213,31 @@ namespace Assets.Scripts
                 isCrit = true;
                 int critMulti = attacker.CritMulti * (skill.CritMulti / 100);
                 power *= critMulti / 100;
+            }
+            //Check Status
+            int statusChance = skill.StatusChance;
+            bool statusAttempt = false;
+            Constants.StatusTypes status = Constants.StatusTypes.None;
+            if (!isTechnical)
+            {
+                if (statusChance > 0)
+                {
+                    if (isCrit)
+                    {
+                        statusChance = (int)(statusChance * Constants.CRITICAL_STATUS_MULTI);
+                    }
+                    if (skill.StatusType >= Constants.StatusTypes.Sleep)
+                    {
+                        statusAttempt = TryChance(statusChance, attacker.MentalStatusChance, defender.IncMentalStatus);
+                    } else
+                    {
+                        statusAttempt = TryChance(statusChance, attacker.TypeStatusChance, defender.IncTypeStatus);
+                    }
+                    if (statusAttempt)
+                    {
+                        status = skill.StatusType;
+                    }
+                }
             }
             return new DamagePacket();
         }
