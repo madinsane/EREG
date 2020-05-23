@@ -6,16 +6,9 @@ namespace Assets.Scripts
 {
     public class Player : Unit
     {
-        // Start is called before the first frame update
-        void Start()
+        public Player() : base(0)
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            
         }
     }
 }

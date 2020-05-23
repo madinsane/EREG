@@ -98,37 +98,37 @@ namespace Assets.Scripts
                 case Constants.DamageTypes.Cold:
                     power = attacker.MagicPower;
                     defense = defender.MagicDefense;
-                    resist = defender.ResistElectric;
+                    resist = defender.ResistCold;
                     break;
                 case Constants.DamageTypes.Fire:
                     power = attacker.MagicPower;
                     defense = defender.MagicDefense;
-                    resist = defender.ResistElectric;
+                    resist = defender.ResistFire;
                     break;
                 case Constants.DamageTypes.Wind:
                     power = attacker.MagicPower;
                     defense = defender.MagicDefense;
-                    resist = defender.ResistElectric;
+                    resist = defender.ResistWind;
                     break;
                 case Constants.DamageTypes.Arcane:
                     power = attacker.MagicPower;
                     defense = defender.MagicDefense;
-                    resist = defender.ResistElectric;
+                    resist = defender.ResistArcane;
                     break;
                 case Constants.DamageTypes.Psychic:
                     power = attacker.MagicPower;
                     defense = defender.MagicDefense;
-                    resist = defender.ResistElectric;
+                    resist = defender.ResistPsychic;
                     break;
                 case Constants.DamageTypes.Light:
                     power = attacker.MagicPower;
                     defense = defender.MagicDefense;
-                    resist = defender.ResistElectric;
+                    resist = defender.ResistLight;
                     break;
                 case Constants.DamageTypes.Dark:
                     power = attacker.MagicPower;
                     defense = defender.MagicDefense;
-                    resist = defender.ResistElectric;
+                    resist = defender.ResistDark;
                     break;
             }
             //Check Weakness
