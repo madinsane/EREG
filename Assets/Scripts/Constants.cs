@@ -4,10 +4,12 @@
     {
         public const string DATA_PATH = "/data/";
         public const string UNIT_PATH = "unit.txt";
-        public const string SKILL_PATH = "skills.txt";
+        public const string SKILL_PATH = "skill.txt";
+        public const string MONSTER_PATH = "monster.txt";
 
         public const float TECHNICAL_MULTI = 2f;
         public const float CRITICAL_STATUS_MULTI = 2f;
+        public const int MAX_ENEMIES = 5;
 
         public enum CostTypes
         {
@@ -17,7 +19,7 @@
         {
             None, Almighty, Physical, Projectile, Electric, Cold, Fire,
             Wind, Arcane, Psychic, Light, Dark, Heal, Buff, Passive,
-            Status
+            Status, Blast
         }
         public enum TargetTypes
         {

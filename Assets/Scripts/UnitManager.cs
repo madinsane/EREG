@@ -9,10 +9,12 @@ namespace Assets.Scripts
     {
         private Dictionary<int, UnitStats> stats;
         private Dictionary<int, SkillStats> skills;
+        private Dictionary<int, MonsterData> monsterData;
         private Sprite[] sprites;
 
         public GameManager gameManager;
         public SpriteAtlas monsterAtlas;
+        public Monster[] monsters = new Monster[5];
 
         // Start is called before the first frame update
         void Start()
@@ -78,6 +80,15 @@ namespace Assets.Scripts
                 }
             }
             return skills[id];
+        }
+
+        internal void LoadMonsterData()
+        {
+            IEnumerable<MonsterData> monsterEnumerable = (IEnumerable<MonsterData>)DataManager.ReadMonsters(Application.dataPath + Constants.DATA_PATH + Constants.MONSTER_PATH);
+            foreach (MonsterData data in monsterEnumerable)
+            {
+                monsterData.Add(data.Id, data);
+            }
         }
 
         // Update is called once per frame
