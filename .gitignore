@@ -58,3 +58,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+/Assets/Data/monster-000.bak
+/Assets/Data/monster-000.bak.meta
+/Assets/Textures/Sprites/Sheets/hdr
+/Assets/Textures/Sprites/Sheets/hdr.meta

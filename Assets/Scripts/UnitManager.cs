@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 namespace Assets.Scripts
 {
@@ -8,10 +9,17 @@ namespace Assets.Scripts
     {
         private Dictionary<int, UnitStats> stats;
         private Dictionary<int, SkillStats> skills;
+        private Sprite[] sprites;
+
+        public GameManager gameManager;
+        public SpriteAtlas monsterAtlas;
+
         // Start is called before the first frame update
         void Start()
         {
-
+            sprites = new Sprite[2000];
+            Sprite testSprite = monsterAtlas.GetSprite("cherub");
+            Debug.Log("Done");
         }
 
         internal UnitStats LoadStats(int id)

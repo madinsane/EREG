@@ -1,0 +1,2 @@
+Id	Name	SpriteId	UnitId	SkillType1	SkillType2	SkillType3	SkillType4	SkillType5
+0	adder							
