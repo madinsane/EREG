@@ -9,9 +9,15 @@
         public const float TECHNICAL_MULTI = 2f;
         public const float CRITICAL_STATUS_MULTI = 2f;
 
-        public enum SkillTypes
+        public enum CostTypes
         {
             Attack, Spell
+        }
+        public enum SkillTypes
+        {
+            None, Almighty, Physical, Projectile, Electric, Cold, Fire,
+            Wind, Arcane, Psychic, Light, Dark, Heal, Buff, Passive,
+            Status
         }
         public enum TargetTypes
         {
@@ -19,11 +25,13 @@
         }
         public enum DamageTypes
         {
-            Almighty, Physical, Projectile, Electric, Cold, Fire, Wind, Arcane, Psychic, Light, Dark
+            Almighty, Physical, Projectile, Electric, Cold, Fire,
+            Wind, Arcane, Psychic, Light, Dark
         }
         public enum StatusTypes
         {
-            None, Shock, Freeze, Burn, Curse, Blast, Sleep, Forget, Berserk, Confuse, Brainwash, Fear
+            None, Shock, Freeze, Burn, Curse, Blast,
+            Sleep, Forget, Berserk, Confuse, Brainwash, Fear
         }
     }
 }

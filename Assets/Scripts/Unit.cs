@@ -43,9 +43,9 @@ namespace Assets.Scripts
             }
         }
 
-        public bool CheckCost(int value, Constants.SkillTypes skillType)
+        public bool CheckCost(int value, Constants.CostTypes skillType)
         {
-            if (skillType == Constants.SkillTypes.Attack)
+            if (skillType == Constants.CostTypes.Attack)
             {
                 if (CurrentHealth - value > 0)
                 {
@@ -61,9 +61,9 @@ namespace Assets.Scripts
             return true;
         }
 
-        public void ApplyCost(int value, Constants.SkillTypes skillType)
+        public void ApplyCost(int value, Constants.CostTypes skillType)
         {
-            if (skillType == Constants.SkillTypes.Attack)
+            if (skillType == Constants.CostTypes.Attack)
             {
                 CurrentHealth -= value;
             }

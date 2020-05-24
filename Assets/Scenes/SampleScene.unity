@@ -128,6 +128,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 1253276024061471249, guid: cc4c4e1a415b39f4c9e4fb09b372e6d1, type: 3}
   m_PrefabInstance: {fileID: 1253276023685321326}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &818132403 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 836557695, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61be17702e670d645841ab46ee0a563e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1842739400
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,8 +148,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1842739401}
+  - component: {fileID: 1842739403}
+  - component: {fileID: 1842739402}
   m_Layer: 0
-  m_Name: UnitManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,6 +171,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1842739402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842739400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6662dce1da7e443828ed2a747d0c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1842739403}
+  monsterAtlas: {fileID: 4343727234628468602, guid: d320029ab68353040952e3b62d2fb825, type: 2}
+--- !u!114 &1842739403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842739400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97cec63b8a3fd1c4ea367312b21d826f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  log: {fileID: 818132403}
+  unitManager: {fileID: 1842739402}
 --- !u!1001 &212081595950732080
 PrefabInstance:
   m_ObjectHideFlags: 0

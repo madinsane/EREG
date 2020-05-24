@@ -1,2 +1,2 @@
-Id	Name	SpriteId	UnitId	SkillType1	SkillType2	SkillType3	SkillType4	SkillType5
-0	adder							
+Id	Name	SpriteName	UnitId	SkillType1	SkillType2	SkillType3	SkillType4	SkillType5
+0	adder	adder	1	2	7	11	0	0

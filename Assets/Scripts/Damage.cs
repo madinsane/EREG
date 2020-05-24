@@ -227,7 +227,8 @@ namespace Assets.Scripts
                 power *= critMulti / 100;
             }
             //Check Status
-            int statusChance = skill.StatusChance;
+            float statusChance = skill.StatusChance;
+            statusChance *= 100 - resist;
             Constants.StatusTypes status = Constants.StatusTypes.None;
             if (!isTechnical)
             {
@@ -235,7 +236,7 @@ namespace Assets.Scripts
                 {
                     if (isCrit)
                     {
-                        statusChance = (int)(statusChance * Constants.CRITICAL_STATUS_MULTI);
+                        statusChance *= Constants.CRITICAL_STATUS_MULTI;
                     }
                     bool statusAttempt;
                     if (skill.StatusType >= Constants.StatusTypes.Sleep)
