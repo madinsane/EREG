@@ -7,7 +7,7 @@ namespace Assets.Scripts
     public class Monster : Unit
     {
         public SpriteRenderer spriteRenderer;
-        public Monster(int id) : base(id)
+        public Monster(UnitStats stats, List<SkillStats> skills) : base(stats, skills)
         {
             
         }
@@ -15,6 +15,19 @@ namespace Assets.Scripts
         public void SetSprite(Sprite sprite)
         {
             spriteRenderer.sprite = sprite;
+            spriteRenderer.enabled = true;
+        }
+
+        public void ChangeMonster(UnitStats stats, List<SkillStats> skills, Sprite sprite)
+        {
+            SetSprite(sprite);
+            ChangeUnit(stats, skills);
+        }
+
+        new void Die()
+        {
+            spriteRenderer.enabled = false;
+            base.Die();
         }
     }
 }

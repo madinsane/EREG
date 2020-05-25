@@ -2,7 +2,7 @@
 {
     public static class Constants
     {
-        public const string DATA_PATH = "/data/";
+        public const string DATA_PATH = "/Data/";
         public const string UNIT_PATH = "unit.txt";
         public const string SKILL_PATH = "skill.txt";
         public const string MONSTER_PATH = "monster.txt";
@@ -12,6 +12,7 @@
         public const int MAX_ENEMIES = 5;
         public const int ENEMY_SKILL_TYPE_MAX = 5;
         public const float COST_SKILL_VARIANCE = 0.25f;
+        public const int FORCED_SKILLS = 1;
 
         public enum CostTypes
         {
@@ -21,7 +22,11 @@
         {
             None, Almighty, Physical, Projectile, Electric, Cold, Fire,
             Wind, Arcane, Psychic, Light, Dark, Heal, Buff, Passive,
-            Status, Blast
+            Status, Blast, Hidden
+        }
+        public enum TierType
+        {
+            Empty, Monster, Upgrade, Downgrade
         }
         public enum TargetTypes
         {

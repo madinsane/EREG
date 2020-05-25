@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -13,11 +14,13 @@ namespace Assets.Scripts
         }
 
         private Turn turn = Turn.Player;
-        private MonsterData[] monsterData = new MonsterData[Constants.MAX_ENEMIES];
+        private MonsterData[] monsterData;
 
         void Start()
         {
             turn = Turn.Player;
+            monsterData = new MonsterData[Constants.MAX_ENEMIES];
+            StartRound();
         }
 
         void AdvanceTurn()
@@ -70,13 +73,19 @@ namespace Assets.Scripts
                         temp[4] = monsterData[i].SkillType5;
                     }
                     monsterData[i].SkillTypeFull = new Constants.SkillTypes[counter];
+                    int tempCount = 0;
+                    for (int j=0; j<temp.Length; j++)
+                    {
+                        if (temp[j] != Constants.SkillTypes.None)
+                        {
+                            monsterData[i].SkillTypeFull[tempCount] = temp[j];
+                            tempCount++;
+                        }
+                    }
                 }
                 //Select skills
-                unitManager.ChooseSkills(monsterData[i]); //make monster
+                unitManager.MakeMonster(i, monsterData[i], unitManager.ChooseSkills(monsterData[i]).ToList());
             }
-            
-            //Load UnitData
-
             //Pass to Turn manager
 
         }

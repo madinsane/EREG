@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts
+﻿using CsvHelper.Configuration.Attributes;
+
+namespace Assets.Scripts
 {
     public class UnitStats
     {
@@ -30,6 +32,13 @@
         public int ResistPsychic { get; set; }
         public int ResistLight { get; set; }
         public int ResistDark { get; set; }
+        [Ignore]
         public Constants.StatusTypes Status { get; set; }
+
+        public UnitStats Copy()
+        {
+            return (UnitStats)MemberwiseClone();
+        }
+
     }
 }

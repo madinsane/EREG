@@ -1,0 +1,2 @@
+Tier	Type1	MonsterName1	Weight1	Type2	MonsterName2	Weight2	Type3	MonsterName3	Weight3	Type4	MonsterName4	Weight4	Type5	MonsterName5	Weight5
+0															

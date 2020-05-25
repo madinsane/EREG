@@ -6,7 +6,7 @@ namespace Assets.Scripts
 {
     public class Player : Unit
     {
-        public Player() : base(0)
+        public Player(UnitStats stats, List<SkillStats> skills) : base(stats, skills)
         {
             
         }

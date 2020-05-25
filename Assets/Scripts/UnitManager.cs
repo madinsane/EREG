@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using CsvHelper;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -14,13 +17,11 @@ namespace Assets.Scripts
 
         public GameManager gameManager;
         public SpriteAtlas monsterAtlas;
-        public Monster[] monsters = new Monster[5];
+        public Monster[] monsters = new Monster[Constants.MAX_ENEMIES];
 
         // Start is called before the first frame update
         void Start()
         {
-            sprites = new Sprite[2000];
-            Sprite testSprite = monsterAtlas.GetSprite("cherub");
             Debug.Log("Done");
         }
 
@@ -37,17 +38,22 @@ namespace Assets.Scripts
                     return stats[id];
                 }
             }
-            IEnumerable<UnitStats> statEnumerable = (IEnumerable<UnitStats>)DataManager.ReadUnits(Application.dataPath + Constants.DATA_PATH + Constants.UNIT_PATH);
-            foreach (UnitStats stat in statEnumerable)
+            using (var reader = new StreamReader(Application.dataPath + Constants.DATA_PATH + Constants.UNIT_PATH))
+            using (var csvUnit = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                if (stats.ContainsKey(stat.Id))
+                csvUnit.Configuration.Delimiter = "\t";
+                IEnumerable records = csvUnit.GetRecords<UnitStats>();
+                foreach (UnitStats stat in records)
                 {
-                    continue;
-                }
-                stats.Add(stat.Id, stat);
-                if (stat.Id == id)
-                {
-                    break;
+                    if (stats.ContainsKey(stat.Id))
+                    {
+                        continue;
+                    }
+                    stats.Add(stat.Id, stat);
+                    if (stat.Id == id)
+                    {
+                        break;
+                    }
                 }
             }
             return stats[id];
@@ -55,29 +61,49 @@ namespace Assets.Scripts
 
         internal void LoadSkills()
         {
-            IEnumerable<SkillStats> skillEnumerable = (IEnumerable<SkillStats>)DataManager.ReadSkills(Application.dataPath + Constants.DATA_PATH + Constants.SKILL_PATH);
-            foreach (SkillStats data in skillEnumerable)
+            skills = new List<SkillStats>();
+            using (var reader = new StreamReader(Application.dataPath + Constants.DATA_PATH + Constants.SKILL_PATH))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                skills.Add(data);
+                csv.Configuration.Delimiter = "\t";
+                var records = csv.GetRecords<SkillStats>();
+                foreach (SkillStats data in records)
+                {
+                    skills.Add(data);
+                }
             }
         }
 
         internal SkillStats GetSkill(int id)
         {
+            if (skills == null)
+            {
+                LoadSkills();
+            }
             return skills[id];
         }
 
         internal void LoadMonsterData()
         {
-            IEnumerable<MonsterData> monsterEnumerable = (IEnumerable<MonsterData>)DataManager.ReadMonsters(Application.dataPath + Constants.DATA_PATH + Constants.MONSTER_PATH);
-            foreach (MonsterData data in monsterEnumerable)
+            monsterData = new List<MonsterData>();
+            using (var reader = new StreamReader(Application.dataPath + Constants.DATA_PATH + Constants.MONSTER_PATH))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                monsterData.Add(data);
+                csv.Configuration.Delimiter = "\t";
+                var records = csv.GetRecords<MonsterData>();
+                foreach (MonsterData data in records)
+                {
+                    monsterData.Add(data);
+                }
             }
         }
 
         internal MonsterData GetMonsterData(int id)
         {
+            if (monsterData == null)
+            {
+                LoadMonsterData();
+            }
             return monsterData[id];
         }
 
@@ -89,13 +115,19 @@ namespace Assets.Scripts
 
         internal SkillStats[] ChooseSkills(MonsterData monster)
         {
-            SkillStats[] chosenSkills = new SkillStats[monster.SkillTypeFull.Length];
+            SkillStats[] chosenSkills = new SkillStats[monster.SkillTypeFull.Length+Constants.FORCED_SKILLS];
             int minValue = monster.Value - (int)(monster.Value * Constants.COST_SKILL_VARIANCE);
             int maxValue = monster.Value + (int)(monster.Value * Constants.COST_SKILL_VARIANCE);
             List<SkillStats> match;
-            for (int i=0; i<monster.SkillTypeFull.Length; i++)
+            //Add forced skills
+            chosenSkills[0] = GetSkill(0);
+            for (int i=Constants.FORCED_SKILLS; i<chosenSkills.Length; i++)
             {
-                match = FindSkills(minValue, maxValue, monster.SkillTypeFull[i]);
+                match = FindSkills(minValue, maxValue, monster.SkillTypeFull[i-Constants.FORCED_SKILLS]);
+                if (match.Count == 0)
+                {
+                    continue;
+                }
                 int chosen = Damage.RandomInt(0, match.Count - 1);
                 chosenSkills[i] = match[chosen];
             }
@@ -104,9 +136,20 @@ namespace Assets.Scripts
 
         internal List<SkillStats> FindSkills(int minValue, int maxValue, Constants.SkillTypes type)
         {
+            if (skills == null)
+            {
+                LoadSkills();
+            }
             List<SkillStats> foundSkills = skills.FindAll(x => x.Value >= minValue && x.Value <= maxValue && x.SkillType == type);
             return foundSkills;
         } 
+
+        internal void MakeMonster(int position, MonsterData monster, List<SkillStats> monsterSkills)
+        {
+            monsterSkills.RemoveAll(x => x == null);
+            LinkMonster(monster.Id);
+            monsters[position].ChangeMonster(monster.Unit.Copy(), monsterSkills, monster.Sprite);
+        }
 
         // Update is called once per frame
         void Update()

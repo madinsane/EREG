@@ -13,11 +13,11 @@ namespace Assets.Scripts
         public int Id { get; protected set; }
         private List<SkillStats> skills;
 
-        public Unit(int id)
+        public Unit(UnitStats stats, List<SkillStats> skills)
         {
-            Id = id;
-            Stats = unitManager.LoadStats(Id);
-            skills = new List<SkillStats>();
+            Id = stats.Id;
+            Stats = stats;
+            this.skills = skills;
             InitStats();
         }
 
@@ -25,6 +25,15 @@ namespace Assets.Scripts
         {
             CurrentHealth = Stats.MaxHealth;
             CurrentMana = Stats.MaxMana;
+        }
+
+        public void ChangeUnit(UnitStats stats, List<SkillStats> skills)
+        {
+            Id = stats.Id;
+            Stats = stats;
+            this.skills = skills;
+            InitStats();
+            enabled = true;
         }
 
         public void ChangeHealth(int value)
@@ -75,7 +84,7 @@ namespace Assets.Scripts
 
         public void Die()
         {
-            //kill unit
+            enabled = false;
         }
     }
 }

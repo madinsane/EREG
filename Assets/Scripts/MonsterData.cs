@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CsvHelper.Configuration.Attributes;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -14,8 +15,16 @@ namespace Assets.Scripts
         public Constants.SkillTypes SkillType3 { get; set; }
         public Constants.SkillTypes SkillType4 { get; set; }
         public Constants.SkillTypes SkillType5 { get; set; }
+        [Ignore]
         public Constants.SkillTypes[] SkillTypeFull { get; set; }
+        [Ignore]
         public UnitStats Unit { get; set; }
+        [Ignore]
         public Sprite Sprite { get; set; }
+
+        public MonsterData()
+        {
+
+        }
     }
 }
