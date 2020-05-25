@@ -186,11 +186,11 @@ MonoBehaviour:
   gameManager: {fileID: 1842739403}
   monsterAtlas: {fileID: 4343727234628468602, guid: d320029ab68353040952e3b62d2fb825, type: 2}
   monsters:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5579312080170796724}
+  - {fileID: 5579312080170796723}
+  - {fileID: 5579312080170796722}
+  - {fileID: 5579312080170796721}
+  - {fileID: 5579312080170796720}
 --- !u!114 &1842739403
 MonoBehaviour:
   m_ObjectHideFlags: 0

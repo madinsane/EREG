@@ -8,8 +8,8 @@ namespace Assets.Scripts
     public class UnitManager : MonoBehaviour
     {
         private Dictionary<int, UnitStats> stats;
-        private Dictionary<int, SkillStats> skills;
-        private Dictionary<int, MonsterData> monsterData;
+        private List<SkillStats> skills;
+        private List<MonsterData> monsterData;
         private Sprite[] sprites;
 
         public GameManager gameManager;
@@ -53,32 +53,17 @@ namespace Assets.Scripts
             return stats[id];
         }
 
-        internal SkillStats LoadSkills(int id)
+        internal void LoadSkills()
         {
-            if (skills == null)
+            IEnumerable<SkillStats> skillEnumerable = (IEnumerable<SkillStats>)DataManager.ReadSkills(Application.dataPath + Constants.DATA_PATH + Constants.SKILL_PATH);
+            foreach (SkillStats data in skillEnumerable)
             {
-                skills = new Dictionary<int, SkillStats>();
+                skills.Add(data);
             }
-            if (skills.ContainsKey(id))
-            {
-                if (skills[id].Id == id)
-                {
-                    return skills[id];
-                }
-            }
-            IEnumerable<SkillStats> statEnumerable = (IEnumerable<SkillStats>)DataManager.ReadUnits(Application.dataPath + Constants.DATA_PATH + Constants.SKILL_PATH);
-            foreach (SkillStats skill in statEnumerable)
-            {
-                if (skills.ContainsKey(skill.Id))
-                {
-                    continue;
-                }
-                skills.Add(skill.Id, skill);
-                if (skill.Id == id)
-                {
-                    break;
-                }
-            }
+        }
+
+        internal SkillStats GetSkill(int id)
+        {
             return skills[id];
         }
 
@@ -87,9 +72,41 @@ namespace Assets.Scripts
             IEnumerable<MonsterData> monsterEnumerable = (IEnumerable<MonsterData>)DataManager.ReadMonsters(Application.dataPath + Constants.DATA_PATH + Constants.MONSTER_PATH);
             foreach (MonsterData data in monsterEnumerable)
             {
-                monsterData.Add(data.Id, data);
+                monsterData.Add(data);
             }
         }
+
+        internal MonsterData GetMonsterData(int id)
+        {
+            return monsterData[id];
+        }
+
+        internal void LinkMonster(int id)
+        {
+            monsterData[id].Sprite = monsterAtlas.GetSprite(monsterData[id].SpriteName);
+            monsterData[id].Unit = LoadStats(monsterData[id].UnitId);
+        }
+
+        internal SkillStats[] ChooseSkills(MonsterData monster)
+        {
+            SkillStats[] chosenSkills = new SkillStats[monster.SkillTypeFull.Length];
+            int minValue = monster.Value - (int)(monster.Value * Constants.COST_SKILL_VARIANCE);
+            int maxValue = monster.Value + (int)(monster.Value * Constants.COST_SKILL_VARIANCE);
+            List<SkillStats> match;
+            for (int i=0; i<monster.SkillTypeFull.Length; i++)
+            {
+                match = FindSkills(minValue, maxValue, monster.SkillTypeFull[i]);
+                int chosen = Damage.RandomInt(0, match.Count - 1);
+                chosenSkills[i] = match[chosen];
+            }
+            return chosenSkills;
+        }
+
+        internal List<SkillStats> FindSkills(int minValue, int maxValue, Constants.SkillTypes type)
+        {
+            List<SkillStats> foundSkills = skills.FindAll(x => x.Value >= minValue && x.Value <= maxValue && x.SkillType == type);
+            return foundSkills;
+        } 
 
         // Update is called once per frame
         void Update()

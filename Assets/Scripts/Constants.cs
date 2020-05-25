@@ -10,6 +10,8 @@
         public const float TECHNICAL_MULTI = 2f;
         public const float CRITICAL_STATUS_MULTI = 2f;
         public const int MAX_ENEMIES = 5;
+        public const int ENEMY_SKILL_TYPE_MAX = 5;
+        public const float COST_SKILL_VARIANCE = 0.25f;
 
         public enum CostTypes
         {
