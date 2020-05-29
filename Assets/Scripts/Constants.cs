@@ -7,6 +7,7 @@
         public const string SKILL_PATH = "skill.txt";
         public const string MONSTER_PATH = "monster.txt";
         public const string MONSTERTIER_PATH = "monsterTier.txt";
+        public const string HELP_PATH = "help.txt";
 
         public const float TECHNICAL_MULTI = 2f;
         public const float CRITICAL_STATUS_MULTI = 2f;
@@ -20,6 +21,10 @@
         public const int MONSTER_SKILL_RLVL_PENALTY = 5;
         public const int SKILL_RLVL_LENIANCE = 5;
 
+        public enum ActionBoxTextTypes
+        {
+            Stats, Help
+        }
         public enum CostTypes
         {
             Attack, Spell
