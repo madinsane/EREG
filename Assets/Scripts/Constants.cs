@@ -13,6 +13,8 @@
         public const int ENEMY_SKILL_TYPE_MAX = 5;
         public const float COST_SKILL_VARIANCE = 0.25f;
         public const int FORCED_SKILLS = 1;
+        public const float DOWNGRADE_PENALTY = 0.1f;
+        public const float UPGRADE_BONUS = 0.1f;
 
         public enum CostTypes
         {
@@ -41,6 +43,10 @@
         {
             None, Shock, Freeze, Burn, Curse, Blast,
             Sleep, Forget, Berserk, Confuse, Brainwash, Fear
+        }
+        public enum BuffTypes
+        {
+            None, Damage, Defense, Evasion, Speed
         }
     }
 }

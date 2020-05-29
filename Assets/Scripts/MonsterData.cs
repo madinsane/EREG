@@ -8,6 +8,7 @@ namespace Assets.Scripts
         public int Id { get; set; }
         public string Name { get; set; }
         public string SpriteName { get; set; }
+        public string NameStr { get; set; }
         public int UnitId { get; set; }
         public int Value { get; set; }
         public Constants.SkillTypes SkillType1 { get; set; }

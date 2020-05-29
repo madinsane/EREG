@@ -1,2 +1,25 @@
 Tier	Type1	MonsterName1	Weight1	Type2	MonsterName2	Weight2	Type3	MonsterName3	Weight3	Type4	MonsterName4	Weight4	Type5	MonsterName5	Weight5
-0															
+0	1	adder	50	1	kobold	50	1	caveman	50	0		0	0		0
+1	2		10	3		100	1	goblin	50	1	gnome	50	0		0
+2	2		5	3		50	1	jelly	50	0		0	0		0
+3	2		10	3		50	1	giant_bat	50	1	ice_beast	50	0		0
+4	2		20	3		50	1	mermaid	50	0		0	0		0
+5	2		5	3		30	1	big_kobold	50	1	goblin_engi	50	0		0
+6	2		20	3		50	1	skeleton	50	0		0	0		0
+7	2		10	3		50	1	dwarf_fighter	75	1	dwarf_guardian	75	1	faun	50
+8	2		10	3		25	1	orc_warrior	50	1	orc_wizard	50	1	orc_priest	50
+9	2		10	3		75	1	shark	50	1	giant_slime	50	0		0
+10	2		10	3		50	1	hobgoblin	50	1	naga	50	0		0
+11	2		10	3		25	1	elf_fighter	75	1	elf_priest	75	1	elf_sorcerer	75
+12	2		10	3		25	1	spriggan_defender	75	1	spriggan_berserker	75	1	spriggan_druid	75
+13	2		5	3		75	1	obelisk	100	0		0	0		0
+14	2		10	3		50	1	deep_troll_berserker	50	1	deep_troll_shaman	50	0		0
+15	2		10	3		50	1	ooze	100	0		0	0		0
+16	2		10	3		50	1	salamander_knight	50	1	salamander_firebrand	50	0		0
+17	2		10	3		50	1	giant_brain	100	0		0	0		0
+18	2		10	3		50	1	centaur_fighter	50	1	centaur_archer	50	0		0
+19	2		10	3		25	1	skeletal_fish	75	1	skeletal_snake	75	1	drowned	75
+20	2		10	3		75	1	giant	100	0		0	0		0
+21	2		5	3		75	1	sarcophagus	100	0		0	0		0
+22	2		10	3		25	1	orc_warlord	75	1	orc_archmage	75	1	orc_high_priest	75
+23	0		0	3		50	1	death_ooze	50	1	spriggan_rider	50	0		0
