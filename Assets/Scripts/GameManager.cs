@@ -21,13 +21,13 @@ namespace Assets.Scripts
         private Turn turn = Turn.Player;
         private MonsterData[] monsterData;
         private List<MonsterTier> monsterTiers;
-        private int level;
+        public int Level { get; private set; }
         private string previousSpawn;
 
         void Start()
         {
             turn = Turn.Player;
-            level = 1;
+            Level = 1;
             previousSpawn = "";
             monsterData = new MonsterData[Constants.MAX_ENEMIES];
             unitManager.ClearMonsters();
@@ -151,7 +151,7 @@ namespace Assets.Scripts
             List<MonsterData> chosen = new List<MonsterData>();
             int picks = 1;
             int placed = 0;
-            int tier = (int)Math.Floor((level - 1) / Constants.LEVELS_PER_TIER) % Constants.MAX_TIERS;
+            int tier = (int)Math.Floor((Level - 1) / Constants.LEVELS_PER_TIER) % Constants.MAX_TIERS;
             Debug.Log("Base Tier: " + tier);
             MonsterTier currentTier;
             int roll;
@@ -176,7 +176,7 @@ namespace Assets.Scripts
                         continue;
                     }
                     //Prevent Duplicate results within same tier
-                    if ((level - 1) % Constants.LEVELS_PER_TIER > 0)
+                    if ((Level - 1) % Constants.LEVELS_PER_TIER > 0)
                     {
                         if (currentTier.Types[i] == Constants.TierType.Monster && currentTier.MonsterNames[i].Equals(previousSpawn) && placed == 0 && picks == 1)
                         {
@@ -254,8 +254,8 @@ namespace Assets.Scripts
             if (Input.GetKeyDown(KeyCode.LeftBracket))
             {
                 unitManager.ClearMonsters();
-                level++;
-                Debug.Log(level);
+                Level++;
+                Debug.Log(Level);
                 StartRound();
             }
         }
