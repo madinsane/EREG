@@ -151,6 +151,23 @@ namespace Assets.Scripts
             monsters[position].ChangeMonster(monster.Unit.Copy(), monsterSkills, monster.Sprite);
         }
 
+        internal MonsterData GetMonsterByName(string name)
+        {
+            if (monsterData == null)
+            {
+                LoadMonsterData();
+            }
+            return monsterData.Find(x => x.Name.Equals(name));
+        }
+
+        internal void ClearMonsters()
+        {
+            for (int i=0; i<monsters.Length; i++)
+            {
+                monsters[i].Die();
+            }
+        }
+
         // Update is called once per frame
         void Update()
         {

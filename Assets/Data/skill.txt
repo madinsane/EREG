@@ -1,122 +1,122 @@
 Id	Name	NameStr	Description	Value	Cost	CostType	SkillType	TargetType	DamageType	Power	Accuracy	CritChance	CritMulti	StatusType	StatusChance	StatusPower	BuffType	HitCount
 0	attack	Attack		0	0	0	17	0	1	100	100	100	100	0	0	100	0	1
-1	spark	Spark	Deal light Electric damage to one target\nChance of inflicting Shock		40	1	4	0	3	100	100	100	100	1	5	100	0	1
-2	bolt	Bolt	Deal medium Electric damage to one target\nChance of inflicting Shock		60	1	4	0	3	200	100	100	100	1	5	100	0	1
-3	lightning	Lightning	Deal heavy Electric damage to one target\nChance of inflicting Shock		80	1	4	0	3	300	100	100	100	1	5	100	0	1
-4	discharge	Discharge	Deal severe Electric damage to one target\nChance of inflicting Shock		100	1	4	0	3	400	100	100	100	1	5	100	0	1
-5	arc	Arc	Deal light Electric damage to all opponents\nChance of inflicting Shock		100	1	4	1	3	100	100	100	100	1	5	100	0	1
-6	nova	Nova	Deal medium Electric damage to all opponents\nChance of inflicting Shock		150	1	4	1	3	200	100	100	100	1	5	100	0	1
-7	chain_lightning	Lightning	Deal heavy Electric damage to all opponents\nChance of inflicting Shock		200	1	4	1	3	300	100	100	100	1	5	100	0	1
-8	tempest	Tempest	Deal severe Electric damage to all opponents\nChance of inflicting Shock		250	1	4	1	3	400	100	100	100	1	5	100	0	1
-9	icicle	Icicle	Deal light Cold damage to one target\nChance of inflicting Freeze		40	1	5	0	4	100	100	100	100	2	5	100	0	1
-10	ice_blast	Ice Blast	Deal medium Cold damage to one target\nChance of inflicting Freeze		60	1	5	0	4	200	100	100	100	2	5	100	0	1
-11	bonechill	Bonechill	Deal heavy Cold damage to one target\nChance of inflicting Freeze		80	1	5	0	4	300	100	100	100	2	5	100	0	1
-12	glacial_spike	Glacial Spike	Deal severe Cold damage to one target\nChance of inflicting Freeze		100	1	5	0	4	400	100	100	100	2	5	100	0	1
-13	snowstorm	Snowstorm	Deal light Cold damage to all opponents\nChance of inflicting Freeze		100	1	5	1	4	100	100	100	100	2	5	100	0	1
-14	blizzard	Blizzard	Deal medium Cold damage to all opponents\nChance of inflicting Freeze		150	1	5	1	4	200	100	100	100	2	5	100	0	1
-15	vortex	Vortex	Deal heavy Cold damage to all opponents\nChance of inflicting Freeze		200	1	5	1	4	300	100	100	100	2	5	100	0	1
-16	avalanche	Avalanche	Deal severe Cold damage to all opponents\nChance of inflicting Freeze		250	1	5	1	4	400	100	100	100	2	5	100	0	1
-17	fireball	Fireball	Deal light Fire damage to one target\nChance of inflicting Burn		40	1	6	0	5	100	100	100	100	3	10	100	0	1
-18	flameblast	Flameblast	Deal medium Fire damage to one target\nChance of inflicting Burn		60	1	6	0	5	200	100	100	100	3	10	100	0	1
-19	incinerate	Incinerate	Deal heavy Fire damage to one target\nChance of inflicting Burn		80	1	6	0	5	300	100	100	100	3	10	100	0	1
-20	pyroclasm	Pyroclasm	Deal severe Fire damage to one target\nChance of inflicting Burn		100	1	6	0	5	400	100	100	100	3	10	100	0	1
-21	firestorm	Firestorm	Deal light Fire damage to all opponents\nChance of inflicting Burn		100	1	6	1	5	100	100	100	100	3	10	100	0	1
-22	eruption	Eruption	Deal medium Fire damage to all opponents\nChance of inflicting Burn		150	1	6	1	5	200	100	100	100	3	10	100	0	1
-23	meteor	Meteor	Deal heavy Fire damage to all opponents\nChance of inflicting Burn		200	1	6	1	5	300	100	100	100	3	10	100	0	1
-24	armageddon	Armageddon	Deal severe Fire damage to all opponents\nChance of inflicting Burn		250	1	6	1	5	400	100	100	100	3	10	100	0	1
-25	gust	Gust	Deal light Wind damage to one target		30	1	7	0	6	100	100	100	100	0	0	100	0	1
-26	twister	Twister	Deal medium Wind damage to one target		45	1	7	0	6	200	100	100	100	0	0	100	0	1
-27	cyclone	Cyclone	Deal heavy Wind damage to one target		60	1	7	0	6	300	100	100	100	0	0	100	0	1
-28	tornado	Tornado	Deal severe Wind damage to one target		75	1	7	0	6	400	100	100	100	0	0	100	0	1
-29	gale	Gale	Deal light Wind damage to all opponents		75	1	7	1	6	100	100	100	100	0	0	100	0	1
-30	whirlwind	Whirlwind	Deal medium Wind damage to all opponents		113	1	7	1	6	200	100	100	100	0	0	100	0	1
-31	monsoon	Monsoon	Deal heavy Wind damage to all opponents		150	1	7	1	6	300	100	100	100	0	0	100	0	1
-32	hurricane	Hurricane	Deal severe Wind damage to all opponents		188	1	7	1	6	400	100	100	100	0	0	100	0	1
-33	arcane_bolt	Arcane Bolt	Deal light Arcane damage to one target\nIncreased damage against targets inflicted with Shock, Freeze or Burn		40	1	8	0	7	100	100	100	100	0	0	100	0	1
-34	ethereal_strike	Ethereal Strike	Deal medium Arcane damage to one target\nIncreased damage against targets inflicted with Shock, Freeze or Burn		60	1	8	0	7	200	100	100	100	0	0	100	0	1
-35	energy_blast	Energy Blast	Deal heavy Arcane damage to one target\nIncreased damage against targets inflicted with Shock, Freeze or Burn		80	1	8	0	7	300	100	100	100	0	0	100	0	1
-36	power_crush	Power Crush	Deal severe Arcane damage to one target\nIncreased damage against targets inflicted with Shock, Freeze or Burn		100	1	8	0	7	400	100	100	100	0	0	100	0	1
-37	arcane_explosion	Arcane Explosion	Deal light Arcane damage to all opponents\nIncreased damage against targets inflicted with Shock, Freeze or Burn		100	1	8	1	7	100	100	100	100	0	0	100	0	1
-38	ethereal_swipe	Ethereal Swipe	Deal medium Arcane damage to all opponents\nIncreased damage against targets inflicted with Shock, Freeze or Burn		150	1	8	1	7	200	100	100	100	0	0	100	0	1
-39	energy_storm	Energy Storm	Deal heavy Arcane damage to all opponents\nIncreased damage against targets inflicted with Shock, Freeze or Burn		200	1	8	1	7	300	100	100	100	0	0	100	0	1
-40	power_vortex	Power Vortex	Deal severe Arcane damage to all opponents\nIncreased damage against targets inflicted with Shock, Freeze or Burn		250	1	8	1	7	400	100	100	100	0	0	100	0	1
-41	telekinesis	Telekinesis	Deal light Psychic damage to one target\nIncreased damage against targets inflicted with Mental Status ailments		40	1	9	0	8	100	100	100	100	0	0	100	0	1
-42	psychic_hammer	Psychic Hammer	Deal medium Psychic damage to one target\nIncreased damage against targets inflicted with Mental Status ailments		60	1	9	0	8	200	100	100	100	0	0	100	0	1
-43	mind_shatter	Mind Shatter	Deal heavy Psychic damage to one target\nIncreased damage against targets inflicted with Mental Status ailments		80	1	9	0	8	300	100	100	100	0	0	100	0	1
-44	mental_shutdown	Mental Shutdown	Deal severe Psychic damage to one target\nIncreased damage against targets inflicted with Mental Status ailments		100	1	9	0	8	400	100	100	100	0	0	100	0	1
-45	mind_ripple	Mind Ripple	Deal light Psychic damage to all opponents\nIncreased damage against targets inflicted with Mental Status ailments		100	1	9	1	8	100	100	100	100	0	0	100	0	1
-46	mind_blast	Mind Blast	Deal medium Psychic damage to all opponents\nIncreased damage against targets inflicted with Mental Status ailments		150	1	9	1	8	200	100	100	100	0	0	100	0	1
-47	mind_quake	Mind Quake	Deal heavy Psychic damage to all opponents\nIncreased damage against targets inflicted with Mental Status ailments		200	1	9	1	8	300	100	100	100	0	0	100	0	1
-48	mass_shutdown	Mass Shutdown	Deal severe Psychic damage to all opponents\nIncreased damage against targets inflicted with Mental Status ailments		250	1	9	1	8	400	100	100	100	0	0	100	0	1
-49	holy_bolt	Holy Bolt	Deal light Holy damage to one target		50	1	10	0	9	150	100	100	100	0	0	100	0	1
-50	smite	Smite	Deal medium Holy damage to one target		75	1	10	0	9	300	100	100	100	0	0	100	0	1
-51	vengeance	Vengeance	Deal heavy Holy damage to one target		100	1	10	0	9	450	100	100	100	0	0	100	0	1
-52	touch_of_god	Touch of God	Deal severe Holy damage to one target		125	1	10	0	9	600	100	100	100	0	0	100	0	1
-53	holy_nova	Holy Nova	Deal light Holy damage to all opponents		125	1	10	1	9	150	100	100	100	0	0	100	0	1
-54	banish	Banish	Deal medium Holy damage to all opponents		183	1	10	1	9	300	100	100	100	0	0	100	0	1
-55	wrath	Wrath	Deal heavy Holy damage to all opponents		255	1	10	1	9	450	100	100	100	0	0	100	0	1
-56	divine_intervention	Divine Intervention	Deal severe Holy damage to all opponents		318	1	10	1	9	600	100	100	100	0	0	100	0	1
-57	shadow_bolt	Shadow Bolt	Deal light Shadow damage to one target\nChance of inflicting Curse		40	1	11	0	10	100	100	100	100	4	5	100	0	1
-58	bane	Bane	Deal medium Shadow damage to one target\nChance of inflicting Curse		60	1	11	0	10	200	100	100	100	4	5	100	0	1
-59	hex	Hex	Deal heavy Shadow damage to one target\nChance of inflicting Curse		80	1	11	0	10	300	100	100	100	4	5	100	0	1
-60	soulrend	Soulrend	Deal severe Shadow damage to one target\nChance of inflicting Curse		100	1	11	0	10	400	100	100	100	4	5	100	0	1
-61	blight	Blight	Deal light Shadow damage to all opponents\nChance of inflicting Curse		100	1	11	1	10	100	100	100	100	4	5	100	0	1
-62	desecrate	Desecrate	Deal medium Shadow damage to all opponents\nChance of inflicting Curse		150	1	11	1	10	200	100	100	100	4	5	100	0	1
-63	corruption	Corruption	Deal heavy Shadow damage to all opponents\nChance of inflicting Curse		200	1	11	1	10	300	100	100	100	4	5	100	0	1
-64	blasphemy	Blasphemy	Deal severe Shadow damage to all opponents\nChance of inflicting Curse		250	1	11	1	10	400	100	100	100	4	5	100	0	1
-65	cure	Cure	Light healing for one target		20	1	12	0	0	100	100	100	100	0	0	100	0	1
-66	prayer	Prayer	Medium healing for one target		30	1	12	0	0	200	100	100	100	0	0	100	0	1
-67	cleansing	Cleansing	Major healing for one target		40	1	12	0	0	300	100	100	100	0	0	100	0	1
-68	redemption	Redemption	Dramatic healing for one target		50	1	12	0	0	400	100	100	100	0	0	100	0	1
-69	healing circle	Healing Circle	Light healing for all allies		50	1	12	1	0	100	100	100	100	0	0	100	0	1
-70	blessing	Blessing	Medium healing for all allies		75	1	12	1	0	200	100	100	100	0	0	100	0	1
-71	consecrate	Consecrate	Major healing for all allies		100	1	12	1	0	300	100	100	100	0	0	100	0	1
-72	salvation	Salvation	Dramatic healing for all allies		125	1	12	1	0	400	100	100	100	0	0	100	0	1
-73	bash	Bash	Deal light Physical damage to one target		80	0	2	0	1	200	100	100	100	0	0	100	0	1
-74	giant_slice	Giant Slice	Deal medium Physical damage to one target		120	0	2	0	1	400	100	100	100	0	0	100	0	1
-75	vicious_strike	Vicious Strike	Deal heavy Physical damage to one target		160	0	2	0	1	600	100	100	100	0	0	100	0	1
-76	lacerate	Lacerate	Deal severe Physical damage to one target		200	0	2	0	1	800	100	100	100	0	0	100	0	1
-77	cleave	Cleave	Deal light Physical damage to all opponents		200	0	2	1	1	200	100	100	100	0	0	100	0	1
-78	ground_slam	Ground Slam	Deal medium Physical damage to all opponents		300	0	2	1	1	400	100	100	100	0	0	100	0	1
-79	sunder	Sunder	Deal heavy Physical damage to all opponents		400	0	2	1	1	600	100	100	100	0	0	100	0	1
-80	bladestorm	Bladestorm	Deal severe Physical damage to all opponents		500	0	2	1	1	800	100	100	100	0	0	100	0	1
-81	snap	Snap	Deal medium Projectile damage to one target\nHigh Critical strike chance		120	0	3	0	2	300	100	125	125	0	0	100	0	1
-82	snipe	Snipe	Deal severe Projectile damage to one target\nHigh Critical strike chance		200	0	3	0	2	700	100	125	125	0	0	100	0	1
-83	split_shot	Split Shot	Deal medium Shadow damage to all opponents\nHigh Critical strike chance		300	0	3	1	2	300	100	125	125	0	0	100	0	1
-84	shatter_shot	Shatter Shot	Deal severe Shadow damage to all opponents\nHigh Critical strike chance		500	0	3	1	2	700	100	125	125	0	0	100	0	1
-85	megi	Megi	Deal light Almighty damage to all opponents\nDamage cannot be Resisted		100	1	1	1	0	75	100	100	100	0	0	100	0	1
-86	megido	Megido	Deal medium Almighty damage to all opponents\nDamage cannot be Resisted		150	1	1	1	0	150	100	100	100	0	0	100	0	1
-87	megidola	Megidola	Deal heavy Almighty damage to all opponents\nDamage cannot be Resisted		200	1	1	1	0	225	100	100	100	0	0	100	0	1
-88	megidolaon	Megidolaon	Deal severe Almighty damage to all opponents\nDamage cannot be Resisted		250	1	1	1	0	300	100	100	100	0	0	100	0	1
-89	haste	Haste	Grants Haste to one target\nHaste increases Speed granting more frequent turns		80	1	13	0	0	100	0	0	0	0	0	0	4	1
-90	haste_aura	Haste Aura	Grants Haste to all allies\nHaste increases Speed granting more frequent turns		120	1	13	1	0	100	0	0	0	0	0	0	4	1
-91	defiance	Defiance	Grants Defiance to one target\nDefiance increases Defense reducing damage taken		80	1	13	0	0	100	0	0	0	0	0	0	2	1
-92	defiance_aura	Defiance Aura	Grants Defiance to all allies\nDefiance increases Defense reducing damage taken		120	1	13	1	0	100	0	0	0	0	0	0	2	1
-93	might	Might	Grants Might to one target\nMight increases Power increasing damage dealt		80	1	13	0	0	100	0	0	0	0	0	0	1	1
-94	might_aura	Might Aura	Grants Might to all allies\nMight increases Power increasing damage dealt		120	1	13	1	0	100	0	0	0	0	0	0	1	1
-95	evasion	Evasion	Grants Evasion to one target\nEvasion increases Accuracy increasing Hit chance and Dodge decreasing chance to be Hit		80	1	13	0	0	100	0	0	0	0	0	0	3	1
-96	evasion_aura	Evasion Aura	Grants Evasion to all allies\nEvasion increases Accuracy increasing Hit chance and Dodge decreasing chance to be Hit		120	1	13	1	0	100	0	0	0	0	0	0	3	1
-97	cripple	Cripple	Inflict Cripple on one target\nCripple decreases Speed granting less frequent turns		80	1	13	0	0	-100	0	0	0	0	0	0	4	1
-98	mass_cripple	Mass Cripple	Inflict Cripple on all opponents\nCripple decreases Speed granting less frequent turns		120	1	13	1	0	-100	0	0	0	0	0	0	4	1
-99	vulnerability	Vulnerability	Inflict Vulnerability on one target\nVulnerability decreases Defense increasing damage taken		80	1	13	0	0	-100	0	0	0	0	0	0	2	1
-100	mass_vulnerability	Mass Vulnerability	Inflict Vulnerability on all opponents\nVulnerability decreases Defense increasing damage taken		120	1	13	1	0	-100	0	0	0	0	0	0	2	1
-101	weakness	Weakness	Inflict Weakness on one target\nWeakness decreases Power reducing damage dealt		80	1	13	0	0	-100	0	0	0	0	0	0	1	1
-102	mass_weakness	Mass Weakness	Inflict Weakness on all opponents\nWeakness decreases Power reducing damage dealt		120	1	13	1	0	-100	0	0	0	0	0	0	1	1
-103	daze	Daze	Inflict Daze on one target\nDaze decreases Accuracy decreasing Hit chance and Dodge increasing chance to be Hit		80	1	13	0	0	-100	0	0	0	0	0	0	3	1
-104	mass_daze	Mass Daze	Inflict Daze on all opponents\nDaze decreases Accuracy decreasing Hit chance and Dodge increasing chance to be Hit		120	1	13	1	0	-100	0	0	0	0	0	0	3	1
-105	fatigue	Fatigue	Inflict Sleep on one target		100	1	15	0	0	100	100	0	0	6	50	100	0	1
-106	mass_fatigue	Mass Fatigue	Inflict Sleep on all opponents		150	1	15	1	0	100	100	0	0	6	50	100	0	1
-107	amnesia	Amnesia	Inflict Forget on one target		100	1	15	0	0	100	100	0	0	7	50	100	0	1
-108	mass_amnesia	Mass Amnesia	Inflict Forget on all opponents		150	1	15	1	0	100	100	0	0	7	50	100	0	1
-109	frenzy	Frenzy	Inflict Berserk on one target		100	1	15	0	0	100	100	0	0	8	50	100	0	1
-110	mass_frenzy	Mass Frenzy	Inflict Berserk on all opponents		150	1	15	1	0	100	100	0	0	8	50	100	0	1
-111	confusion	Confusion	Inflict Confusion on one target		100	1	15	0	0	100	100	0	0	9	50	100	0	1
-112	mass_confusion	Mass Confusion	Inflict Confusion on all opponents		150	1	15	1	0	100	100	0	0	9	50	100	0	1
-113	conversion	Conversion	Brainwash one target		150	1	15	0	0	100	100	0	0	10	50	100	0	1
-114	mass_conversion	Mass Conversion	Brainwash all opponents		225	1	15	1	0	100	100	0	0	10	50	100	0	1
-115	terror	Terror	Inflict Fear on one target		100	1	15	0	0	100	100	0	0	11	50	100	0	1
-116	mass_terror	Mass Terror	Inflict Fear on all opponents		150	1	15	1	0	100	100	0	0	11	50	100	0	1
-117	short_fuse	Short Fuse	Deal light Blast damage to one target\nBlast damage is delayed		80	1	16	0	0	100	100	0	0	5	100	300	0	1
-118	timebomb	Time Bomb	Deal medium Shadow Blast damage to one target\nBlast damage is delayed		120	1	16	0	0	100	100	0	0	5	100	550	0	1
-119	mine	Mine	Deal heavy Blast damage to one target\nBlast damage is delayed		160	1	16	0	0	100	100	0	0	5	100	800	0	1
-120	warhead	Warhead	Deal severe Blast damage to one target\nBlast damage is delayed		200	1	16	0	0	100	100	0	0	5	100	1050	0	1
+1	spark	Spark	Deal light Electric damage to one target\nChance of inflicting Shock	0	40	1	4	0	3	100	100	100	100	1	5	100	0	1
+2	bolt	Bolt	Deal medium Electric damage to one target\nChance of inflicting Shock	0	60	1	4	0	3	200	100	100	100	1	5	100	0	1
+3	lightning	Lightning	Deal heavy Electric damage to one target\nChance of inflicting Shock	0	80	1	4	0	3	300	100	100	100	1	5	100	0	1
+4	discharge	Discharge	Deal severe Electric damage to one target\nChance of inflicting Shock	0	100	1	4	0	3	400	100	100	100	1	5	100	0	1
+5	arc	Arc	Deal light Electric damage to all opponents\nChance of inflicting Shock	0	100	1	4	1	3	100	100	100	100	1	5	100	0	1
+6	nova	Nova	Deal medium Electric damage to all opponents\nChance of inflicting Shock	0	150	1	4	1	3	200	100	100	100	1	5	100	0	1
+7	chain_lightning	Lightning	Deal heavy Electric damage to all opponents\nChance of inflicting Shock	0	200	1	4	1	3	300	100	100	100	1	5	100	0	1
+8	tempest	Tempest	Deal severe Electric damage to all opponents\nChance of inflicting Shock	0	250	1	4	1	3	400	100	100	100	1	5	100	0	1
+9	icicle	Icicle	Deal light Cold damage to one target\nChance of inflicting Freeze	0	40	1	5	0	4	100	100	100	100	2	5	100	0	1
+10	ice_blast	Ice Blast	Deal medium Cold damage to one target\nChance of inflicting Freeze	0	60	1	5	0	4	200	100	100	100	2	5	100	0	1
+11	bonechill	Bonechill	Deal heavy Cold damage to one target\nChance of inflicting Freeze	0	80	1	5	0	4	300	100	100	100	2	5	100	0	1
+12	glacial_spike	Glacial Spike	Deal severe Cold damage to one target\nChance of inflicting Freeze	0	100	1	5	0	4	400	100	100	100	2	5	100	0	1
+13	snowstorm	Snowstorm	Deal light Cold damage to all opponents\nChance of inflicting Freeze	0	100	1	5	1	4	100	100	100	100	2	5	100	0	1
+14	blizzard	Blizzard	Deal medium Cold damage to all opponents\nChance of inflicting Freeze	0	150	1	5	1	4	200	100	100	100	2	5	100	0	1
+15	vortex	Vortex	Deal heavy Cold damage to all opponents\nChance of inflicting Freeze	0	200	1	5	1	4	300	100	100	100	2	5	100	0	1
+16	avalanche	Avalanche	Deal severe Cold damage to all opponents\nChance of inflicting Freeze	0	250	1	5	1	4	400	100	100	100	2	5	100	0	1
+17	fireball	Fireball	Deal light Fire damage to one target\nChance of inflicting Burn	0	40	1	6	0	5	100	100	100	100	3	10	100	0	1
+18	flameblast	Flameblast	Deal medium Fire damage to one target\nChance of inflicting Burn	0	60	1	6	0	5	200	100	100	100	3	10	100	0	1
+19	incinerate	Incinerate	Deal heavy Fire damage to one target\nChance of inflicting Burn	0	80	1	6	0	5	300	100	100	100	3	10	100	0	1
+20	pyroclasm	Pyroclasm	Deal severe Fire damage to one target\nChance of inflicting Burn	0	100	1	6	0	5	400	100	100	100	3	10	100	0	1
+21	firestorm	Firestorm	Deal light Fire damage to all opponents\nChance of inflicting Burn	0	100	1	6	1	5	100	100	100	100	3	10	100	0	1
+22	eruption	Eruption	Deal medium Fire damage to all opponents\nChance of inflicting Burn	0	150	1	6	1	5	200	100	100	100	3	10	100	0	1
+23	meteor	Meteor	Deal heavy Fire damage to all opponents\nChance of inflicting Burn	0	200	1	6	1	5	300	100	100	100	3	10	100	0	1
+24	armageddon	Armageddon	Deal severe Fire damage to all opponents\nChance of inflicting Burn	0	250	1	6	1	5	400	100	100	100	3	10	100	0	1
+25	gust	Gust	Deal light Wind damage to one target	0	30	1	7	0	6	100	100	100	100	0	0	100	0	1
+26	twister	Twister	Deal medium Wind damage to one target	0	45	1	7	0	6	200	100	100	100	0	0	100	0	1
+27	cyclone	Cyclone	Deal heavy Wind damage to one target	0	60	1	7	0	6	300	100	100	100	0	0	100	0	1
+28	tornado	Tornado	Deal severe Wind damage to one target	0	75	1	7	0	6	400	100	100	100	0	0	100	0	1
+29	gale	Gale	Deal light Wind damage to all opponents	0	75	1	7	1	6	100	100	100	100	0	0	100	0	1
+30	whirlwind	Whirlwind	Deal medium Wind damage to all opponents	0	113	1	7	1	6	200	100	100	100	0	0	100	0	1
+31	monsoon	Monsoon	Deal heavy Wind damage to all opponents	0	150	1	7	1	6	300	100	100	100	0	0	100	0	1
+32	hurricane	Hurricane	Deal severe Wind damage to all opponents	0	188	1	7	1	6	400	100	100	100	0	0	100	0	1
+33	arcane_bolt	Arcane Bolt	Deal light Arcane damage to one target\nIncreased damage against targets inflicted with Shock, Freeze or Burn	0	40	1	8	0	7	100	100	100	100	0	0	100	0	1
+34	ethereal_strike	Ethereal Strike	Deal medium Arcane damage to one target\nIncreased damage against targets inflicted with Shock, Freeze or Burn	0	60	1	8	0	7	200	100	100	100	0	0	100	0	1
+35	energy_blast	Energy Blast	Deal heavy Arcane damage to one target\nIncreased damage against targets inflicted with Shock, Freeze or Burn	0	80	1	8	0	7	300	100	100	100	0	0	100	0	1
+36	power_crush	Power Crush	Deal severe Arcane damage to one target\nIncreased damage against targets inflicted with Shock, Freeze or Burn	0	100	1	8	0	7	400	100	100	100	0	0	100	0	1
+37	arcane_explosion	Arcane Explosion	Deal light Arcane damage to all opponents\nIncreased damage against targets inflicted with Shock, Freeze or Burn	0	100	1	8	1	7	100	100	100	100	0	0	100	0	1
+38	ethereal_swipe	Ethereal Swipe	Deal medium Arcane damage to all opponents\nIncreased damage against targets inflicted with Shock, Freeze or Burn	0	150	1	8	1	7	200	100	100	100	0	0	100	0	1
+39	energy_storm	Energy Storm	Deal heavy Arcane damage to all opponents\nIncreased damage against targets inflicted with Shock, Freeze or Burn	0	200	1	8	1	7	300	100	100	100	0	0	100	0	1
+40	power_vortex	Power Vortex	Deal severe Arcane damage to all opponents\nIncreased damage against targets inflicted with Shock, Freeze or Burn	0	250	1	8	1	7	400	100	100	100	0	0	100	0	1
+41	telekinesis	Telekinesis	Deal light Psychic damage to one target\nIncreased damage against targets inflicted with Mental Status ailments	0	40	1	9	0	8	100	100	100	100	0	0	100	0	1
+42	psychic_hammer	Psychic Hammer	Deal medium Psychic damage to one target\nIncreased damage against targets inflicted with Mental Status ailments	0	60	1	9	0	8	200	100	100	100	0	0	100	0	1
+43	mind_shatter	Mind Shatter	Deal heavy Psychic damage to one target\nIncreased damage against targets inflicted with Mental Status ailments	0	80	1	9	0	8	300	100	100	100	0	0	100	0	1
+44	mental_shutdown	Mental Shutdown	Deal severe Psychic damage to one target\nIncreased damage against targets inflicted with Mental Status ailments	0	100	1	9	0	8	400	100	100	100	0	0	100	0	1
+45	mind_ripple	Mind Ripple	Deal light Psychic damage to all opponents\nIncreased damage against targets inflicted with Mental Status ailments	0	100	1	9	1	8	100	100	100	100	0	0	100	0	1
+46	mind_blast	Mind Blast	Deal medium Psychic damage to all opponents\nIncreased damage against targets inflicted with Mental Status ailments	0	150	1	9	1	8	200	100	100	100	0	0	100	0	1
+47	mind_quake	Mind Quake	Deal heavy Psychic damage to all opponents\nIncreased damage against targets inflicted with Mental Status ailments	0	200	1	9	1	8	300	100	100	100	0	0	100	0	1
+48	mass_shutdown	Mass Shutdown	Deal severe Psychic damage to all opponents\nIncreased damage against targets inflicted with Mental Status ailments	0	250	1	9	1	8	400	100	100	100	0	0	100	0	1
+49	holy_bolt	Holy Bolt	Deal light Holy damage to one target	0	50	1	10	0	9	150	100	100	100	0	0	100	0	1
+50	smite	Smite	Deal medium Holy damage to one target	0	75	1	10	0	9	300	100	100	100	0	0	100	0	1
+51	vengeance	Vengeance	Deal heavy Holy damage to one target	0	100	1	10	0	9	450	100	100	100	0	0	100	0	1
+52	touch_of_god	Touch of God	Deal severe Holy damage to one target	0	125	1	10	0	9	600	100	100	100	0	0	100	0	1
+53	holy_nova	Holy Nova	Deal light Holy damage to all opponents	0	125	1	10	1	9	150	100	100	100	0	0	100	0	1
+54	banish	Banish	Deal medium Holy damage to all opponents	0	183	1	10	1	9	300	100	100	100	0	0	100	0	1
+55	wrath	Wrath	Deal heavy Holy damage to all opponents	0	255	1	10	1	9	450	100	100	100	0	0	100	0	1
+56	divine_intervention	Divine Intervention	Deal severe Holy damage to all opponents	0	318	1	10	1	9	600	100	100	100	0	0	100	0	1
+57	shadow_bolt	Shadow Bolt	Deal light Shadow damage to one target\nChance of inflicting Curse	0	40	1	11	0	10	100	100	100	100	4	5	100	0	1
+58	bane	Bane	Deal medium Shadow damage to one target\nChance of inflicting Curse	0	60	1	11	0	10	200	100	100	100	4	5	100	0	1
+59	hex	Hex	Deal heavy Shadow damage to one target\nChance of inflicting Curse	0	80	1	11	0	10	300	100	100	100	4	5	100	0	1
+60	soulrend	Soulrend	Deal severe Shadow damage to one target\nChance of inflicting Curse	0	100	1	11	0	10	400	100	100	100	4	5	100	0	1
+61	blight	Blight	Deal light Shadow damage to all opponents\nChance of inflicting Curse	0	100	1	11	1	10	100	100	100	100	4	5	100	0	1
+62	desecrate	Desecrate	Deal medium Shadow damage to all opponents\nChance of inflicting Curse	0	150	1	11	1	10	200	100	100	100	4	5	100	0	1
+63	corruption	Corruption	Deal heavy Shadow damage to all opponents\nChance of inflicting Curse	0	200	1	11	1	10	300	100	100	100	4	5	100	0	1
+64	blasphemy	Blasphemy	Deal severe Shadow damage to all opponents\nChance of inflicting Curse	0	250	1	11	1	10	400	100	100	100	4	5	100	0	1
+65	cure	Cure	Light healing for one target	0	20	1	12	0	0	100	100	100	100	0	0	100	0	1
+66	prayer	Prayer	Medium healing for one target	0	30	1	12	0	0	200	100	100	100	0	0	100	0	1
+67	cleansing	Cleansing	Major healing for one target	0	40	1	12	0	0	300	100	100	100	0	0	100	0	1
+68	redemption	Redemption	Dramatic healing for one target	0	50	1	12	0	0	400	100	100	100	0	0	100	0	1
+69	healing circle	Healing Circle	Light healing for all allies	0	50	1	12	1	0	100	100	100	100	0	0	100	0	1
+70	blessing	Blessing	Medium healing for all allies	0	75	1	12	1	0	200	100	100	100	0	0	100	0	1
+71	consecrate	Consecrate	Major healing for all allies	0	100	1	12	1	0	300	100	100	100	0	0	100	0	1
+72	salvation	Salvation	Dramatic healing for all allies	0	125	1	12	1	0	400	100	100	100	0	0	100	0	1
+73	bash	Bash	Deal light Physical damage to one target	0	80	0	2	0	1	200	100	100	100	0	0	100	0	1
+74	giant_slice	Giant Slice	Deal medium Physical damage to one target	0	120	0	2	0	1	400	100	100	100	0	0	100	0	1
+75	vicious_strike	Vicious Strike	Deal heavy Physical damage to one target	0	160	0	2	0	1	600	100	100	100	0	0	100	0	1
+76	lacerate	Lacerate	Deal severe Physical damage to one target	0	200	0	2	0	1	800	100	100	100	0	0	100	0	1
+77	cleave	Cleave	Deal light Physical damage to all opponents	0	200	0	2	1	1	200	100	100	100	0	0	100	0	1
+78	ground_slam	Ground Slam	Deal medium Physical damage to all opponents	0	300	0	2	1	1	400	100	100	100	0	0	100	0	1
+79	sunder	Sunder	Deal heavy Physical damage to all opponents	0	400	0	2	1	1	600	100	100	100	0	0	100	0	1
+80	bladestorm	Bladestorm	Deal severe Physical damage to all opponents	0	500	0	2	1	1	800	100	100	100	0	0	100	0	1
+81	snap	Snap	Deal medium Projectile damage to one target\nHigh Critical strike chance	0	120	0	3	0	2	300	100	125	125	0	0	100	0	1
+82	snipe	Snipe	Deal severe Projectile damage to one target\nHigh Critical strike chance	0	200	0	3	0	2	700	100	125	125	0	0	100	0	1
+83	split_shot	Split Shot	Deal medium Shadow damage to all opponents\nHigh Critical strike chance	0	300	0	3	1	2	300	100	125	125	0	0	100	0	1
+84	shatter_shot	Shatter Shot	Deal severe Shadow damage to all opponents\nHigh Critical strike chance	0	500	0	3	1	2	700	100	125	125	0	0	100	0	1
+85	megi	Megi	Deal light Almighty damage to all opponents\nDamage cannot be Resisted	0	100	1	1	1	0	75	100	100	100	0	0	100	0	1
+86	megido	Megido	Deal medium Almighty damage to all opponents\nDamage cannot be Resisted	0	150	1	1	1	0	150	100	100	100	0	0	100	0	1
+87	megidola	Megidola	Deal heavy Almighty damage to all opponents\nDamage cannot be Resisted	0	200	1	1	1	0	225	100	100	100	0	0	100	0	1
+88	megidolaon	Megidolaon	Deal severe Almighty damage to all opponents\nDamage cannot be Resisted	0	250	1	1	1	0	300	100	100	100	0	0	100	0	1
+89	haste	Haste	Grants Haste to one target\nHaste increases Speed granting more frequent turns	0	80	1	13	0	0	100	0	0	0	0	0	0	4	1
+90	haste_aura	Haste Aura	Grants Haste to all allies\nHaste increases Speed granting more frequent turns	0	120	1	13	1	0	100	0	0	0	0	0	0	4	1
+91	defiance	Defiance	Grants Defiance to one target\nDefiance increases Defense reducing damage taken	0	80	1	13	0	0	100	0	0	0	0	0	0	2	1
+92	defiance_aura	Defiance Aura	Grants Defiance to all allies\nDefiance increases Defense reducing damage taken	0	120	1	13	1	0	100	0	0	0	0	0	0	2	1
+93	might	Might	Grants Might to one target\nMight increases Power increasing damage dealt	0	80	1	13	0	0	100	0	0	0	0	0	0	1	1
+94	might_aura	Might Aura	Grants Might to all allies\nMight increases Power increasing damage dealt	0	120	1	13	1	0	100	0	0	0	0	0	0	1	1
+95	evasion	Evasion	Grants Evasion to one target\nEvasion increases Accuracy increasing Hit chance and Dodge decreasing chance to be Hit	0	80	1	13	0	0	100	0	0	0	0	0	0	3	1
+96	evasion_aura	Evasion Aura	Grants Evasion to all allies\nEvasion increases Accuracy increasing Hit chance and Dodge decreasing chance to be Hit	0	120	1	13	1	0	100	0	0	0	0	0	0	3	1
+97	cripple	Cripple	Inflict Cripple on one target\nCripple decreases Speed granting less frequent turns	0	80	1	13	0	0	-100	0	0	0	0	0	0	4	1
+98	mass_cripple	Mass Cripple	Inflict Cripple on all opponents\nCripple decreases Speed granting less frequent turns	0	120	1	13	1	0	-100	0	0	0	0	0	0	4	1
+99	vulnerability	Vulnerability	Inflict Vulnerability on one target\nVulnerability decreases Defense increasing damage taken	0	80	1	13	0	0	-100	0	0	0	0	0	0	2	1
+100	mass_vulnerability	Mass Vulnerability	Inflict Vulnerability on all opponents\nVulnerability decreases Defense increasing damage taken	0	120	1	13	1	0	-100	0	0	0	0	0	0	2	1
+101	weakness	Weakness	Inflict Weakness on one target\nWeakness decreases Power reducing damage dealt	0	80	1	13	0	0	-100	0	0	0	0	0	0	1	1
+102	mass_weakness	Mass Weakness	Inflict Weakness on all opponents\nWeakness decreases Power reducing damage dealt	0	120	1	13	1	0	-100	0	0	0	0	0	0	1	1
+103	daze	Daze	Inflict Daze on one target\nDaze decreases Accuracy decreasing Hit chance and Dodge increasing chance to be Hit	0	80	1	13	0	0	-100	0	0	0	0	0	0	3	1
+104	mass_daze	Mass Daze	Inflict Daze on all opponents\nDaze decreases Accuracy decreasing Hit chance and Dodge increasing chance to be Hit	0	120	1	13	1	0	-100	0	0	0	0	0	0	3	1
+105	fatigue	Fatigue	Inflict Sleep on one target	0	100	1	15	0	0	100	100	0	0	6	50	100	0	1
+106	mass_fatigue	Mass Fatigue	Inflict Sleep on all opponents	0	150	1	15	1	0	100	100	0	0	6	50	100	0	1
+107	amnesia	Amnesia	Inflict Forget on one target	0	100	1	15	0	0	100	100	0	0	7	50	100	0	1
+108	mass_amnesia	Mass Amnesia	Inflict Forget on all opponents	0	150	1	15	1	0	100	100	0	0	7	50	100	0	1
+109	frenzy	Frenzy	Inflict Berserk on one target	0	100	1	15	0	0	100	100	0	0	8	50	100	0	1
+110	mass_frenzy	Mass Frenzy	Inflict Berserk on all opponents	0	150	1	15	1	0	100	100	0	0	8	50	100	0	1
+111	confusion	Confusion	Inflict Confusion on one target	0	100	1	15	0	0	100	100	0	0	9	50	100	0	1
+112	mass_confusion	Mass Confusion	Inflict Confusion on all opponents	0	150	1	15	1	0	100	100	0	0	9	50	100	0	1
+113	conversion	Conversion	Brainwash one target	0	150	1	15	0	0	100	100	0	0	10	50	100	0	1
+114	mass_conversion	Mass Conversion	Brainwash all opponents	0	225	1	15	1	0	100	100	0	0	10	50	100	0	1
+115	terror	Terror	Inflict Fear on one target	0	100	1	15	0	0	100	100	0	0	11	50	100	0	1
+116	mass_terror	Mass Terror	Inflict Fear on all opponents	0	150	1	15	1	0	100	100	0	0	11	50	100	0	1
+117	short_fuse	Short Fuse	Deal light Blast damage to one target\nBlast damage is delayed	0	80	1	16	0	0	100	100	0	0	5	100	300	0	1
+118	timebomb	Time Bomb	Deal medium Shadow Blast damage to one target\nBlast damage is delayed	0	120	1	16	0	0	100	100	0	0	5	100	550	0	1
+119	mine	Mine	Deal heavy Blast damage to one target\nBlast damage is delayed	0	160	1	16	0	0	100	100	0	0	5	100	800	0	1
+120	warhead	Warhead	Deal severe Blast damage to one target\nBlast damage is delayed	0	200	1	16	0	0	100	100	0	0	5	100	1050	0	1

@@ -6,6 +6,7 @@
         public const string UNIT_PATH = "unit.txt";
         public const string SKILL_PATH = "skill.txt";
         public const string MONSTER_PATH = "monster.txt";
+        public const string MONSTERTIER_PATH = "monsterTier.txt";
 
         public const float TECHNICAL_MULTI = 2f;
         public const float CRITICAL_STATUS_MULTI = 2f;
@@ -15,6 +16,8 @@
         public const int FORCED_SKILLS = 1;
         public const float DOWNGRADE_PENALTY = 0.1f;
         public const float UPGRADE_BONUS = 0.1f;
+        public const float LEVELS_PER_TIER = 2f;
+        public const int MAX_TIERS = 23;
 
         public enum CostTypes
         {

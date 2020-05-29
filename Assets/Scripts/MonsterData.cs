@@ -22,6 +22,8 @@ namespace Assets.Scripts
         public UnitStats Unit { get; set; }
         [Ignore]
         public Sprite Sprite { get; set; }
+        [Ignore]
+        public float StatMulti { get; set; }
 
         public MonsterData()
         {

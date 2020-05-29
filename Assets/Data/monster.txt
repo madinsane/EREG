@@ -31,7 +31,7 @@ Id	Name	SpriteName	NameStr	UnitId	Value	SkillType1	SkillType2	SkillType3	SkillTy
 29	deep_troll_berserker	deep_troll_berserker	Deep Troll Berserker	31	0	2	14	0	0	0
 30	deep_troll_shaman	deep_troll_earth_mage	Deep Troll Shaman	32	0	7	4	15	16	12
 31	ooze	ooze_new	Ooze	33	0	11	3	14	15	15
-32	salamander_knight	salamader_firebrand	Salamander Knight	34	0	2	6	14	13	3
+32	salamander_knight	salamander_firebrand	Salamander Knight	34	0	2	6	14	13	3
 33	salamander_firebrand	salamander_stormcaller	Salamander Firebrand	35	0	6	12	13	14	16
 34	giant_brain	giant_orange_brain	Giant Brain	36	0	9	15	15	9	0
 35	centaur_fighter	centaur-melee	Centaur Fighter	37	0	2	2	14	13	14

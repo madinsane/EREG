@@ -24,7 +24,7 @@ namespace Assets.Scripts
             ChangeUnit(stats, skills);
         }
 
-        new void Die()
+        public new void Die()
         {
             spriteRenderer.enabled = false;
             base.Die();

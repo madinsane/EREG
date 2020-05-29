@@ -1431,7 +1431,7 @@ SpriteAtlas:
   - deep_dwarf_death_knight
   - giant_bat
   - entropy_weaver
-  - daeva
+  - daeva_armed
   - drowned_soul
   - michael
   - spectral_lbl
@@ -1618,14 +1618,14 @@ SpriteAtlas:
   - hell_wizard_75
   - vampire_knight_old
   - wight_new
-  - salamander
+  - salamander_spear
   - frederick_old
   - phase_bat
   - eidolon
   - demonspawn
   - spectral_large
   - lernaean_hydra_2_top
-  - golden_dragon
+  - golden_dragon_new
   - cyclops_old
   - basilisk
   - orc_sorcerer_old
@@ -1658,7 +1658,7 @@ SpriteAtlas:
   - skeleton_snake
   - ice_beast
   - abomination_large_3
-  - spriggan_rider
+  - spriggan_moth_rider
   - aizul_old
   - guardian_mummy
   - saint_roka_new
@@ -1839,7 +1839,7 @@ SpriteAtlas:
   - merfolk_avatar
   - butterfly_9
   - insubstantial_wisp
-  - golden_dragon
+  - golden_dragon_old
   - phantom_old
   - spectral_warrior
   - yaktaur_new
@@ -1990,7 +1990,7 @@ SpriteAtlas:
   - jellyfish
   - bog_body
   - block_of_ice_2
-  - ice_beast
+  - ice_bear
   - light_vine_statue_base_old
   - starspawn_tentacle_segment_northeast_northwest
   - black_bear_new
@@ -2395,7 +2395,7 @@ SpriteAtlas:
   - spectral_ant_new
   - draconic_base-pale_old
   - abomination_large_6
-  - demonspawn
+  - demonspawn_human
   - grinder_new
   - spectral_hydra_4_old
   - very_ugly_thing_5
@@ -2567,7 +2567,7 @@ SpriteAtlas:
   - fire_vortex
   - cerebov_top
   - demon_body_succubus_bottom
-  - jelly
+  - jelly_star
   - demon_head_bird_top_old
   - zot_statue
   - spectral_centaur_old
