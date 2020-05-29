@@ -6,7 +6,8 @@
         public string Name { get; set; }
         public string NameStr { get; set; }
         public string Description { get; set; }
-        public int Value { get; set; }
+        public string SpriteName { get; set; }
+        public int RLvl { get; set; }
         public int Cost { get; set; }
         public Constants.CostTypes CostType { get; set; }
         public Constants.SkillTypes SkillType { get; set; }

@@ -12,12 +12,13 @@
         public const float CRITICAL_STATUS_MULTI = 2f;
         public const int MAX_ENEMIES = 5;
         public const int ENEMY_SKILL_TYPE_MAX = 5;
-        public const float COST_SKILL_VARIANCE = 0.25f;
         public const int FORCED_SKILLS = 1;
         public const float DOWNGRADE_PENALTY = 0.1f;
         public const float UPGRADE_BONUS = 0.1f;
         public const float LEVELS_PER_TIER = 2f;
         public const int MAX_TIERS = 23;
+        public const int MONSTER_SKILL_RLVL_PENALTY = 5;
+        public const int SKILL_RLVL_LENIANCE = 5;
 
         public enum CostTypes
         {

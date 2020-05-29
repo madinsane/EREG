@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.U2D;
@@ -117,14 +118,12 @@ namespace Assets.Scripts
         internal SkillStats[] ChooseSkills(MonsterData monster)
         {
             SkillStats[] chosenSkills = new SkillStats[monster.SkillTypeFull.Length+Constants.FORCED_SKILLS];
-            int minValue = monster.Value - (int)(monster.Value * Constants.COST_SKILL_VARIANCE);
-            int maxValue = monster.Value + (int)(monster.Value * Constants.COST_SKILL_VARIANCE);
             List<SkillStats> match;
             //Add forced skills
             chosenSkills[0] = GetSkill(0);
             for (int i=Constants.FORCED_SKILLS; i<chosenSkills.Length; i++)
             {
-                match = FindSkills(minValue, maxValue, monster.SkillTypeFull[i-Constants.FORCED_SKILLS]);
+                match = FindSkills(gameManager.Level, monster.SkillTypeFull[i-Constants.FORCED_SKILLS]);
                 if (match.Count == 0)
                 {
                     continue;
@@ -135,13 +134,27 @@ namespace Assets.Scripts
             return chosenSkills;
         }
 
-        internal List<SkillStats> FindSkills(int minValue, int maxValue, Constants.SkillTypes type)
+        internal List<SkillStats> FindSkills(int level, Constants.SkillTypes type)
         {
             if (skills == null)
             {
                 LoadSkills();
             }
-            List<SkillStats> foundSkills = skills.FindAll(x => x.Value >= minValue && x.Value <= maxValue && x.SkillType == type);
+            List<SkillStats> foundSkills;
+            if (level < 5)
+            {
+                foundSkills = skills.FindAll(x => x.RLvl <= level && x.SkillType == type);
+            }
+            else
+            {
+                foundSkills = skills.FindAll(x => x.RLvl + Constants.MONSTER_SKILL_RLVL_PENALTY <= level && x.SkillType == type);
+            }
+            if (foundSkills.Count == 0)
+            {
+                return foundSkills;
+            }
+            int maxRlvl = foundSkills.Max(x => x.RLvl);
+            foundSkills.RemoveAll(x => x.RLvl < maxRlvl - Constants.SKILL_RLVL_LENIANCE);
             return foundSkills;
         } 
 
