@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.U2D;
 
 namespace Assets.Scripts
 {
@@ -12,6 +13,12 @@ namespace Assets.Scripts
     {
         public Log log;
         public UnitManager unitManager;
+        public GameObject actionBoxText;
+        public ActionBox actionBox;
+        public GameObject itemPanelParent;
+        public ItemPanel[] itemPanels;
+        public SpriteAtlas itemAtlas;
+        public SpriteAtlas guiAtlas;
 
         enum Turn
         {
@@ -253,6 +260,58 @@ namespace Assets.Scripts
         MonsterTier GetTier(int tier)
         {
             return monsterTiers.Find(x => x.Tier == tier);
+        }
+
+        public void ShowItems()
+        {
+            actionBoxText.SetActive(false);
+            itemPanelParent.SetActive(true);
+            for (int i=0; i<itemPanels.Length; i++)
+            {
+                if (i < Constants.ITEM_TYPES)
+                {
+                    itemPanels[i].gameObject.SetActive(true);
+                    ItemStats item = unitManager.player.GetItem(i);
+                    itemPanels[i].ChangeItem(item.Id, itemAtlas.GetSprite(item.SpriteName));
+                } else
+                {
+                    itemPanels[i].gameObject.SetActive(false);
+                }
+            }          
+        }
+
+        public void ShowSkills()
+        {
+            actionBoxText.SetActive(false);
+            itemPanelParent.SetActive(true);
+            List<SkillStats> skills = unitManager.player.Skills;
+            for (int i = 0; i < itemPanels.Length; i++)
+            {
+                if (i < skills.Count)
+                {
+                    itemPanels[i].gameObject.SetActive(true);
+                    itemPanels[i].ChangeSkill(skills[i].Id, guiAtlas.GetSprite(skills[i].SpriteName), skills[i].Cost, skills[i].CostType);
+                }
+                else
+                {
+                    itemPanels[i].gameObject.SetActive(false);
+                }
+            }
+        }
+
+        public void ShowHelp()
+        {
+            actionBoxText.SetActive(true);
+            itemPanelParent.SetActive(false);
+            actionBox.SetStatDisplay(false);
+            actionBox.DisplayHelp();
+        }
+
+        public void ShowStats()
+        {
+            actionBoxText.SetActive(true);
+            itemPanelParent.SetActive(false);
+            actionBox.SetStatDisplay(true);
         }
 
         void Update()

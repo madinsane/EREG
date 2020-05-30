@@ -11,13 +11,13 @@ namespace Assets.Scripts
         public UnitStats Stats { get; private set; }
         public UnitManager unitManager;
         public int Id { get; protected set; }
-        private List<SkillStats> skills;
+        public List<SkillStats> Skills { get; private set; }
 
         public Unit(UnitStats stats, List<SkillStats> skills)
         {
             Id = stats.Id;
             Stats = stats;
-            this.skills = skills;
+            this.Skills = skills;
             InitResources();
         }
 
@@ -31,7 +31,7 @@ namespace Assets.Scripts
         {
             Id = stats.Id;
             Stats = stats;
-            this.skills = skills;
+            this.Skills = skills;
             InitResources();
             enabled = true;
         }
@@ -56,13 +56,13 @@ namespace Assets.Scripts
         {
             if (skillType == Constants.CostTypes.Attack)
             {
-                if (CurrentHealth - value > 0)
+                if (CurrentHealth - value < 0)
                 {
                     return false;
                 }
             } else
             {
-                if (CurrentMana - value > 0)
+                if (CurrentMana - value < 0)
                 {
                     return false;
                 }

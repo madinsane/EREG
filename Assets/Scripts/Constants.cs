@@ -23,6 +23,8 @@
         public const int SKILL_RLVL_LENIANCE = 5;
         public const int START_POTIONS = 3;
         public const int START_ELIXIR = 2;
+        public const int ITEM_TYPES = 3;
+        public const int MAX_SKILLS = 16;
 
         public enum ActionBoxTextTypes
         {

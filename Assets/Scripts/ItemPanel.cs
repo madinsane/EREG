@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -52,6 +53,7 @@ namespace Assets.Scripts
             itemId = skillId;
             skillCost = cost;
             this.costType = costType;
+            UpdateDisplay();
         }
 
         public void ChangeItem(int itemId, Sprite item)
@@ -62,12 +64,14 @@ namespace Assets.Scripts
             this.item.sprite = item;
             cost.text = player.GetItem(itemId).Quantity.ToString();
             cost.color = itemColor;
+            UpdateDisplay();
         }
 
         public void UpdateDisplay()
         {
             if (isItem)
             {
+                itemBack.color = Color.white;
                 cost.text = player.GetItem(itemId).Quantity.ToString();
             } else
             {
@@ -95,6 +99,7 @@ namespace Assets.Scripts
                     //Use skill
                 }
             }
+            UpdateDisplay();
         }
     }
 }
