@@ -26,11 +26,17 @@ namespace Assets.Scripts
 
         void Start()
         {
+            StartGame();
+        }
+
+        public void StartGame()
+        {
             turn = Turn.Player;
             Level = 1;
             previousSpawn = "";
             monsterData = new MonsterData[Constants.MAX_ENEMIES];
             unitManager.ClearMonsters();
+            unitManager.InitPlayer();
             StartRound();
         }
 

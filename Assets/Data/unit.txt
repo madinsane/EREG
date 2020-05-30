@@ -1,5 +1,5 @@
 Id	Name	MaxHealth	MaxMana	AttackPower	MagicPower	AttackDefense	MagicDefense	Accuracy	Evasion	CritChance	CritMulti	IncCritChance	TypeStatusChance	MentalStatusChance	StatusPower	IncTypeStatus	IncMentalStatus	ResistPhysical	ResistProjectile	ResistElectric	ResistCold	ResistFire	ResistWind	ResistArcane	ResistPsychic	ResistLight	ResistDark
-0	player	1000	1000	100	100	100	100	100	100	100	150	100	100	100	100	100	100	0	0	0	0	0	0	0	0	0	0
+0	player	1000	1000	100	100	100	100	100	100	5	150	100	100	100	100	100	100	0	0	0	0	0	0	0	0	0	0
 1	base	250	0	50	50	100	100	100	100	5	150	100	100	100	100	100	100	0	0	0	0	0	0	0	0	0	0
 2	scaling	10	0	5	5	5	5	5	5	1	0	0	2	2	0	0	0	0	0	0	0	0	0	0	0	0	0
 2	adder	80	0	120	100	100	100	100	100	50	150	100	100	100	5	100	100	0	0	0	-50	-50	50	0	0	-50	50

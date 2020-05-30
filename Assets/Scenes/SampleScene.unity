@@ -236,11 +236,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 499541954}
+  unitManager: {fileID: 1842739402}
 --- !u!20 &519420031 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1253276024061471249, guid: cc4c4e1a415b39f4c9e4fb09b372e6d1, type: 3}
   m_PrefabInstance: {fileID: 1253276023685321326}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &756762553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 756762555}
+  - component: {fileID: 756762554}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &756762554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756762553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b6a914123f4ca49abfcdebcde9969d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitManager: {fileID: 1842739402}
+--- !u!4 &756762555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756762553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2767692, y: -1.4979571, z: -129.95624}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &818132403 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 836557695, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
@@ -363,6 +408,77 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364467956}
   m_CullTransparentMesh: 0
+--- !u!1 &1472484546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4225455928296367817, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1472484548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6583588357261449980, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472484546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1472484550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472484546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1472484548}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 499541956}
+        m_TargetAssemblyTypeName: Assets.Scripts.ActionBox, Assembly-CSharp
+        m_MethodName: SetStatDisplay
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1533959120 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3921431820710202376, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
@@ -422,6 +538,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 499541956}
+        m_TargetAssemblyTypeName: Assets.Scripts.ActionBox, Assembly-CSharp
+        m_MethodName: SetStatDisplay
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 499541956}
         m_TargetAssemblyTypeName: Assets.Scripts.ActionBox, Assembly-CSharp
         m_MethodName: DisplayHelp
@@ -603,6 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6662dce1da7e443828ed2a747d0c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 756762554}
   gameManager: {fileID: 1842739403}
   monsterAtlas: {fileID: 4343727234628468602, guid: d320029ab68353040952e3b62d2fb825, type: 2}
   monsters:
@@ -1088,6 +1217,10 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 57620c086b2641e48aaadde15626313a, type: 3}
     - target: {fileID: 2358028191323687403, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516036689712720446, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4186408279350731947, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}

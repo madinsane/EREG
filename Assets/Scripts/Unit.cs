@@ -18,10 +18,10 @@ namespace Assets.Scripts
             Id = stats.Id;
             Stats = stats;
             this.skills = skills;
-            InitStats();
+            InitResources();
         }
 
-        void InitStats()
+        void InitResources()
         {
             CurrentHealth = Stats.MaxHealth;
             CurrentMana = Stats.MaxMana;
@@ -32,7 +32,7 @@ namespace Assets.Scripts
             Id = stats.Id;
             Stats = stats;
             this.skills = skills;
-            InitStats();
+            InitResources();
             enabled = true;
         }
 

@@ -16,7 +16,9 @@ namespace Assets.Scripts
         private List<SkillStats> skills;
         private List<MonsterData> monsterData;
         private Sprite[] sprites;
+        private List<SkillStats> baseSkills;
 
+        public Player player;
         public GameManager gameManager;
         public SpriteAtlas monsterAtlas;
         public Monster[] monsters = new Monster[Constants.MAX_ENEMIES];
@@ -25,6 +27,24 @@ namespace Assets.Scripts
         void Start()
         {
             Debug.Log("Done");
+        }
+
+        internal void InitPlayer()
+        {
+            if (baseSkills == null)
+            {
+                baseSkills = new List<SkillStats>();
+                baseSkills.Add(GetSkill(1));
+                baseSkills.Add(GetSkill(9));
+                baseSkills.Add(GetSkill(17));
+                baseSkills.Add(GetSkill(25));
+            }
+            player.ChangeUnit(LoadStats(0), baseSkills);
+        }
+
+        internal UnitStats GetPlayerStats()
+        {
+            return player.Stats;
         }
 
         internal UnitStats LoadStats(int id)

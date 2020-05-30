@@ -12,12 +12,16 @@ namespace Assets.Scripts
     public class ActionBox: MonoBehaviour
     {
         public Text text;
+        public UnitManager unitManager;
         private string helpText;
-
+        private StringBuilder sb;
+        private bool isDisplayingStats;
+        private UnitStats player;
 
         private void Awake()
         {
             helpText = "";
+            isDisplayingStats = false;
         }
 
         public void DisplayHelp()
@@ -27,11 +31,65 @@ namespace Assets.Scripts
                 LoadHelp();
             }
             text.text = helpText;
+            isDisplayingStats = false;
+        }
+
+        public void SetStatDisplay(bool enabled)
+        {
+            isDisplayingStats = enabled;
+        }
+
+        public void DisplayStats()
+        {
+            if (player == null)
+            {
+                player = unitManager.GetPlayerStats();
+            }
+            if (sb == null)
+            {
+                sb = new StringBuilder();
+            }
+            sb.Clear();
+            sb.Append("Max Health: " + player.MaxHealth + "\n");
+            sb.Append("Max Mana: " + player.MaxMana + "\n");
+            sb.Append("Attack Power: " + player.AttackPower + "\n");
+            sb.Append("Magic Power: " + player.MagicPower + "\n");
+            sb.Append("Defense vs Attacks: " + player.AttackDefense + "\n");
+            sb.Append("Defense vs Magic: " + player.MagicDefense + "\n");
+            sb.Append("Accuracy: " + player.Accuracy + "\n");
+            sb.Append("Evasion: " + player.Evasion + "\n");
+            sb.Append("Critical Strike Chance: " + player.CritChance + "%\n");
+            sb.Append("Critical Strike Multiplier: " + player.CritMulti + "%\n");
+            sb.Append("Chance to avoid Critical Strikes: " + (100 - player.IncCritChance) + "%\n");
+            sb.Append("Increased Chance to inflict Elemental Statuses and Curse: " + (100 - player.TypeStatusChance) + "%\n");
+            sb.Append("Increased Chance to inflict Mental Statuses: " + (100 - player.MentalStatusChance) + "%\n");
+            sb.Append("Status Effect: " + player.StatusPower + "\n");
+            sb.Append("Chance to avoid Elemental Statuses and Curse: " + (100 - player.IncTypeStatus) + "%\n");
+            sb.Append("Chance to avoid Mental Statuses: " + (100 - player.IncMentalStatus) + "%\n");
+            sb.Append("Physical Resistance: " + player.ResistPhysical + "%\n");
+            sb.Append("Projectile Resistance: " + player.ResistProjectile + "%\n");
+            sb.Append("Electric Resistance: " + player.ResistElectric + "%\n");
+            sb.Append("Cold Resistance: " + player.ResistCold + "%\n");
+            sb.Append("Fire Resistance: " + player.ResistFire + "%\n");
+            sb.Append("Wind Resistance: " + player.ResistWind + "%\n");
+            sb.Append("Arcane Resistance: " + player.ResistDark + "%\n");
+            sb.Append("Psychic Resistance: " + player.ResistPsychic + "%\n");
+            sb.Append("Holy Resistance: " + player.ResistLight + "%\n");
+            sb.Append("Shadow Resistance: " + player.ResistDark + "%");
+            text.text = sb.ToString();
         }
 
         private void LoadHelp()
         {
             helpText = File.ReadAllText(Application.dataPath + Constants.DATA_PATH + Constants.HELP_PATH);
+        }
+
+        private void Update()
+        {
+            if (isDisplayingStats)
+            {
+                DisplayStats();
+            }
         }
     }
 }
