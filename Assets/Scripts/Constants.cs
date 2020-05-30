@@ -8,6 +8,7 @@
         public const string MONSTER_PATH = "monster.txt";
         public const string MONSTERTIER_PATH = "monsterTier.txt";
         public const string HELP_PATH = "help.txt";
+        public const string ITEM_PATH = "item.txt";
 
         public const float TECHNICAL_MULTI = 2f;
         public const float CRITICAL_STATUS_MULTI = 2f;
@@ -20,6 +21,8 @@
         public const int MAX_TIERS = 23;
         public const int MONSTER_SKILL_RLVL_PENALTY = 5;
         public const int SKILL_RLVL_LENIANCE = 5;
+        public const int START_POTIONS = 3;
+        public const int START_ELIXIR = 2;
 
         public enum ActionBoxTextTypes
         {
@@ -56,6 +59,10 @@
         public enum BuffTypes
         {
             None, Damage, Defense, Evasion, Speed
+        }
+        public enum ItemTypes
+        {
+            Health, Mana, Break
         }
     }
 }
