@@ -22,4 +22,4 @@ Tier	Type1	MonsterName1	Weight1	Type2	MonsterName2	Weight2	Type3	MonsterName3	We
 20	2		10	3		75	1	giant	100	0		0	0		0
 21	2		5	3		75	1	sarcophagus	100	0		0	0		0
 22	2		10	3		25	1	orc_warlord	75	1	orc_archmage	75	1	orc_high_priest	75
-23	0		0	3		50	1	death_ooze	50	1	spriggan_rider	50	0		0
+23	0		0	3		50	1	death_ooze	50	1	spriggan_rider	50	1	kiwi	1

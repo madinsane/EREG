@@ -18,7 +18,7 @@
         public const float DOWNGRADE_PENALTY = 0.1f;
         public const float UPGRADE_BONUS = 0.1f;
         public const float LEVELS_PER_TIER = 2f;
-        public const int MAX_TIERS = 23;
+        public const int MAX_TIERS = 24;
         public const int MONSTER_SKILL_RLVL_PENALTY = 5;
         public const int SKILL_RLVL_LENIANCE = 5;
         public const int START_POTIONS = 3;

@@ -43,7 +43,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 7c04e7bc4967cf14b887d3484934a492, type: 3}
-    totalSpriteSurfaceArea: 1312768
+    totalSpriteSurfaceArea: 1313792
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -503,6 +503,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 09c2f1756b013d149ba9da6aae0d6894, type: 3}
   - {fileID: 21300000, guid: 4bb11375f04f7634b859a517fc86937e, type: 3}
   - {fileID: 21300000, guid: b99c047508927db46935c9760a3e0c78, type: 3}
+  - {fileID: 21300000, guid: 866e44757169e5541b415891a6b936e3, type: 3}
   - {fileID: 21300000, guid: 566af4754cc890947a240ae189c41091, type: 3}
   - {fileID: 21300000, guid: 7dc73875aad400b4190674b01f669c87, type: 3}
   - {fileID: 21300000, guid: 9048387527dc49a4f86492a44967790b, type: 3}
@@ -1786,6 +1787,7 @@ SpriteAtlas:
   - titan_old
   - tarantella_old
   - vine_segment_northwest_southeast
+  - kiwi
   - kraken_tentacle_segment_north_southwest
   - rock_worm
   - demon_head_succubus_top
