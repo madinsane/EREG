@@ -22,24 +22,109 @@ namespace Assets.Scripts
         public GameManager gameManager;
         public SpriteAtlas monsterAtlas;
         public Monster[] monsters = new Monster[Constants.MAX_ENEMIES];
+        public SpriteRenderer[] targets;
+
+        private Dictionary<int, int> targetRef;
+        private bool isTargeting;
+        private int target;
+        public int ActiveMonsters { get; set; }
 
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("Done");
+            isTargeting = true;
+        }
+
+        internal void InitTargetRef()
+        {
+            targetRef = new Dictionary<int, int>
+            {
+                { 0, 4 },
+                { 1, 2 },
+                { 2, 0 },
+                { 3, 1 },
+                { 4, 3 }
+            };
         }
 
         internal void InitPlayer()
         {
             if (baseSkills == null)
             {
-                baseSkills = new List<SkillStats>();
-                baseSkills.Add(GetSkill(1));
-                baseSkills.Add(GetSkill(9));
-                baseSkills.Add(GetSkill(17));
-                baseSkills.Add(GetSkill(25));
+                baseSkills = new List<SkillStats>
+                {
+                    GetSkill(1),
+                    GetSkill(9),
+                    GetSkill(17),
+                    GetSkill(25)
+                };
             }
             player.ChangeUnit(LoadStats(0), baseSkills);
+        }
+
+        internal void UpdateTarget(int direction, int counter = 0)
+        {
+            if (targetRef == null)
+            {
+                InitTargetRef();
+            }
+            if (target == Constants.MAX_ENEMIES)
+            {
+                for (int i=0; i<targets.Length; i++)
+                {
+                    if (monsters[i].enabled == true)
+                    {
+                        targets[i].enabled = true;
+                    }
+                }
+                return;
+            }
+            foreach (SpriteRenderer renderer in targets)
+            {
+                renderer.enabled = false;
+            }
+            if (monsters[targetRef[target]].enabled == true)
+            {
+                targets[targetRef[target]].enabled = true;
+            } else
+            {
+                if (counter == Constants.MAX_ENEMIES - 1)
+                {
+                    return;
+                }
+                if (target + direction < 0)
+                {
+                    target = Constants.MAX_ENEMIES - 1;
+                } else if (target + direction >= Constants.MAX_ENEMIES)
+                {
+                    target = 0;
+                } else
+                {
+                    target += direction;
+                }
+                UpdateTarget(direction, counter++);
+            }
+        }
+
+        public void HideTargets()
+        {
+            foreach (SpriteRenderer renderer in targets)
+            {
+                renderer.enabled = false;
+                target = 2;
+            }
+        }
+
+        public void ShowTarget(int pos)
+        {
+            if (targetRef == null)
+            {
+                InitTargetRef();
+            }
+            if (monsters[targetRef[pos]].enabled == true && target != Constants.MAX_ENEMIES)
+            {
+                targets[targetRef[pos]].enabled = true;
+            }
         }
 
         internal UnitStats GetPlayerStats()
@@ -183,6 +268,7 @@ namespace Assets.Scripts
             monsterSkills.RemoveAll(x => x == null);
             LinkMonster(monster.Id);
             monsters[position].ChangeMonster(ScaleMonster(monster.Unit, monster.StatMulti), monsterSkills, monster.Sprite);
+            ActiveMonsters++;
         }
 
         internal MonsterData GetMonsterByName(string name)
@@ -200,6 +286,8 @@ namespace Assets.Scripts
             {
                 monsters[i].Die();
             }
+            ActiveMonsters = 0;
+            HideTargets();
         }
 
         internal UnitStats ScaleMonster(UnitStats unitToScale, float statMulti)
@@ -237,7 +325,33 @@ namespace Assets.Scripts
         // Update is called once per frame
         void Update()
         {
-
+            if (isTargeting)
+            {
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    if (target == 0)
+                    {
+                        target = Constants.MAX_ENEMIES - 1;
+                    }
+                    else if (target != Constants.MAX_ENEMIES)
+                    {
+                        target -= 1;
+                    }
+                    UpdateTarget(-1);
+                }
+                else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    if (target == Constants.MAX_ENEMIES - 1)
+                    {
+                        target = 0;
+                    }
+                    else if (target != Constants.MAX_ENEMIES)
+                    {
+                        target += 1;
+                    }
+                    UpdateTarget(1);
+                }
+            }
         }
     }
 }

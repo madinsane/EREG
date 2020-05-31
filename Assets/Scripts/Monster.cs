@@ -27,6 +27,7 @@ namespace Assets.Scripts
         public new void Die()
         {
             spriteRenderer.enabled = false;
+            unitManager.ActiveMonsters--;
             base.Die();
         }
     }
