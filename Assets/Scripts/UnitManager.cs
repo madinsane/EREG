@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.U2D;
+using UnityEngine.XR.WSA.Input;
 
 namespace Assets.Scripts
 {
@@ -32,7 +33,13 @@ namespace Assets.Scripts
         // Start is called before the first frame update
         void Start()
         {
-            isTargeting = true;
+            isTargeting = false;
+        }
+
+        internal void ChangeTargeting(bool isTargeting)
+        {
+            this.isTargeting = isTargeting;
+            HideTargets();
         }
 
         internal void InitTargetRef()
@@ -117,13 +124,16 @@ namespace Assets.Scripts
 
         public void ShowTarget(int pos)
         {
-            if (targetRef == null)
+            if (isTargeting)
             {
-                InitTargetRef();
-            }
-            if (monsters[targetRef[pos]].enabled == true && target != Constants.MAX_ENEMIES)
-            {
-                targets[targetRef[pos]].enabled = true;
+                if (targetRef == null)
+                {
+                    InitTargetRef();
+                }
+                if (monsters[targetRef[pos]].enabled == true && target != Constants.MAX_ENEMIES)
+                {
+                    targets[targetRef[pos]].enabled = true;
+                }
             }
         }
 
@@ -296,6 +306,8 @@ namespace Assets.Scripts
             UnitStats baseStats = LoadStats(1).Copy();
             //Get scale
             UnitStats scaling = LoadStats(2);
+            baseStats.Id = unitToScale.Id;
+            baseStats.Name = unitToScale.Name;
             //Apply Scale
             baseStats.MaxHealth = ScaleStat(baseStats.MaxHealth, scaling.MaxHealth, unitToScale.MaxHealth, statMulti);
             baseStats.MaxMana = ScaleStat(baseStats.MaxMana, scaling.MaxMana, unitToScale.MaxMana, statMulti);
@@ -306,20 +318,34 @@ namespace Assets.Scripts
             baseStats.Accuracy = ScaleStat(baseStats.Accuracy, scaling.Accuracy, unitToScale.Accuracy, statMulti);
             baseStats.Evasion = ScaleStat(baseStats.Evasion, scaling.Evasion, unitToScale.Evasion, statMulti);
             baseStats.CritChance = ScaleStat(baseStats.CritChance, scaling.CritChance, unitToScale.CritChance, statMulti);
-            baseStats.CritMulti = ScaleStat(baseStats.CritMulti, scaling.CritMulti, unitToScale.CritMulti, 0);
-            baseStats.IncCritChance = ScaleStat(baseStats.IncCritChance, scaling.IncCritChance, unitToScale.IncCritChance, 0);
+            baseStats.CritMulti = ScaleStat(baseStats.CritMulti, scaling.CritMulti, unitToScale.CritMulti, 1);
+            baseStats.IncCritChance = ScaleStat(baseStats.IncCritChance, scaling.IncCritChance, unitToScale.IncCritChance, 1);
             baseStats.TypeStatusChance = ScaleStat(baseStats.TypeStatusChance, scaling.TypeStatusChance, unitToScale.TypeStatusChance, statMulti);
             baseStats.MentalStatusChance = ScaleStat(baseStats.MentalStatusChance, scaling.MentalStatusChance, unitToScale.MentalStatusChance, statMulti);
-            baseStats.StatusPower = ScaleStat(baseStats.StatusPower, scaling.StatusPower, unitToScale.StatusPower, 0);
-            baseStats.IncTypeStatus = ScaleStat(baseStats.IncTypeStatus, scaling.IncTypeStatus, unitToScale.IncTypeStatus, 0);
-            baseStats.IncMentalStatus = ScaleStat(baseStats.IncMentalStatus, scaling.IncMentalStatus, unitToScale.IncMentalStatus, 0);
+            baseStats.StatusPower = ScaleStat(baseStats.StatusPower, scaling.StatusPower, unitToScale.StatusPower, 1);
+            baseStats.IncTypeStatus = ScaleStat(baseStats.IncTypeStatus, scaling.IncTypeStatus, unitToScale.IncTypeStatus, 1);
+            baseStats.IncMentalStatus = ScaleStat(baseStats.IncMentalStatus, scaling.IncMentalStatus, unitToScale.IncMentalStatus, 1);
             return baseStats;
         }
 
         private int ScaleStat(int statBase, int statScaling, int unitScaling, float statMulti)
         {
-            statBase = (int)(statBase * (statMulti * (((float)statScaling / 100) * gameManager.Level)) * ((float)unitScaling / 100));
+            float unitMulti = (float)unitScaling / 100;
+            int scaleAdd = statScaling * gameManager.Level;
+            statBase = (int)((statBase + scaleAdd) * statMulti * unitMulti);
             return statBase;
+        }
+
+        private UnitStats GetFirstTarget()
+        {
+            for (int i=0; i<targets.Length; i++)
+            {
+                if (targets[i].enabled && monsters[i].enabled)
+                {
+                    return monsters[i].Stats;
+                }
+            }
+            return null;
         }
 
         // Update is called once per frame
@@ -350,6 +376,15 @@ namespace Assets.Scripts
                         target += 1;
                     }
                     UpdateTarget(1);
+                }
+                if (gameManager.AnalysisEnabled)
+                {
+                    UnitStats unit = GetFirstTarget();
+                    if (unit == null)
+                    {
+                        return;
+                    }
+                    gameManager.DisplayAnalysis(unit, GetMonsterByName(unit.Name));
                 }
             }
         }

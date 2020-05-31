@@ -26,6 +26,9 @@
         public const int ITEM_TYPES = 3;
         public const int MAX_SKILLS = 16;
 
+        public const string DISABLED_GUI_BACK = "disabled-base";
+        public const string ENABLED_GUI_BACK = "enabled-base";
+
         public enum ActionBoxTextTypes
         {
             Stats, Help

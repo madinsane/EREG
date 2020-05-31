@@ -24,6 +24,8 @@ namespace Assets.Scripts
         public Sprite Sprite { get; set; }
         [Ignore]
         public float StatMulti { get; set; }
+        [Ignore]
+        public bool[] CheckedType { get; set; } = new bool[(int)Constants.DamageTypes.Dark];
 
         public MonsterData()
         {

@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 using UnityEngine.U2D;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
@@ -19,6 +21,8 @@ namespace Assets.Scripts
         public ItemPanel[] itemPanels;
         public SpriteAtlas itemAtlas;
         public SpriteAtlas guiAtlas;
+        public Image analysisBack;
+        public Text tooltipStatic;
 
         enum Turn
         {
@@ -30,6 +34,8 @@ namespace Assets.Scripts
         private List<MonsterTier> monsterTiers;
         public int Level { get; private set; }
         private string previousSpawn;
+        public bool AnalysisEnabled { get; set; }
+        private StringBuilder tooltip;
 
         void Start()
         {
@@ -312,6 +318,47 @@ namespace Assets.Scripts
             actionBoxText.SetActive(true);
             itemPanelParent.SetActive(false);
             actionBox.SetStatDisplay(true);
+        }
+
+        public void ToggleAnalysis()
+        {
+            if (AnalysisEnabled)
+            {
+                AnalysisEnabled = false;
+                analysisBack.sprite = guiAtlas.GetSprite(Constants.DISABLED_GUI_BACK);
+                unitManager.ChangeTargeting(false);
+            } else
+            {
+                AnalysisEnabled = true;
+                analysisBack.sprite = guiAtlas.GetSprite(Constants.ENABLED_GUI_BACK);
+                unitManager.ChangeTargeting(true);
+            }
+        }
+
+        public void DisplayAnalysis(UnitStats unit, MonsterData monster)
+        {
+            if (tooltip == null)
+            {
+                tooltip = new StringBuilder();
+            }
+            tooltip.Clear();
+            if (unit == null)
+            {
+                return;
+            }
+            tooltip.Append(monster.NameStr);
+            tooltip.Append("\n\nResistances:\n");
+            tooltip.Append("Physical:\t" + (monster.CheckedType[0] ? unit.ResistPhysical.ToString() : "?") + "%\n");
+            tooltip.Append("Projectile:\t" + (monster.CheckedType[1] ? unit.ResistProjectile.ToString() : "?") + "%\n");
+            tooltip.Append("Electric:\t" + (monster.CheckedType[2] ? unit.ResistElectric.ToString() : "?") + "%\n");
+            tooltip.Append("Cold:\t\t" + (monster.CheckedType[3] ? unit.ResistCold.ToString() : "?") + "%\n");
+            tooltip.Append("Fire:\t\t" + (monster.CheckedType[4] ? unit.ResistFire.ToString() : "?") + "%\n");
+            tooltip.Append("Wind:\t\t" + (monster.CheckedType[5] ? unit.ResistWind.ToString() : "?") + "%\n");
+            tooltip.Append("Arcane:\t\t" + (monster.CheckedType[6] ? unit.ResistArcane.ToString() : "?") + "%\n");
+            tooltip.Append("Psychic:\t" + (monster.CheckedType[7] ? unit.ResistPsychic.ToString() : "?") + "%\n");
+            tooltip.Append("Holy:\t\t" + (monster.CheckedType[8] ? unit.ResistLight.ToString() : "?") + "%\n");
+            tooltip.Append("Shadow:\t\t" + (monster.CheckedType[9] ? unit.ResistDark.ToString() : "?") + "%");
+            tooltipStatic.text = tooltip.ToString();
         }
 
         void Update()

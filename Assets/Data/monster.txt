@@ -1,48 +1,48 @@
 Id	Name	SpriteName	NameStr	UnitId	Value	SkillType1	SkillType2	SkillType3	SkillType4	SkillType5
-0	adder	adder	Adder	2	0	2	7	11	0	0
-1	kobold	kobold_new	Kobold	3	0	2	6	11	0	0
-2	caveman	slave_freed	Caveman	4	0	2	3	0	0	0
-3	gnome	boggart_new	Gnome	5	0	7	12	13	0	0
-4	goblin	goblin_new	Goblin	6	0	2	3	13	0	0
-5	jelly	jelly	Jelly	7	0	2	6	15	0	0
-6	giant_bat	giant_bat	Giant Bat	8	0	3	11	14	0	0
-7	ice_beast	ice_beast	Ice Beast	9	0	5	2	14	0	0
-8	mermaid	merfolk_water	Mermaid	10	0	5	13	12	15	0
-9	big_kobold	big_kobold_new	Big Kobold	11	0	2	6	11	14	0
-10	goblin_engi	grinder_new	Goblin Engineer	12	0	3	4	16	13	0
-11	skeleton	skeleton_humanoid_large_new	Skeleton	13	0	2	11	14	0	0
-12	dwarf_fighter	dwarf_new	Dwarf Fighter	14	0	2	4	14	0	0
-13	dwarf_guardian	dwarf_old	Dwarf Guardian	15	0	2	12	13	14	0
-14	faun	faun	Faun	16	0	2	7	8	12	13
-15	orc_warrior	orc_warrior_new	Orc Warrior	17	0	2	3	14	0	0
-16	orc_wizard	orc_wizard_new	Orc Wizard	18	0	4	5	8	6	7
-17	orc_priest	orc_priest_new	Orc Priest	19	0	10	12	13	15	0
-18	shark	shark_new	Shark	20	0	2	5	14	0	0
-19	giant_slime	giant_amoeba_new	Giant Slime	21	0	2	15	14	13	0
-20	hobgoblin	hobgoblin_new	Hobgoblin	22	0	2	3	13	14	0
-21	naga	naga	Naga	23	0	2	5	7	13	15
-22	elf_fighter	deep_elf_soldier	Elf Fighter	24	0	2	8	14	9	0
-23	elf_priest	deep_elf_priest	Elf Priest	25	0	10	12	13	15	8
-24	elf_sorcerer	deep_elf_sorcerer	Elf Sorcerer	26	0	4	5	7	8	9
-25	spriggan_defender	spriggan_defender_shieldless	Spriggan Defender	27	0	2	12	13	14	0
-26	spriggan_berserker	spriggan_berserker	Spriggan Berserker	28	0	2	14	0	0	0
-27	spriggan_druid	spriggan_druid	Spriggan Druid	29	0	7	4	12	13	15
-28	obelisk	obelisk	Obelisk	30	0	3	8	10	16	13
-29	deep_troll_berserker	deep_troll_berserker	Deep Troll Berserker	31	0	2	14	0	0	0
-30	deep_troll_shaman	deep_troll_earth_mage	Deep Troll Shaman	32	0	7	4	15	16	12
-31	ooze	ooze_new	Ooze	33	0	11	3	14	15	15
-32	salamander_knight	salamander_firebrand	Salamander Knight	34	0	2	6	14	13	3
-33	salamander_firebrand	salamander_stormcaller	Salamander Firebrand	35	0	6	12	13	14	16
-34	giant_brain	giant_orange_brain	Giant Brain	36	0	9	15	15	9	0
-35	centaur_fighter	centaur-melee	Centaur Fighter	37	0	2	2	14	13	14
-36	centaur_archer	centaur	Centaur Archer	38	0	3	3	14	13	14
-37	skeletal_fish	skeleton_fish	Skeletal Fish	39	0	2	5	3	2	14
-38	skeletal_snake	skeleton_snake	Skeletal Snake	40	0	2	11	3	2	14
-39	drowned	drowned_soul	Drowned	41	0	5	5	9	15	13
-40	giant	hill_giant_new	Giant	42	0	2	2	2	14	14
-41	sarcophagus	greater_mummy	Sarcophagus	43	0	11	15	11	9	15
-42	orc_warlord	orc_warlord	Orc Warlord	44	0	2	2	13	13	13
-43	orc_archmage	orc_sorcerer_new	Orc Archmage	45	0	8	9	6	15	15
-44	orc_high_priest	orc_high_priest_new	Orc High Priest	46	0	10	12	13	12	15
-45	death_ooze	death_ooze_new	Death Ooze	47	0	2	11	11	14	14
-46	spriggan_rider	spriggan_moth_rider	Spriggan Rider	48	0	3	3	7	14	14
+0	adder	adder	Adder	3	0	2	7	11	0	0
+1	kobold	kobold_new	Kobold	4	0	2	6	11	0	0
+2	caveman	slave_freed	Caveman	5	0	2	3	0	0	0
+3	gnome	boggart_new	Gnome	6	0	7	12	13	0	0
+4	goblin	goblin_new	Goblin	7	0	2	3	13	0	0
+5	jelly	jelly	Jelly	8	0	2	6	15	0	0
+6	giant_bat	giant_bat	Giant Bat	9	0	3	11	14	0	0
+7	ice_beast	ice_beast	Ice Beast	10	0	5	2	14	0	0
+8	mermaid	merfolk_water	Mermaid	11	0	5	13	12	15	0
+9	big_kobold	big_kobold_new	Big Kobold	12	0	2	6	11	14	0
+10	goblin_engi	grinder_new	Goblin Engineer	13	0	3	4	16	13	0
+11	skeleton	skeleton_humanoid_large_new	Skeleton	14	0	2	11	14	0	0
+12	dwarf_fighter	dwarf_new	Dwarf Fighter	15	0	2	4	14	0	0
+13	dwarf_guardian	dwarf_old	Dwarf Guardian	16	0	2	12	13	14	0
+14	faun	faun	Faun	17	0	2	7	8	12	13
+15	orc_warrior	orc_warrior_new	Orc Warrior	18	0	2	3	14	0	0
+16	orc_wizard	orc_wizard_new	Orc Wizard	19	0	4	5	8	6	7
+17	orc_priest	orc_priest_new	Orc Priest	20	0	10	12	13	15	0
+18	shark	shark_new	Shark	21	0	2	5	14	0	0
+19	giant_slime	giant_amoeba_new	Giant Slime	22	0	2	15	14	13	0
+20	hobgoblin	hobgoblin_new	Hobgoblin	23	0	2	3	13	14	0
+21	naga	naga	Naga	24	0	2	5	7	13	15
+22	elf_fighter	deep_elf_soldier	Elf Fighter	25	0	2	8	14	9	0
+23	elf_priest	deep_elf_priest	Elf Priest	26	0	10	12	13	15	8
+24	elf_sorcerer	deep_elf_sorcerer	Elf Sorcerer	27	0	4	5	7	8	9
+25	spriggan_defender	spriggan_defender_shieldless	Spriggan Defender	28	0	2	12	13	14	0
+26	spriggan_berserker	spriggan_berserker	Spriggan Berserker	29	0	2	14	0	0	0
+27	spriggan_druid	spriggan_druid	Spriggan Druid	30	0	7	4	12	13	15
+28	obelisk	obelisk	Obelisk	31	0	3	8	10	16	13
+29	deep_troll_berserker	deep_troll_berserker	Deep Troll Berserker	32	0	2	14	0	0	0
+30	deep_troll_shaman	deep_troll_earth_mage	Deep Troll Shaman	33	0	7	4	15	16	12
+31	ooze	ooze_new	Ooze	34	0	11	3	14	15	15
+32	salamander_knight	salamander_firebrand	Salamander Knight	35	0	2	6	14	13	3
+33	salamander_firebrand	salamander_stormcaller	Salamander Firebrand	36	0	6	12	13	14	16
+34	giant_brain	giant_orange_brain	Giant Brain	37	0	9	15	15	9	0
+35	centaur_fighter	centaur-melee	Centaur Fighter	38	0	2	2	14	13	14
+36	centaur_archer	centaur	Centaur Archer	39	0	3	3	14	13	14
+37	skeletal_fish	skeleton_fish	Skeletal Fish	40	0	2	5	3	2	14
+38	skeletal_snake	skeleton_snake	Skeletal Snake	41	0	2	11	3	2	14
+39	drowned	drowned_soul	Drowned	42	0	5	5	9	15	13
+40	giant	hill_giant_new	Giant	43	0	2	2	2	14	14
+41	sarcophagus	greater_mummy	Sarcophagus	44	0	11	15	11	9	15
+42	orc_warlord	orc_warlord	Orc Warlord	45	0	2	2	13	13	13
+43	orc_archmage	orc_sorcerer_new	Orc Archmage	46	0	8	9	6	15	15
+44	orc_high_priest	orc_high_priest_new	Orc High Priest	47	0	10	12	13	12	15
+45	death_ooze	death_ooze_new	Death Ooze	48	0	2	11	11	14	14
+46	spriggan_rider	spriggan_moth_rider	Spriggan Rider	49	0	3	3	7	14	14
