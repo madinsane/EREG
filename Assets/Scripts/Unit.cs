@@ -16,6 +16,7 @@ namespace Assets.Scripts
         public bool IsPlayer { get; protected set; }
         public List<Effect> Effects { get; protected set; }
         public bool IsDown { get; set; }
+        public int TurnCounter { get; set; }
 
         public Unit(UnitStats stats, List<SkillStats> skills)
         {
@@ -104,6 +105,7 @@ namespace Assets.Scripts
                 CurrentHealth += value;
                 if (CurrentHealth <= 0)
                 {
+                    unitManager.log.Add(NameStr + " dies");
                     Die();
                 }
             }

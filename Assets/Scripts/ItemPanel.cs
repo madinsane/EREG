@@ -94,7 +94,7 @@ namespace Assets.Scripts
                 //Use item
             } else
             {
-                if (player.CheckCost(skillCost, costType))
+                if (player.unitManager.Turn == UnitManager.Turns.Player && player.CheckCost(skillCost, costType))
                 {
                     SkillStats skill = player.unitManager.GetSkill(itemId);
                     if (skill.SkillType == Constants.SkillTypes.Break)

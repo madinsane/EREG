@@ -10,6 +10,7 @@ namespace Assets.Scripts
         public int MaxMana { get; set; }
         public int AttackPower { get; set; }
         public int MagicPower { get; set; }
+        public int Speed { get; set; }
         public int AttackDefense { get; set; }
         public int MagicDefense { get; set; }
         public int Accuracy { get; set; }

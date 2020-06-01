@@ -24,13 +24,6 @@ namespace Assets.Scripts
         public Image analysisBack;
         public Text tooltipStatic;
 
-        enum Turn
-        {
-            Player, Monster1, Monster2, Monster3, Monster4, Monster5
-        }
-
-        private Turn turn = Turn.Player;
-        private MonsterData[] monsterData;
         private List<MonsterTier> monsterTiers;
         public int Level { get; private set; }
         private string previousSpawn;
@@ -44,29 +37,19 @@ namespace Assets.Scripts
 
         public void StartGame()
         {
-            turn = Turn.Player;
-            Level = 1;
+            unitManager.Turn = UnitManager.Turns.Player;
+            Level = 0;
             previousSpawn = "";
-            monsterData = new MonsterData[Constants.MAX_ENEMIES];
             unitManager.ClearMonsters();
             unitManager.InitPlayer();
             StartRound();
         }
 
-        void AdvanceTurn()
+        public void StartRound()
         {
-            if (turn == Turn.Monster5)
-            {
-                turn = Turn.Player;
-                log.Add("Player Turn");
-            } else
-            {
-                turn++;
-            }
-        }
-
-        void StartRound()
-        {
+            unitManager.ClearMonsters();
+            Level++;
+            Debug.Log(Level);
             //Pick monsters
             List<MonsterData> chosen = PickMonsters();
             //Place monsters
@@ -118,7 +101,7 @@ namespace Assets.Scripts
                 pos++;
             }
             //Pass to Turn manager
-
+            unitManager.InitTurns();
         }
 
         internal void LoadMonsterTierData()
@@ -366,9 +349,6 @@ namespace Assets.Scripts
         {
             if (Input.GetKeyDown(KeyCode.LeftBracket))
             {
-                unitManager.ClearMonsters();
-                Level++;
-                Debug.Log(Level);
                 StartRound();
             }
         }

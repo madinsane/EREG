@@ -31,12 +31,19 @@ namespace Assets.Scripts
         public ResourceDisplay healthGlobe;
         public ResourceDisplay manaGlobe;
 
+        public enum Turns
+        {
+            Player, Monster1, Monster2, Monster3, Monster4, Monster5
+        }
+
+        public Turns Turn { get; set; }
         private Dictionary<int, int> targetRef;
         private bool isTargeting;
         private int target;
         private SkillStats currentSkill;
         public bool IsCasting { get; set; }
         public int ActiveMonsters { get; set; }
+        private List<KeyValuePair<Turns, int>> turnCounters;
 
         // Start is called before the first frame update
         void Start()
@@ -76,6 +83,50 @@ namespace Assets.Scripts
                 };
             }
             player.ChangeUnit(LoadStats(0), baseSkills, "You");
+        }
+
+        internal void InitTurns()
+        {
+            if (turnCounters == null)
+            {
+                turnCounters = new List<KeyValuePair<Turns, int>>();
+            }
+            foreach (Monster monster in monsters)
+            {
+                monster.TurnCounter = 0;
+            }
+            player.TurnCounter = player.Stats.Speed;
+            Turn = Turns.Player;
+        }
+
+        internal void AdvanceTurn()
+        {
+            turnCounters.Clear();
+            turnCounters.Add(new KeyValuePair<Turns, int>(Turns.Player, player.TurnCounter));
+            for (int i=0; i<monsters.Length; i++)
+            {
+                if (monsters[i].enabled)
+                {
+                    turnCounters.Add(new KeyValuePair<Turns, int>((Turns)i+1, monsters[i].TurnCounter));
+                }
+            }
+            turnCounters.Sort((x, y) => x.Value.CompareTo(y.Value));
+            Turn = turnCounters.First().Key;
+            Debug.Log(Turn);
+            if (Turn == Turns.Player)
+            {
+                player.TurnCounter += player.Stats.Speed;
+            } else
+            {
+                monsters[(int)Turn - 1].TurnCounter += monsters[(int)Turn - 1].Stats.Speed;
+                MonsterCast((int)Turn - 1);
+            }
+        }
+
+        internal void MonsterCast(int pos)
+        {
+            int castChoice = Damage.RandomInt(0, monsters[pos].Skills.Count-1);
+            CastSkill(monsters[pos].Skills[castChoice], monsters[pos]);
         }
 
         internal void UpdateTarget(int direction, int counter = 0)
@@ -357,6 +408,20 @@ namespace Assets.Scripts
             return null;
         }
 
+        public bool CheckAlive()
+        {
+            bool alive = false;
+            foreach (Monster monster in monsters)
+            {
+                if (monster.enabled)
+                {
+                    alive = true;
+                    break;
+                }
+            }
+            return alive;
+        }
+
         public void PrepareSkill(SkillStats skill)
         {
             currentSkill = skill;
@@ -371,7 +436,7 @@ namespace Assets.Scripts
                 caster.ApplyCost(skill.Cost, skill.CostType);
             }
             //Find defender(s)
-            if (skill.SkillType <= Constants.SkillTypes.Dark)
+            if (skill.SkillType <= Constants.SkillTypes.Dark || skill.SkillType == Constants.SkillTypes.Hidden)
             {
                 //Get Targets
                 if (skill.TargetType == Constants.TargetTypes.All && caster.IsPlayer)
@@ -383,7 +448,17 @@ namespace Assets.Scripts
                 } else if (skill.TargetType == Constants.TargetTypes.Single && caster.IsPlayer)
                 {
                     DoHit(skill, caster, GetFirstTarget(), caster.IsPlayer);
+                } else if (!caster.IsPlayer)
+                {
+                    DoHit(skill, caster, player, false);
                 }
+            }
+            if (!CheckAlive())
+            {
+                gameManager.StartRound();
+            } else
+            {
+                AdvanceTurn();
             }
         }
 
@@ -391,12 +466,15 @@ namespace Assets.Scripts
         {
             Damage.DamagePacket hit;
             hit = Damage.Hit(skill, caster.Stats, target.Stats);
-            target.TakeHit(hit);
+            
             if (hit.hit)
             {
                 if (isPlayer)
                 {
                     log.Add("You hit " + target.NameStr + " with " + skill.NameStr + " for " + hit.damage);
+                } else
+                {
+                    log.Add(caster.NameStr + " hit you with " + skill.NameStr + " for " + hit.damage);
                 }
             }
             else
@@ -404,8 +482,13 @@ namespace Assets.Scripts
                 if (isPlayer)
                 {
                     log.Add("You missed " + target.NameStr + " with " + skill.NameStr);
+                } else
+                {
+                    log.Add("You dodged " + target.NameStr + "'s " + skill.NameStr);
                 }
             }
+            target.TakeHit(hit);
+            UpdateGlobes();
         }
 
         public void UpdateGlobes()
@@ -466,6 +549,14 @@ namespace Assets.Scripts
                         }
                     }
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                InitTurns();
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                AdvanceTurn();
             }
             hpText.text = "HP: " + player.CurrentHealth + "/" + player.Stats.MaxHealth;
             mpText.text = "MP: " + player.CurrentMana + "/" + player.Stats.MaxMana;
