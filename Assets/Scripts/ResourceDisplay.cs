@@ -9,7 +9,6 @@ namespace Assets.Scripts
     {
         public UnitManager unitManager;
         public Image resource;
-        public float changeSpeed = 10f;
         private float value = 1;
         void Awake()
         {
@@ -22,11 +21,9 @@ namespace Assets.Scripts
             return 1;
         }
 
-        void OnHit(int costPercent)
+        public void SetGlobe(float newValue)
         {
-            float diff = value - costPercent;
-            value = Mathf.Lerp(value, diff, Time.deltaTime * changeSpeed);
-            resource.fillAmount = value;
+            resource.fillAmount = newValue;
         }
     }
 }

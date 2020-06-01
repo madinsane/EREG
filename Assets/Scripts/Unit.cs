@@ -11,13 +11,17 @@ namespace Assets.Scripts
         public UnitStats Stats { get; private set; }
         public UnitManager unitManager;
         public int Id { get; protected set; }
+        public string NameStr { get; set; }
         public List<SkillStats> Skills { get; private set; }
+        public bool IsPlayer { get; protected set; }
+        public List<Effect> Effects { get; protected set; }
+        public bool IsDown { get; set; }
 
         public Unit(UnitStats stats, List<SkillStats> skills)
         {
             Id = stats.Id;
             Stats = stats;
-            this.Skills = skills;
+            Skills = skills;
             InitResources();
         }
 
@@ -27,13 +31,66 @@ namespace Assets.Scripts
             CurrentMana = Stats.MaxMana;
         }
 
-        public void ChangeUnit(UnitStats stats, List<SkillStats> skills)
+        public void ChangeUnit(UnitStats stats, List<SkillStats> skills, string nameStr)
         {
             Id = stats.Id;
             Stats = stats;
-            this.Skills = skills;
+            Skills = skills;
+            NameStr = nameStr;
+            IsDown = false;
             InitResources();
             enabled = true;
+        }
+
+        public void TakeHit(Damage.DamagePacket hit)
+        {
+            if (hit.hit)
+            {
+                if (hit.damage > 0)
+                {
+                    ChangeHealth(-hit.damage);
+                }
+                if (hit.status != Constants.StatusTypes.None)
+                {
+                    AddStatus(hit.status, hit.statusPower);
+                }
+                if (hit.removeStatus)
+                {
+                    RemoveStatus();
+                }
+                if (!IsDown && (hit.isWeak || hit.isCrit))
+                {
+                    IsDown = true;
+                }
+            }
+        }
+
+        public Constants.StatusTypes GetStatus()
+        {
+            if (Effects == null)
+            {
+                Effects = new List<Effect>();
+            }
+            return Effects.Find(x => x.Type == Constants.EffectType.Status).StatusType;
+        }
+
+        public void RemoveStatus()
+        {
+            if (Effects == null)
+            {
+                Effects = new List<Effect>();
+            }
+            Effects.RemoveAll(x => x.Type == Constants.EffectType.Status);
+        }
+
+        public void AddStatus(Constants.StatusTypes type, int statusPower)
+        {
+            if (Effects == null)
+            {
+                Effects = new List<Effect>();
+            }
+            RemoveStatus();
+            Effects.Add(new Effect(Constants.EffectType.Status, Constants.BuffTypes.None, type, statusPower));
         }
 
         public void ChangeHealth(int value)
@@ -80,9 +137,10 @@ namespace Assets.Scripts
             {
                 CurrentMana -= value;
             }
+            unitManager.UpdateGlobes();
         }
 
-        public void Die()
+        public virtual void Die()
         {
             enabled = false;
         }

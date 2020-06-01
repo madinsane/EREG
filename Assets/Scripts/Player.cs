@@ -10,9 +10,15 @@ namespace Assets.Scripts
     public class Player : Unit
     {
         private Dictionary<int, ItemStats> items;
+
         public Player(UnitStats stats, List<SkillStats> skills) : base(stats, skills)
         {
-            
+            IsPlayer = true;
+        }
+
+        private void Awake()
+        {
+            IsPlayer = true;
         }
 
         public ItemStats GetItem(int id)

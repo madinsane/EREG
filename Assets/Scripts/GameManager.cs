@@ -322,6 +322,7 @@ namespace Assets.Scripts
 
         public void ToggleAnalysis()
         {
+            unitManager.IsCasting = false;
             if (AnalysisEnabled)
             {
                 AnalysisEnabled = false;

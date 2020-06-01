@@ -30,7 +30,7 @@ namespace Assets.Scripts
             displayText = "";
             foreach (string entry in log)
             {
-                displayText += entry;
+                displayText += entry + "\n";
             }
             textBox.text = displayText;
         }

@@ -96,7 +96,16 @@ namespace Assets.Scripts
             {
                 if (player.CheckCost(skillCost, costType))
                 {
+                    SkillStats skill = player.unitManager.GetSkill(itemId);
+                    if (skill.SkillType == Constants.SkillTypes.Break)
+                    {
+                        if (player.GetStatus() != skill.StatusType)
+                        {
+                            return;
+                        }
+                    }
                     //Use skill
+                    player.unitManager.PrepareSkill(skill);
                 }
             }
             UpdateDisplay();

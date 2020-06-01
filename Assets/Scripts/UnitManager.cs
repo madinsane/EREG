@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.U2D;
-using UnityEngine.XR.WSA.Input;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace Assets.Scripts
 {
@@ -24,16 +25,24 @@ namespace Assets.Scripts
         public SpriteAtlas monsterAtlas;
         public Monster[] monsters = new Monster[Constants.MAX_ENEMIES];
         public SpriteRenderer[] targets;
+        public Log log;
+        public TextMeshProUGUI hpText;
+        public TextMeshProUGUI mpText;
+        public ResourceDisplay healthGlobe;
+        public ResourceDisplay manaGlobe;
 
         private Dictionary<int, int> targetRef;
         private bool isTargeting;
         private int target;
+        private SkillStats currentSkill;
+        public bool IsCasting { get; set; }
         public int ActiveMonsters { get; set; }
 
         // Start is called before the first frame update
         void Start()
         {
             isTargeting = false;
+            IsCasting = false;
         }
 
         internal void ChangeTargeting(bool isTargeting)
@@ -66,7 +75,7 @@ namespace Assets.Scripts
                     GetSkill(25)
                 };
             }
-            player.ChangeUnit(LoadStats(0), baseSkills);
+            player.ChangeUnit(LoadStats(0), baseSkills, "You");
         }
 
         internal void UpdateTarget(int direction, int counter = 0)
@@ -277,7 +286,7 @@ namespace Assets.Scripts
         {
             monsterSkills.RemoveAll(x => x == null);
             LinkMonster(monster.Id);
-            monsters[position].ChangeMonster(ScaleMonster(monster.Unit, monster.StatMulti), monsterSkills, monster.Sprite);
+            monsters[position].ChangeMonster(ScaleMonster(monster.Unit, monster.StatMulti), monsterSkills, monster.Sprite, monster.NameStr);
             ActiveMonsters++;
         }
 
@@ -336,16 +345,75 @@ namespace Assets.Scripts
             return statBase;
         }
 
-        private UnitStats GetFirstTarget()
+        private Monster GetFirstTarget()
         {
             for (int i=0; i<targets.Length; i++)
             {
                 if (targets[i].enabled && monsters[i].enabled)
                 {
-                    return monsters[i].Stats;
+                    return monsters[i];
                 }
             }
             return null;
+        }
+
+        public void PrepareSkill(SkillStats skill)
+        {
+            currentSkill = skill;
+            ChangeTargeting(true);
+            IsCasting = true;
+        }
+
+        public void CastSkill(SkillStats skill, Unit caster)
+        {
+            if (caster.IsPlayer)
+            {
+                caster.ApplyCost(skill.Cost, skill.CostType);
+            }
+            //Find defender(s)
+            if (skill.SkillType <= Constants.SkillTypes.Dark)
+            {
+                //Get Targets
+                if (skill.TargetType == Constants.TargetTypes.All && caster.IsPlayer)
+                {
+                    foreach (Monster monster in monsters)
+                    {
+                        DoHit(skill, caster, monster, caster.IsPlayer);
+                    }
+                } else if (skill.TargetType == Constants.TargetTypes.Single && caster.IsPlayer)
+                {
+                    DoHit(skill, caster, GetFirstTarget(), caster.IsPlayer);
+                }
+            }
+        }
+
+        private void DoHit(SkillStats skill, Unit caster, Unit target, bool isPlayer)
+        {
+            Damage.DamagePacket hit;
+            hit = Damage.Hit(skill, caster.Stats, target.Stats);
+            target.TakeHit(hit);
+            if (hit.hit)
+            {
+                if (isPlayer)
+                {
+                    log.Add("You hit " + target.NameStr + " with " + skill.NameStr + " for " + hit.damage);
+                }
+            }
+            else
+            {
+                if (isPlayer)
+                {
+                    log.Add("You missed " + target.NameStr + " with " + skill.NameStr);
+                }
+            }
+        }
+
+        public void UpdateGlobes()
+        {
+            float hpPercent = (float)player.CurrentHealth / player.Stats.MaxHealth;
+            float mpPercent = (float)player.CurrentMana / player.Stats.MaxMana;
+            healthGlobe.SetGlobe(hpPercent);
+            manaGlobe.SetGlobe(mpPercent);
         }
 
         // Update is called once per frame
@@ -379,14 +447,28 @@ namespace Assets.Scripts
                 }
                 if (gameManager.AnalysisEnabled)
                 {
-                    UnitStats unit = GetFirstTarget();
-                    if (unit == null)
+                    Monster monst = GetFirstTarget();
+                    if (monst == null)
                     {
                         return;
                     }
-                    gameManager.DisplayAnalysis(unit, GetMonsterByName(unit.Name));
+                    gameManager.DisplayAnalysis(monst.Stats, GetMonsterByName(monst.Stats.Name));
+                }
+                if (IsCasting)
+                {
+                    if (GetFirstTarget() != null)
+                    {
+                        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButton((int)MouseButton.LeftMouse))
+                        {
+                            CastSkill(currentSkill, player);
+                            IsCasting = false;
+                            ChangeTargeting(false);
+                        }
+                    }
                 }
             }
+            hpText.text = "HP: " + player.CurrentHealth + "/" + player.Stats.MaxHealth;
+            mpText.text = "MP: " + player.CurrentMana + "/" + player.Stats.MaxMana;
         }
     }
 }

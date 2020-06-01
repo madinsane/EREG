@@ -41,7 +41,7 @@
         {
             None, Almighty, Physical, Projectile, Electric, Cold, Fire,
             Wind, Arcane, Psychic, Light, Dark, Heal, Buff, Passive,
-            Status, Blast, Hidden
+            Status, Blast, Break, Hidden
         }
         public enum TierType
         {
@@ -68,6 +68,10 @@
         public enum ItemTypes
         {
             Health, Mana, Break
+        }
+        public enum EffectType
+        {
+            None, Status, Buff
         }
     }
 }

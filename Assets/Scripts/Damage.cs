@@ -8,7 +8,7 @@ namespace Assets.Scripts
     {
         static System.Random random;
 
-        internal struct DamagePacket
+        public struct DamagePacket
         {
             public bool hit;
             public int damage;
@@ -228,7 +228,7 @@ namespace Assets.Scripts
             }
             //Check Status
             float statusChance = skill.StatusChance;
-            statusChance *= 100 - resist;
+            statusChance *= (100 - resist) / 100;
             Constants.StatusTypes status = Constants.StatusTypes.None;
             if (!isTechnical)
             {
@@ -253,7 +253,7 @@ namespace Assets.Scripts
                 }
             }
             //Calculate final power
-            power *= 100 - resist;
+            power *= (100 - resist) / 100;
             float statusPower = 0;
             if (status != Constants.StatusTypes.None)
             {

@@ -9,7 +9,12 @@ namespace Assets.Scripts
         public SpriteRenderer spriteRenderer;
         public Monster(UnitStats stats, List<SkillStats> skills) : base(stats, skills)
         {
-            
+            IsPlayer = false;
+        }
+
+        private void Awake()
+        {
+            IsPlayer = false;
         }
 
         public void SetSprite(Sprite sprite)
@@ -18,13 +23,14 @@ namespace Assets.Scripts
             spriteRenderer.enabled = true;
         }
 
-        public void ChangeMonster(UnitStats stats, List<SkillStats> skills, Sprite sprite)
+        public void ChangeMonster(UnitStats stats, List<SkillStats> skills, Sprite sprite, string nameStr)
         {
+            IsPlayer = false;
             SetSprite(sprite);
-            ChangeUnit(stats, skills);
+            ChangeUnit(stats, skills, nameStr);
         }
 
-        public new void Die()
+        public override void Die()
         {
             spriteRenderer.enabled = false;
             unitManager.ActiveMonsters--;
