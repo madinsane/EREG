@@ -25,9 +25,11 @@
         public const int START_ELIXIR = 2;
         public const int ITEM_TYPES = 3;
         public const int MAX_SKILLS = 16;
+        public const int BACKGROUND_CHANGE_LVLS = 10;
 
         public const string DISABLED_GUI_BACK = "disabled-base";
         public const string ENABLED_GUI_BACK = "enabled-base";
+        public const string BACKGROUND_BASE = "battleback";
 
         public enum ActionBoxTextTypes
         {

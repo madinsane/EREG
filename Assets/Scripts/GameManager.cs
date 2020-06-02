@@ -27,6 +27,8 @@ namespace Assets.Scripts
         public ParticleSystem[] particleBps;
         public ParticleSystem[] monsterParts = new ParticleSystem[Constants.MAX_ENEMIES];
         public ParticleSystem playerPart;
+        public SpriteRenderer background;
+        public SpriteAtlas backgroundAtlas;
 
         private List<MonsterTier> monsterTiers;
         public int Level { get; private set; }
@@ -70,6 +72,7 @@ namespace Assets.Scripts
             unitManager.Turn = UnitManager.Turns.Player;
             Level = 0;
             previousSpawn = "";
+            background.sprite = backgroundAtlas.GetSprite(Constants.BACKGROUND_BASE + "1");
             unitManager.ClearMonsters();
             unitManager.InitPlayer();
             StartRound();
@@ -80,6 +83,11 @@ namespace Assets.Scripts
             unitManager.ClearMonsters();
             Level++;
             Debug.Log(Level);
+            if (Level % Constants.BACKGROUND_CHANGE_LVLS == 0)
+            {
+                int background = (int)(((float)Level / Constants.BACKGROUND_CHANGE_LVLS) % 10)+1;
+                this.background.sprite = backgroundAtlas.GetSprite(Constants.BACKGROUND_BASE + background.ToString());
+            }
             //Pick monsters
             List<MonsterData> chosen = PickMonsters();
             //Place monsters
