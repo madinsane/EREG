@@ -78,6 +78,7 @@ namespace Assets.Scripts
             {
                 baseSkills = new List<SkillStats>
                 {
+                    GetSkill(73),
                     GetSkill(1),
                     GetSkill(9),
                     GetSkill(17),
@@ -446,6 +447,11 @@ namespace Assets.Scripts
             return alive;
         }
 
+        public void PrepareSkill(int id)
+        {
+            PrepareSkill(GetSkill(id));
+        }
+
         public void PrepareSkill(SkillStats skill)
         {
             currentSkill = skill;
@@ -510,6 +516,12 @@ namespace Assets.Scripts
             }
         }
 
+        private void UpdateAnalysis(Unit target, Constants.DamageTypes type)
+        {
+            MonsterData monster = monsterData.Find(x => x.UnitId == target.Id);
+            monster.CheckedType[(int)type-1] = true;
+        }
+
         private void DoHit(SkillStats skill, Unit caster, Unit target, bool isPlayer, int pos)
         {
             Damage.DamagePacket hit;
@@ -520,6 +532,7 @@ namespace Assets.Scripts
                 if (isPlayer)
                 {
                     log.Add("You hit " + target.NameStr + " with " + skill.NameStr + " for " + hit.damage);
+                    UpdateAnalysis(target, skill.DamageType);
                 } else
                 {
                     log.Add(caster.NameStr + " hit you with " + skill.NameStr + " for " + hit.damage);
@@ -551,7 +564,6 @@ namespace Assets.Scripts
             if (pos < Constants.MAX_ENEMIES)
             {
                 display = monsterDisplay[pos];
-                //display.UpdateFill(monsters[pos]);
             } else
             {
                 display = playerDisplay;
