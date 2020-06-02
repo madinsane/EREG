@@ -32,6 +32,7 @@ namespace Assets.Scripts
         public ResourceDisplay manaGlobe;
         public HitDisplay[] monsterDisplay;
         public HitDisplay playerDisplay;
+        public TextMeshProUGUI description;
 
         public enum Turns
         {
@@ -293,6 +294,16 @@ namespace Assets.Scripts
             monsterData[id].Unit = LoadStats(monsterData[id].UnitId);
         }
 
+        public void ClearDescription()
+        {
+            description.text = "";
+        }
+
+        public void ChangeDescription(string newDesc)
+        {
+            description.text = newDesc;
+        }
+
         internal SkillStats[] ChooseSkills(MonsterData monster)
         {
             SkillStats[] chosenSkills = new SkillStats[monster.SkillTypeFull.Length+Constants.FORCED_SKILLS];
@@ -455,6 +466,7 @@ namespace Assets.Scripts
         public void PrepareSkill(SkillStats skill)
         {
             currentSkill = skill;
+            ChangeDescription("Using " + skill.NameStr + " (choose a target)");
             ChangeTargeting(true);
             IsCasting = true;
         }
@@ -464,6 +476,10 @@ namespace Assets.Scripts
             if (caster.IsPlayer)
             {
                 caster.ApplyCost(skill.Cost, skill.CostType);
+                ChangeDescription("Using " + skill.NameStr);
+            } else
+            {
+                ChangeDescription(caster.NameStr + " uses " + skill.NameStr);
             }
             //Find defender(s)
             if (skill.SkillType <= Constants.SkillTypes.Dark || skill.SkillType == Constants.SkillTypes.Hidden)
@@ -497,6 +513,7 @@ namespace Assets.Scripts
                     DoHit(skill, caster, player, false, Constants.MAX_ENEMIES);
                 }
             }
+            ClearDescription();
             if (!CheckAlive())
             {
                 yield return new WaitForSeconds(1f);

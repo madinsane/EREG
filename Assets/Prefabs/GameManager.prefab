@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4179583165110188686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4179583165110188687}
+  - component: {fileID: 4179583165110188685}
+  - component: {fileID: 4179583165110188684}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4179583165110188687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4179583165110188686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1724757, y: 0.07757844, z: -17.438354}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4179583165110188685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4179583165110188686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97cec63b8a3fd1c4ea367312b21d826f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  log: {fileID: 0}
+  unitManager: {fileID: 4179583165110188684}
+  actionBoxText: {fileID: 0}
+  actionBox: {fileID: 0}
+  itemPanelParent: {fileID: 0}
+  itemPanels:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  itemAtlas: {fileID: 4343727234628468602, guid: aac2223948ba97548b86a550121e9af0, type: 2}
+  guiAtlas: {fileID: 4343727234628468602, guid: d2a184bb9d691fd409905accb6d57069, type: 2}
+  analysisBack: {fileID: 0}
+  tooltipStatic: {fileID: 0}
+  particleBps:
+  - {fileID: 6285404896543212848, guid: 9e34d933109235248925608359e9b2aa, type: 3}
+  - {fileID: 1214122404005132437, guid: d5edb1949eac0cf4c9fab869aa1349d7, type: 3}
+  - {fileID: 6242343507368392184, guid: 41d4446f57c6a4b49b6e9501eeefda2c, type: 3}
+  - {fileID: 7143772396536046385, guid: 9f0eea8b6fee4374b866a85728ab89af, type: 3}
+  - {fileID: 1375737811101181204, guid: e5368c514291b2942b6e24b8181601ce, type: 3}
+  - {fileID: 3510611273867954444, guid: 9843ac70330a8f149b9a1e5774865491, type: 3}
+  - {fileID: 4470867373210092905, guid: 2534c8fc1181b4b43938b3caabd8a06c, type: 3}
+  - {fileID: 3745381086825999273, guid: 8d28d9543740ac448a89a0fcecb243af, type: 3}
+  - {fileID: 3703755527715074423, guid: 3bfafb0786a60b643b4b1072fbd3789e, type: 3}
+  - {fileID: 239571941428946468, guid: c6ff13313d6d50a4985dad4fbf5b3347, type: 3}
+  - {fileID: 2119885557937421015, guid: 56a9a726e07d7de44972d8602f0c3704, type: 3}
+  - {fileID: 804155331761849502, guid: a920c02686efd254f899052126575d36, type: 3}
+  - {fileID: 5829529354133709718, guid: 733b9dd9f489d9042aab357718f568c3, type: 3}
+  - {fileID: 4767266198446638707, guid: 2441b9e4d34baec429fde8c017272f9f, type: 3}
+  - {fileID: 3842596916833281847, guid: da1c319c851361d4fa3186681dff35b9, type: 3}
+  - {fileID: 1826504946564441559, guid: 6ed255ba39dfc924f877eae4a75af448, type: 3}
+  monsterParts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerPart: {fileID: 0}
+  background: {fileID: 0}
+  backgroundAtlas: {fileID: 4343727234628468602, guid: 1efa33a2c7d81dc49aedbca0308455d2, type: 2}
+  levelText: {fileID: 0}
+--- !u!114 &4179583165110188684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4179583165110188686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6662dce1da7e443828ed2a747d0c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  gameManager: {fileID: 4179583165110188685}
+  monsterAtlas: {fileID: 4343727234628468602, guid: d320029ab68353040952e3b62d2fb825, type: 2}
+  monsters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  targets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  log: {fileID: 0}
+  hpText: {fileID: 0}
+  mpText: {fileID: 0}
+  healthGlobe: {fileID: 0}
+  manaGlobe: {fileID: 0}
+  monsterDisplay:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerDisplay: {fileID: 0}
+  description: {fileID: 0}

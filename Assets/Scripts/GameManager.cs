@@ -44,6 +44,11 @@ namespace Assets.Scripts
             StartGame();
         }
 
+        private void Awake()
+        {
+            StartGame();
+        }
+
         private void InitPartMap()
         {
             partMap = new Dictionary<Constants.SkillTypes, int>
