@@ -1,0 +1,73 @@
+Id	Name	NameStr	Slot	SpriteName	RLvl	Affixes
+0	cap	Cap	0	cap_2	0	0
+1	jester	Jester Hat	0	cap_jester	1	1
+2	leather_hat	Leather Hat	0	elven_leather_helm	5	2
+3	full_helm	Full Helm	0	helmet_1	10	3
+4	coif	Coif	0	helmet_ego_4	15	4
+5	gold_helm	Gold Helm	0	helmet_ego_3	20	5
+6	knight_helm	Knight Helm	0	helmet_ego_2	30	6
+7	gladiator_helm	Gladiator Helm	0	helmet_art_2	40	7
+8	dragonscale_helm	Dragonscale Helm	0	helmet_art_1	50	8
+9	animal_skin	Animal Skin	1	animal_skin_1_new	0	0
+10	robe	Robe	1	robe_1_new	1	1
+11	sorcerer_robe	Sorcerer Robe	1	robe_art_1	5	2
+12	leather_armor	Leather Armor	1	leather_armor_1	10	3
+13	chain_mail	Chain Mail	1	chain_mail_1	15	4
+14	scale_mail	Scale Mail	1	swamp_dragon_armor_new	20	5
+15	plate_mail	Plate Mail	1	plate_mail_1	30	6
+16	ruby_armor	Ruby Armor	1	ring_mail_2_new	40	7
+17	dragonscale_armor	Dragonscale Armor	1	mottled_dragon_armor_new	50	8
+18	old_gloves	Old Gloves	2	glove_4_old	0	0
+19	leather_gloves	Leather Gloves	2	glove_1_new	1	1
+20	imbued_gloves	Imbued Gloves	2	glove_2_old	5	2
+21	sorcerer_gloves	Sorcerer Gloves	2	glove_2_new	10	3
+22	gauntlets	Gauntlets	2	gauntlet_1	15	4
+23	chain_gloves	Chain Gloves	2	glove_4_new	20	5
+24	steel_gauntlets	Steel Gauntlets	2	glove_3_new	30	6
+25	mythril_gauntlets	Mythril Gauntlets	2	glove_5	40	7
+26	dragonscale_gauntlets	Dragonscale Gauntlets	2	glove_4_gauntlets	50	8
+27	shoes	Shoes	3	low_boots	0	0
+28	leather_boots	Leather Boots	3	boots_1_brown_new	1	1
+29	high_boots	High Boots	3	boots_2_jackboots	5	2
+30	gold_boots	Gold Boots	3	boots_3_stripe_new	10	3
+31	sorcerer_boots	Sorcerer Boots	3	boots_4_green	15	4
+32	iron_boots	Iron Boots	3	boots_iron_2	20	5
+33	imbued_boots	Imbued Boots	3	boots_2_jackboots	30	6
+34	mythril_boots	Mythril Boots	3	boots_3_stripe_new	40	7
+35	dragonhide_boots	Dragonhide Boots	3	boots_4_green	50	8
+36	club	Club	4	club_new	0	0
+37	dagger	Dagger	4	dagger_new	1	1
+38	falchion	Falchion	4	falchion_1_new	5	2
+39	flail	Flail	4	dire_flail_2	10	3
+40	greatsword	Greatsword	4	greatsword_2	15	4
+41	scythe	Scythe	4	scythe_3	20	5
+42	executioner_axe	Executioner Axe	4	executioner_axe_2_new	30	6
+43	demon_blade	Demon Blade	4	demon_blade	40	7
+44	dragonslayer_blade	Dragonslayer Blade	4	triple_sword_3	50	8
+45	buckler	Buckler	5	buckler_1_new	0	0
+46	small_shield	Small Shield	5	dwarven_buckler_2	1	1
+47	kite_shield	Kite Shield	5	shield_of_reflection	5	2
+48	engraved_shield	Engraved Shield	5	large_shield_2_new	10	3
+49	tower_shield	Tower Shield	5	lshield_dd_dk	15	4
+50	gold_shield	Gold Shield	5	large_shield_3_old	20	5
+51	serpent_shield	Serpent Shield	5	shield_2_new	30	6
+52	winged_shield	Winged Shield	5	shield_3	40	7
+53	holy_shield	Holy Shield	5	large_shield_3_new	50	8
+54	tag	Tag	6	cylinder_gray	0	0
+55	emblem	Emblem	6	celtic_red	1	1
+56	amulet	Amulet	6	stone_2_red	5	2
+57	ruby_necklace	Ruby Necklace	6	crystal_red	10	3
+58	trinity_necklace	Trinity Necklace	6	eye_cyan	15	4
+59	imbued_choker	Imbued Choker	6	urand_bloodlust_old	20	5
+60	frozen_charm	Frozen Charm	6	urand_air_new	30	6
+61	shadow_pendant	Shadow Pendant	6	urand_brooch_of_shielding_new	40	7
+62	dragon_heart	Dragon Heart	6	urand_vitality	50	8
+63	iron_ring	Iron Ring	7	iron	0	0
+64	gold_ring	Gold Ring	7	gold	1	1
+65	ruby_ring	Ruby Ring	7	gold_red	5	2
+66	emerald_ring	Emerald Ring	7	gold_green	10	3
+67	diamond_ring	Diamond Ring	7	ring_gold_white	15	4
+68	seal	Seal	7	urand_robustness	20	5
+69	imbued_ring	Imbued Ring	7	urand_shadows_old	30	6
+70	arcane_ring	Arcane Ring	7	urand_mage	40	7
+71	dragon_finger	Dragon Finger	7	urand_octoring	50	8

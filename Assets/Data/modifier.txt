@@ -1,2 +1,27 @@
-Id	Name	NameStr	Stat
-			
+Id	Stat	Description	Value
+0	MaxHealth	 to maximum Health	5
+1	MaxMana	 to maximum Mana	5
+2	AttackPower	% increased Attack Power	1
+3	MagicPower	% increased Magic Power	1
+4	AttackDefense	% increased Defense vs Attacks	1
+5	MagicDefense	% increased Defense vs Spells	1
+6	Accuracy	% increased Accuracy	1
+7	Evasion	% increased Evasion	1
+8	CritChance	% added Critical Strike Chance	0.05
+9	CritMulti	% increased Critical Strike Multiplier	1
+10	IncCritChance	% reduced Chance to Take a Critical Strike	0.1
+11	TypeStatusChance	% increased Chance to Inflict Shock, Freeze, Burn and Curse	1
+12	MentalStatusChance	% increased Chance to Inflict Mental Statuses	1
+13	StatusPower	% increased Status Power	1
+14	IncTypeStatus	% reduced Chance to Receive Shock, Freeze, Burn and Curse	0.1
+15	IncMentalStatus	% reduced Chance to Receive Mental Statuses	0.1
+16	ResistPhysical	% added Physical Resistance	0.1
+17	ResistProjectile	% added Projectile Resistance	0.1
+18	ResistElectric	% added Electric Resistance	0.1
+19	ResistCold	% added Cold Resistance	0.1
+20	ResistFire	% added Fire Resistance	0.1
+21	ResistWind	% added Wind Resistance	0.1
+22	ResistArcane	% added Arcane Resistance	0.1
+23	ResistPsychic	% added Psychic Resistance	0.1
+24	ResistLight	% added Holy Resistance	0.1
+25	ResistDark	% added Shadow Resistance	0.1

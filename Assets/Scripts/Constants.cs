@@ -9,6 +9,8 @@
         public const string MONSTERTIER_PATH = "monsterTier.txt";
         public const string HELP_PATH = "help.txt";
         public const string ITEM_PATH = "item.txt";
+        public const string MODIFIER_PATH = "modifier.txt";
+        public const string GEAR_PATH = "gear.txt";
 
         public const float TECHNICAL_MULTI = 2f;
         public const float CRITICAL_STATUS_MULTI = 2f;
@@ -74,6 +76,10 @@
         public enum EffectType
         {
             None, Status, Buff
+        }
+        public enum Slot
+        {
+            Helm, Chest, Gloves, Boots, Weapon, Shield, Amulet, Ring
         }
     }
 }
