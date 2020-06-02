@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
@@ -14,6 +15,18 @@ namespace Assets.Scripts
         public TextMeshProUGUI weak;
         public TextMeshProUGUI technical;
         public TextMeshProUGUI crit;
+        public Image healthBar;
+
+        public void UpdateFill(Unit unit)
+        {
+            if (healthBar == null)
+            {
+                return;
+            }
+            healthBar.gameObject.SetActive(true);
+            float value = (float)unit.CurrentHealth / unit.Stats.MaxHealth;
+            healthBar.fillAmount = value;
+        }
 
         public void HideAll()
         {
@@ -21,6 +34,11 @@ namespace Assets.Scripts
             weak.gameObject.SetActive(false);
             technical.gameObject.SetActive(false);
             crit.gameObject.SetActive(false);
+        }
+
+        public void HideHealth()
+        {
+            healthBar.gameObject.SetActive(false);
         }
     }
 }

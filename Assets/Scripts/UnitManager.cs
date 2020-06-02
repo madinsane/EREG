@@ -494,10 +494,19 @@ namespace Assets.Scripts
             if (!CheckAlive())
             {
                 yield return new WaitForSeconds(1f);
+                HideAllHealthBars();
                 gameManager.StartRound();
             } else
             {
                 AdvanceTurn();
+            }
+        }
+
+        private void HideAllHealthBars()
+        {
+            foreach (HitDisplay display in monsterDisplay)
+            {
+                display.HideHealth();
             }
         }
 
@@ -529,6 +538,10 @@ namespace Assets.Scripts
                 }
             }
             target.TakeHit(hit);
+            if (isPlayer)
+            {
+                monsterDisplay[pos].UpdateFill(monsters[pos]);
+            }
             UpdateGlobes();
         }
 
@@ -538,6 +551,7 @@ namespace Assets.Scripts
             if (pos < Constants.MAX_ENEMIES)
             {
                 display = monsterDisplay[pos];
+                //display.UpdateFill(monsters[pos]);
             } else
             {
                 display = playerDisplay;
