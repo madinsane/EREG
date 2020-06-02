@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace Assets.Scripts
 {
@@ -28,6 +29,30 @@ namespace Assets.Scripts
                 LoadItems();
             }
             return items[id];
+        }
+
+        public void UseItem(int id)
+        {
+            ItemStats item = GetItem(id);
+            if (item.Quantity <= 0)
+            {
+                return;
+            }
+            switch (item.Type)
+            {
+                case Constants.ItemTypes.Health:
+                    ChangeHealth((int)((float)item.Value / 100 * Stats.MaxHealth));
+                    break;
+                case Constants.ItemTypes.Mana:
+                    ApplyCost(-(int)((float)item.Value / 100 * Stats.MaxMana), Constants.CostTypes.Spell);
+                    break;
+                case Constants.ItemTypes.Break:
+                    RemoveStatus();
+                    break;
+            }
+            item.Quantity--;
+            unitManager.UpdateGlobes();
+            unitManager.AdvanceTurn();
         }
 
         private void LoadItems()

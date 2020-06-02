@@ -137,7 +137,14 @@ namespace Assets.Scripts
             }
             else
             {
-                CurrentMana -= value;
+                if (CurrentMana - value > Stats.MaxMana)
+                {
+                    CurrentMana = Stats.MaxMana;
+                }
+                else
+                {
+                    CurrentMana -= value;
+                }
             }
             unitManager.UpdateGlobes();
         }

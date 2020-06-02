@@ -92,6 +92,7 @@ namespace Assets.Scripts
             if (isItem)
             {
                 //Use item
+                player.UseItem(itemId);
             } else
             {
                 if (player.unitManager.Turn == UnitManager.Turns.Player && player.CheckCost(skillCost, costType))
