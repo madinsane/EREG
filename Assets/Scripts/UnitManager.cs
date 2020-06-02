@@ -126,7 +126,7 @@ namespace Assets.Scripts
         internal void MonsterCast(int pos)
         {
             int castChoice = Damage.RandomInt(0, monsters[pos].Skills.Count-1);
-            CastSkill(monsters[pos].Skills[castChoice], monsters[pos]);
+            StartCoroutine(CastSkill(monsters[pos].Skills[castChoice], monsters[pos]));
         }
 
         internal void UpdateTarget(int direction, int counter = 0)
@@ -408,6 +408,18 @@ namespace Assets.Scripts
             return null;
         }
 
+        private int GetFirstTargetPos()
+        {
+            for (int i = 0; i < targets.Length; i++)
+            {
+                if (targets[i].enabled && monsters[i].enabled)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
         public bool CheckAlive()
         {
             bool alive = false;
@@ -429,8 +441,9 @@ namespace Assets.Scripts
             IsCasting = true;
         }
 
-        public void CastSkill(SkillStats skill, Unit caster)
+        public IEnumerator CastSkill(SkillStats skill, Unit caster)
         {
+            float waitDuration = 0f;
             if (caster.IsPlayer)
             {
                 caster.ApplyCost(skill.Cost, skill.CostType);
@@ -441,15 +454,26 @@ namespace Assets.Scripts
                 //Get Targets
                 if (skill.TargetType == Constants.TargetTypes.All && caster.IsPlayer)
                 {
-                    foreach (Monster monster in monsters)
+                    for (int i=0; i<monsters.Length; i++)
                     {
-                        DoHit(skill, caster, monster, caster.IsPlayer);
+                        waitDuration = gameManager.PlayParticle(skill.SkillType, i);
+                        yield return new WaitForSeconds(waitDuration);
+                        DoHit(skill, caster, monsters[i], caster.IsPlayer);
                     }
                 } else if (skill.TargetType == Constants.TargetTypes.Single && caster.IsPlayer)
                 {
-                    DoHit(skill, caster, GetFirstTarget(), caster.IsPlayer);
+                    int targetPos = GetFirstTargetPos();
+                    if (targetPos != -1)
+                    {
+                        waitDuration = gameManager.PlayParticle(skill.SkillType, targetPos);
+                        Monster target = GetFirstTarget();
+                        yield return new WaitForSeconds(waitDuration);
+                        DoHit(skill, caster, target, caster.IsPlayer);
+                    }
                 } else if (!caster.IsPlayer)
                 {
+                    waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
+                    yield return new WaitForSeconds(waitDuration);
                     DoHit(skill, caster, player, false);
                 }
             }
@@ -543,8 +567,8 @@ namespace Assets.Scripts
                     {
                         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButton((int)MouseButton.LeftMouse))
                         {
-                            CastSkill(currentSkill, player);
                             IsCasting = false;
+                            StartCoroutine(CastSkill(currentSkill, player));
                             ChangeTargeting(false);
                         }
                     }

@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -23,16 +24,45 @@ namespace Assets.Scripts
         public SpriteAtlas guiAtlas;
         public Image analysisBack;
         public Text tooltipStatic;
+        public ParticleSystem[] particleBps;
+        public ParticleSystem[] monsterParts = new ParticleSystem[Constants.MAX_ENEMIES];
+        public ParticleSystem playerPart;
 
         private List<MonsterTier> monsterTiers;
         public int Level { get; private set; }
         private string previousSpawn;
         public bool AnalysisEnabled { get; set; }
         private StringBuilder tooltip;
+        private Dictionary<Constants.SkillTypes, int> partMap;
 
         void Start()
         {
             StartGame();
+        }
+
+        private void InitPartMap()
+        {
+            partMap = new Dictionary<Constants.SkillTypes, int>
+            {
+                { Constants.SkillTypes.Almighty, 0 },
+                { Constants.SkillTypes.Physical, 1 },
+                { Constants.SkillTypes.Projectile, 2 },
+                { Constants.SkillTypes.Electric, 3 },
+                { Constants.SkillTypes.Cold, 4 },
+                { Constants.SkillTypes.Fire, 5 },
+                { Constants.SkillTypes.Wind, 6 },
+                { Constants.SkillTypes.Arcane, 7 },
+                { Constants.SkillTypes.Psychic, 8 },
+                { Constants.SkillTypes.Light, 9 },
+                { Constants.SkillTypes.Dark, 10 },
+                { Constants.SkillTypes.Heal, 11 },
+                { Constants.SkillTypes.Buff, 12 },
+                { Constants.SkillTypes.Status, 13 },
+                { Constants.SkillTypes.Blast, 14 },
+                { Constants.SkillTypes.Break, 15 },
+                { Constants.SkillTypes.Hidden, 1 },
+            };
+
         }
 
         public void StartGame()
@@ -343,6 +373,79 @@ namespace Assets.Scripts
             tooltip.Append("Holy:\t\t" + (monster.CheckedType[8] ? unit.ResistLight.ToString() : "?") + "%\n");
             tooltip.Append("Shadow:\t\t" + (monster.CheckedType[9] ? unit.ResistDark.ToString() : "?") + "%");
             tooltipStatic.text = tooltip.ToString();
+        }
+
+        private void CopyParticle(ParticleSystem part, ParticleSystem newPart)
+        {
+            ParticleSystem.MainModule main = part.main;
+            main.duration = newPart.main.duration;
+            main.startLifetime = newPart.main.startLifetime;
+            main.startSpeed = newPart.main.startSpeed;
+            main.startSize = newPart.main.startSize;
+            main.startColor = newPart.main.startColor;
+            ParticleSystem.EmissionModule emis = part.emission;
+            emis.rateOverTime = newPart.emission.rateOverTime;
+            emis.rateOverDistance = newPart.emission.rateOverDistance;
+            emis.burstCount = newPart.emission.burstCount;
+            emis.SetBurst(0, newPart.emission.GetBurst(0));
+            ParticleSystem.ShapeModule shape = part.shape;
+            shape.shapeType = newPart.shape.shapeType;
+            shape.radius = newPart.shape.radius;
+            shape.radiusThickness = newPart.shape.radiusThickness;
+            shape.arc = newPart.shape.arc;
+            shape.arcMode = newPart.shape.arcMode;
+            shape.arcSpeed = newPart.shape.arcSpeed;
+            shape.position = newPart.shape.position;
+            shape.rotation = newPart.shape.rotation;
+            ParticleSystem.RotationOverLifetimeModule rot = part.rotationOverLifetime;
+            rot.enabled = newPart.rotationOverLifetime.enabled;
+            rot.z = newPart.rotationOverLifetime.z;
+            ParticleSystem.TextureSheetAnimationModule tex = part.textureSheetAnimation;
+            tex.enabled = newPart.textureSheetAnimation.enabled;
+            if (tex.enabled)
+            {
+                tex.mode = newPart.textureSheetAnimation.mode;
+                tex.SetSprite(0, newPart.textureSheetAnimation.GetSprite(0));
+            }
+            ParticleSystem.SubEmittersModule sub = part.subEmitters;
+            sub.enabled = newPart.subEmitters.enabled;
+            if (sub.enabled)
+            {
+                sub.AddSubEmitter(newPart.subEmitters.GetSubEmitterSystem(0), newPart.subEmitters.GetSubEmitterType(0), newPart.subEmitters.GetSubEmitterProperties(0));
+            }
+        }
+
+        public bool CheckParticle(Constants.SkillTypes type)
+        {
+            if (!partMap.ContainsKey(type))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public float PlayParticle(Constants.SkillTypes type, int pos)
+        {
+            if (partMap == null)
+            {
+                InitPartMap();
+            }
+            if (pos < Constants.MAX_ENEMIES)
+            {
+                if (!monsterParts[pos].isPlaying)
+                {
+                    CopyParticle(monsterParts[pos], particleBps[partMap[type]]);
+                    monsterParts[pos].Play(true);
+                }
+            } else
+            {
+                if (!playerPart.isPlaying)
+                {
+                    CopyParticle(playerPart, particleBps[partMap[type]]);
+                    playerPart.Play(true);
+                }
+            }
+            return particleBps[partMap[type]].main.duration;
         }
 
         void Update()
