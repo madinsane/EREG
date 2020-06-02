@@ -76,5 +76,11 @@ namespace Assets.Scripts
                 }
             }
         }
+
+        public override void Die()
+        {
+            unitManager.Turn = UnitManager.Turns.EndGame;
+            base.Die();
+        }
     }
 }

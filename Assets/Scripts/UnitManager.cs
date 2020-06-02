@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -36,7 +37,7 @@ namespace Assets.Scripts
 
         public enum Turns
         {
-            Player, Monster1, Monster2, Monster3, Monster4, Monster5
+            Player, Monster1, Monster2, Monster3, Monster4, Monster5, EndGame
         }
 
         public Turns Turn { get; set; }
@@ -460,7 +461,10 @@ namespace Assets.Scripts
 
         public void PrepareSkill(int id)
         {
-            PrepareSkill(GetSkill(id));
+            if (Turn == Turns.Player)
+            {
+                PrepareSkill(GetSkill(id));
+            }
         }
 
         public void PrepareSkill(SkillStats skill)
@@ -514,14 +518,22 @@ namespace Assets.Scripts
                 }
             }
             ClearDescription();
-            if (!CheckAlive())
+            if (Turn != Turns.EndGame)
             {
-                yield return new WaitForSeconds(1f);
-                HideAllHealthBars();
-                gameManager.StartRound();
+                if (!CheckAlive())
+                {
+                    yield return new WaitForSeconds(1f);
+                    HideAllHealthBars();
+                    gameManager.StartRound();
+                } else
+                {
+                    AdvanceTurn();
+                }
             } else
             {
-                AdvanceTurn();
+                ChangeDescription("You are Dead");
+                yield return new WaitForSeconds(5f);
+                SceneManager.LoadScene(0);
             }
         }
 
