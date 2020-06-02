@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
@@ -29,6 +30,7 @@ namespace Assets.Scripts
         public ParticleSystem playerPart;
         public SpriteRenderer background;
         public SpriteAtlas backgroundAtlas;
+        public TextMeshProUGUI levelText;
 
         private List<MonsterTier> monsterTiers;
         public int Level { get; private set; }
@@ -82,6 +84,7 @@ namespace Assets.Scripts
         {
             unitManager.ClearMonsters();
             Level++;
+            levelText.text = "Level: " + Level;
             Debug.Log(Level);
             if (Level % Constants.BACKGROUND_CHANGE_LVLS == 0)
             {
