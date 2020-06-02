@@ -30,6 +30,8 @@ namespace Assets.Scripts
         public TextMeshProUGUI mpText;
         public ResourceDisplay healthGlobe;
         public ResourceDisplay manaGlobe;
+        public HitDisplay[] monsterDisplay;
+        public HitDisplay playerDisplay;
 
         public enum Turns
         {
@@ -385,6 +387,16 @@ namespace Assets.Scripts
             baseStats.StatusPower = ScaleStat(baseStats.StatusPower, scaling.StatusPower, unitToScale.StatusPower, 1);
             baseStats.IncTypeStatus = ScaleStat(baseStats.IncTypeStatus, scaling.IncTypeStatus, unitToScale.IncTypeStatus, 1);
             baseStats.IncMentalStatus = ScaleStat(baseStats.IncMentalStatus, scaling.IncMentalStatus, unitToScale.IncMentalStatus, 1);
+            baseStats.ResistPhysical = unitToScale.ResistPhysical;
+            baseStats.ResistProjectile = unitToScale.ResistProjectile;
+            baseStats.ResistElectric = unitToScale.ResistElectric;
+            baseStats.ResistCold = unitToScale.ResistCold;
+            baseStats.ResistFire = unitToScale.ResistFire;
+            baseStats.ResistWind = unitToScale.ResistWind;
+            baseStats.ResistArcane = unitToScale.ResistArcane;
+            baseStats.ResistPsychic = unitToScale.ResistPsychic;
+            baseStats.ResistLight = unitToScale.ResistLight;
+            baseStats.ResistDark = unitToScale.ResistDark;
             return baseStats;
         }
 
@@ -443,7 +455,6 @@ namespace Assets.Scripts
 
         public IEnumerator CastSkill(SkillStats skill, Unit caster)
         {
-            float waitDuration = 0f;
             if (caster.IsPlayer)
             {
                 caster.ApplyCost(skill.Cost, skill.CostType);
@@ -451,16 +462,18 @@ namespace Assets.Scripts
             //Find defender(s)
             if (skill.SkillType <= Constants.SkillTypes.Dark || skill.SkillType == Constants.SkillTypes.Hidden)
             {
+                float waitDuration;
                 //Get Targets
                 if (skill.TargetType == Constants.TargetTypes.All && caster.IsPlayer)
                 {
-                    for (int i=0; i<monsters.Length; i++)
+                    for (int i = 0; i < monsters.Length; i++)
                     {
                         waitDuration = gameManager.PlayParticle(skill.SkillType, i);
                         yield return new WaitForSeconds(waitDuration);
-                        DoHit(skill, caster, monsters[i], caster.IsPlayer);
+                        DoHit(skill, caster, monsters[i], caster.IsPlayer, i);
                     }
-                } else if (skill.TargetType == Constants.TargetTypes.Single && caster.IsPlayer)
+                }
+                else if (skill.TargetType == Constants.TargetTypes.Single && caster.IsPlayer)
                 {
                     int targetPos = GetFirstTargetPos();
                     if (targetPos != -1)
@@ -468,17 +481,19 @@ namespace Assets.Scripts
                         waitDuration = gameManager.PlayParticle(skill.SkillType, targetPos);
                         Monster target = GetFirstTarget();
                         yield return new WaitForSeconds(waitDuration);
-                        DoHit(skill, caster, target, caster.IsPlayer);
+                        DoHit(skill, caster, target, caster.IsPlayer, targetPos);
                     }
-                } else if (!caster.IsPlayer)
+                }
+                else if (!caster.IsPlayer)
                 {
                     waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
                     yield return new WaitForSeconds(waitDuration);
-                    DoHit(skill, caster, player, false);
+                    DoHit(skill, caster, player, false, Constants.MAX_ENEMIES);
                 }
             }
             if (!CheckAlive())
             {
+                yield return new WaitForSeconds(1f);
                 gameManager.StartRound();
             } else
             {
@@ -486,13 +501,13 @@ namespace Assets.Scripts
             }
         }
 
-        private void DoHit(SkillStats skill, Unit caster, Unit target, bool isPlayer)
+        private void DoHit(SkillStats skill, Unit caster, Unit target, bool isPlayer, int pos)
         {
             Damage.DamagePacket hit;
             hit = Damage.Hit(skill, caster.Stats, target.Stats);
-            
             if (hit.hit)
             {
+                StartCoroutine(DisplayText(pos, hit.damage.ToString(), hit.isWeak, hit.isTechnical, hit.isCrit));
                 if (isPlayer)
                 {
                     log.Add("You hit " + target.NameStr + " with " + skill.NameStr + " for " + hit.damage);
@@ -505,14 +520,44 @@ namespace Assets.Scripts
             {
                 if (isPlayer)
                 {
+                    StartCoroutine(DisplayText(pos, "Miss", hit.isWeak, hit.isTechnical, hit.isCrit));
                     log.Add("You missed " + target.NameStr + " with " + skill.NameStr);
                 } else
                 {
+                    StartCoroutine(DisplayText(pos, "Dodge", hit.isWeak, hit.isTechnical, hit.isCrit));
                     log.Add("You dodged " + target.NameStr + "'s " + skill.NameStr);
                 }
             }
             target.TakeHit(hit);
             UpdateGlobes();
+        }
+
+        private IEnumerator DisplayText(int pos, string damage, bool isWeak, bool isTechnical, bool isCrit)
+        {
+            HitDisplay display;
+            if (pos < Constants.MAX_ENEMIES)
+            {
+                display = monsterDisplay[pos];
+            } else
+            {
+                display = playerDisplay;
+            }
+            if (isWeak)
+            {
+                display.weak.gameObject.SetActive(true);
+            }
+            if (isTechnical)
+            {
+                display.technical.gameObject.SetActive(true);
+            }
+            if (isCrit)
+            {
+                display.crit.gameObject.SetActive(true);
+            }
+            display.damage.text = damage;
+            display.damage.gameObject.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            display.HideAll();
         }
 
         public void UpdateGlobes()
