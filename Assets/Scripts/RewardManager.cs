@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.U2D;
 
 namespace Assets.Scripts
 {
@@ -15,6 +16,7 @@ namespace Assets.Scripts
     {
         public UnitManager unitManager;
         public GameManager gameManager;
+        public SpriteAtlas gearAtlas;
 
         private List<Modifier> modifiers;
         private Dictionary<int, Gear> gear;
@@ -61,6 +63,11 @@ namespace Assets.Scripts
                 LoadGear();
             }
             return gear[id];
+        }
+
+        public Sprite GetGearSprite(Gear gear)
+        {
+            return gearAtlas.GetSprite(gear.SpriteName);
         }
     }
 }

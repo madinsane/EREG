@@ -13,6 +13,7 @@ namespace Assets.Scripts
         private Dictionary<int, ItemStats> items;
         private Gear[] gear;
         public RewardManager rewards;
+        public GearPanel[] gearPanels;
 
         public Player(UnitStats stats, List<SkillStats> skills) : base(stats, skills)
         {
@@ -36,9 +37,16 @@ namespace Assets.Scripts
             gear[(int)Constants.Slot.Shield] = rewards.GetGear(45);
             gear[(int)Constants.Slot.Amulet] = rewards.GetGear(54);
             gear[(int)Constants.Slot.Ring] = rewards.GetGear(63);
+            UpdateGearPanels();
         }
 
-
+        public void UpdateGearPanels()
+        {
+            for (int i=0; i<gear.Length; i++)
+            {
+                gearPanels[i].ChangeGear(gear[i], rewards.GetGearSprite(gear[i]));
+            }
+        }
 
         public ItemStats GetItem(int id)
         {
