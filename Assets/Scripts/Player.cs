@@ -11,6 +11,8 @@ namespace Assets.Scripts
     public class Player : Unit
     {
         private Dictionary<int, ItemStats> items;
+        private Gear[] gear;
+        public RewardManager rewards;
 
         public Player(UnitStats stats, List<SkillStats> skills) : base(stats, skills)
         {
@@ -20,7 +22,23 @@ namespace Assets.Scripts
         private void Awake()
         {
             IsPlayer = true;
+            InitGear();
         }
+
+        public void InitGear()
+        {
+            gear = new Gear[(int)Constants.Slot.Ring + 1];
+            gear[(int)Constants.Slot.Helm] = rewards.GetGear(0);
+            gear[(int)Constants.Slot.Chest] = rewards.GetGear(9);
+            gear[(int)Constants.Slot.Gloves] = rewards.GetGear(18);
+            gear[(int)Constants.Slot.Boots] = rewards.GetGear(27);
+            gear[(int)Constants.Slot.Weapon] = rewards.GetGear(36);
+            gear[(int)Constants.Slot.Shield] = rewards.GetGear(45);
+            gear[(int)Constants.Slot.Amulet] = rewards.GetGear(54);
+            gear[(int)Constants.Slot.Ring] = rewards.GetGear(63);
+        }
+
+
 
         public ItemStats GetItem(int id)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
@@ -19,6 +20,7 @@ namespace Assets.Scripts
         public Sprite skillBackImgDisabled;
         public Sprite itemBackImg;
         public Player player;
+        public Tooltip tooltip;
 
         public Color itemColor;
         public Color hpColor;
@@ -84,6 +86,19 @@ namespace Assets.Scripts
                     itemBack.color = disabled;
                     itemBack.sprite = skillBackImgDisabled;
                 }
+            }
+        }
+
+        public void DisplayTooltip()
+        {
+            if (isItem)
+            {
+                ItemStats item = player.GetItem(itemId);
+                tooltip.AddTooltip(item.NameStr + "\n" + item.Description);
+            } else
+            {
+                SkillStats skill = player.unitManager.GetSkill(itemId);
+                tooltip.AddTooltip(skill.NameStr + "\n" + skill.Description);
             }
         }
 

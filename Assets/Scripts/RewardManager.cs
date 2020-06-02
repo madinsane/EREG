@@ -17,7 +17,7 @@ namespace Assets.Scripts
         public GameManager gameManager;
 
         private List<Modifier> modifiers;
-        private List<Gear> gear;
+        private Dictionary<int, Gear> gear;
 
         public static object GetPropValue(object src, string propName)
         {
@@ -41,7 +41,7 @@ namespace Assets.Scripts
 
         private void LoadGear()
         {
-            gear = new List<Gear>();
+            gear = new Dictionary<int, Gear>();
             using (var reader = new StreamReader(Application.dataPath + Constants.DATA_PATH + Constants.GEAR_PATH))
             using (var csvUnit = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
@@ -49,9 +49,18 @@ namespace Assets.Scripts
                 IEnumerable records = csvUnit.GetRecords<Gear>();
                 foreach (Gear gear in records)
                 {
-                    this.gear.Add(gear);
+                    this.gear.Add(gear.Id, gear);
                 }
             }
+        }
+
+        public Gear GetGear(int id)
+        {
+            if (gear == null)
+            {
+                LoadGear();
+            }
+            return gear[id];
         }
     }
 }

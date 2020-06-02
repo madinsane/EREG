@@ -79,7 +79,8 @@
         }
         public enum Slot
         {
-            Helm, Chest, Gloves, Boots, Weapon, Shield, Amulet, Ring
+            Helm, Chest, Gloves, Boots, Weapon,
+            Shield, Amulet, Ring
         }
     }
 }

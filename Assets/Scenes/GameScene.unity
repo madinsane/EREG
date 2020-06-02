@@ -123,12 +123,30 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &86093786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7225400926870312949, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &86093787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86093786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9267b13e534214d8e21e5b2dba31f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 1828999575}
 --- !u!114 &117418503 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 117418503, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2036837171}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
@@ -139,45 +157,215 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 137620576, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 380376770}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &192279563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1633880517, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &192279566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192279563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1633880520}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &196144574 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 196144574, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 609620609}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &244145338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2082744985, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &244145341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244145338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2082744988}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &332953834 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 332953834, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 705567023}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &339768847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6563728533775390800, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &339768851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339768847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 86093787}
+          m_TargetAssemblyTypeName: Assets.Scripts.Tooltip, Assembly-CSharp
+          m_MethodName: AddTooltip
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Mana==Used to cast powerful spells
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &380376770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 137620573, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &380376773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380376770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 137620576}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!198 &403405854 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 403405854, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
   m_PrefabInstance: {fileID: 5579312080170796709}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &431814702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 470451500, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &431814705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431814702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 470451501}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &470451501 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 470451501, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 431814702}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
@@ -188,7 +376,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 485262784, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 841083467}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
@@ -210,12 +398,48 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 1253276024061471249, guid: cc4c4e1a415b39f4c9e4fb09b372e6d1, type: 3}
   m_PrefabInstance: {fileID: 1253276023685321326}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &538380438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6966506912580826749, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &538380443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538380438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 86093787}
+          m_TargetAssemblyTypeName: Assets.Scripts.Tooltip, Assembly-CSharp
+          m_MethodName: AddTooltip
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Analysis==Click to enable Analysis==Hover over an Enemy
+              to view current knowledge of that enemy==Use different Damage Types
+              to find out more information
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &575097134 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 575097134, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 682059721}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
@@ -226,12 +450,114 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 585190352, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 939862036}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &592821425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4225455928296367817, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &592821430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592821425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 86093787}
+          m_TargetAssemblyTypeName: Assets.Scripts.Tooltip, Assembly-CSharp
+          m_MethodName: AddTooltip
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Stats==Click to display detailed Stats about your Character
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &592990185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 668050264, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &592990188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592990185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 668050267}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &609620609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 196144571, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &609620612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609620609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 196144574}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &635681693 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4134245137176961946, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
@@ -259,7 +585,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 668050267, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 592990185}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
@@ -270,12 +596,115 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 668596694, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
   m_PrefabInstance: {fileID: 5579312080170796709}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &682059721 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 575097131, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &682059724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682059721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 575097134}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &705567023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 332953831, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &705567026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705567023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 332953834}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &717858197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 68712082455370039, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &717858203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717858197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 86093787}
+          m_TargetAssemblyTypeName: Assets.Scripts.Tooltip, Assembly-CSharp
+          m_MethodName: AddTooltip
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Quit==Click to Quit the game==Progress will not be
+              saved
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &753799982 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 753799982, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1791965311}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
@@ -303,12 +732,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b1804e29d37b44aad1be79f938680b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &808647473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 916917462, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &808647476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808647473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 916917465}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &814691216 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 814691216, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2095516796}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
@@ -325,6 +788,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61be17702e670d645841ab46ee0a563e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &841083467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 485262781, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &841083470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841083467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 485262784}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &851634071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4419665803355963485, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &851634075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851634071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 86093787}
+          m_TargetAssemblyTypeName: Assets.Scripts.Tooltip, Assembly-CSharp
+          m_MethodName: AddTooltip
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Guard==Drastically increase Defense for one Turn==Costs
+              no resources==Ends your Turn
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!198 &895790401 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2588351719867053533, guid: 285f9ab258a33544bb4272ff4a50b3f8, type: 3}
@@ -335,17 +867,86 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 916917465, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 808647473}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &939862036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 585190349, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &939862039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939862036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 585190352}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!212 &980385616 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7339875125892054061, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
   m_PrefabInstance: {fileID: 5579312080170796709}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1026616022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4245268359423800089, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1026616024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026616022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 86093787}
+          m_TargetAssemblyTypeName: Assets.Scripts.Tooltip, Assembly-CSharp
+          m_MethodName: AddTooltip
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Health==When this reaches 0 the game will end.==It
+              can also be used for stronger attacks
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!212 &1050920889 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1417172682443796257, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
@@ -378,7 +979,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1109192195, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1227260985}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
@@ -400,11 +1001,114 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6981f8e0fc4cb6249bbef27593227534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1193931878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1478809929, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1193931881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193931878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1478809932}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!212 &1213003246 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6690728674038060422, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
   m_PrefabInstance: {fileID: 5579312080170796709}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1223876610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2286588851404883090, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1223876615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223876610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 86093787}
+          m_TargetAssemblyTypeName: Assets.Scripts.Tooltip, Assembly-CSharp
+          m_MethodName: AddTooltip
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Potions==Click to show available Potions==Using a Potion
+              consumes it and Ends your Turn
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &1227260985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1109192192, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1227260988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227260985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1109192195}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1245546015 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1245546015, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
@@ -464,7 +1168,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1478809932, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1193931878}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
@@ -501,12 +1205,46 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1633880520, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 192279563}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1634701922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3921431820710202376, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1634701927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634701922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 86093787}
+          m_TargetAssemblyTypeName: Assets.Scripts.Tooltip, Assembly-CSharp
+          m_MethodName: AddTooltip
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Help==Click to view help
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!198 &1714403091 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1714403091, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
@@ -550,6 +1288,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b1804e29d37b44aad1be79f938680b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1791965311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 753799980, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1791965314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791965311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 753799982}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &1803306834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6427274890948818464, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1803306839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803306834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 86093787}
+          m_TargetAssemblyTypeName: Assets.Scripts.Tooltip, Assembly-CSharp
+          m_MethodName: AddTooltip
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Attack==Perform a basic attack at a single target.==Costs
+              no resources==Ends your Turn
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1828999575 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7225400925704960724, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
@@ -583,6 +1390,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cec63b8a3fd1c4ea367312b21d826f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1967595410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 915394698638468599, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1967595415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967595410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 86093787}
+          m_TargetAssemblyTypeName: Assets.Scripts.Tooltip, Assembly-CSharp
+          m_MethodName: AddTooltip
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Skills==Click to show your current skills==Using a
+              skill costs some of a resource and Ends your Turn
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &2036837171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 117418500, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2036837174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036837171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 117418503}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!212 &2056305626 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1253274241325247045, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
@@ -593,12 +1469,46 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2082744988, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
   m_PrefabInstance: {fileID: 2133097538364457636}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 244145338}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9969c27ca4a130b4e86ea1f828f6eae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2095516796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 814691213, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+  m_PrefabInstance: {fileID: 2133097538364457636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2095516799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095516796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 814691216}
+          m_TargetAssemblyTypeName: Assets.Scripts.ItemPanel, Assembly-CSharp
+          m_MethodName: DisplayTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2109777461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2109777461, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
@@ -802,18 +1712,34 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 117418503, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 137620576, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 137620576, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 196144574, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 196144574, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 332953834, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 332953834, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 369901917, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -822,10 +1748,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 470451501, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 485262784, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 485262784, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 499541956, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: unitManager
       value: 
@@ -834,10 +1768,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 575097134, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 585190352, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 585190352, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 619659651, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -846,22 +1788,42 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 668050267, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 753799982, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 753799982, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 814691216, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 814691216, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 916917465, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 916917465, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 1109192195, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 1109192195, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 1174935547, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -874,6 +1836,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 1478809932, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 1533959124, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -882,10 +1848,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 1633880520, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
+    - target: {fileID: 1689674623, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 101.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2082744988, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 756762554}
+    - target: {fileID: 2082744988, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: tooltip
+      value: 
+      objectReference: {fileID: 86093787}
     - target: {fileID: 520223219234017587, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -896,6 +1874,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1423596561474615089, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423596561474615089, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2133097538440112106, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
@@ -998,6 +1980,10 @@ PrefabInstance:
       propertyPath: unitManager
       value: 
       objectReference: {fileID: 1842739402}
+    - target: {fileID: 7042001357993031281, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
 --- !u!1001 &2588351719139629212

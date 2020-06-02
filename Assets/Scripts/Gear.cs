@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CsvHelper.Configuration.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,12 @@ namespace Assets.Scripts
         public string SpriteName { get; set; }
         public int RLvl { get; set; }
         public int Affixes { get; set; }
+        [Ignore]
+        public List<Modifier> mods;
+
+        public Gear Copy()
+        {
+            return (Gear)MemberwiseClone();
+        }
     }
 }
