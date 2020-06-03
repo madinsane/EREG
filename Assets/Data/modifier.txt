@@ -9,12 +9,12 @@ Id	Stat	Description	Value
 7	Evasion	% increased Evasion	1
 8	CritChance	% added Critical Strike Chance	0.05
 9	CritMulti	% increased Critical Strike Multiplier	1
-10	IncCritChance	% reduced Chance to Take a Critical Strike	0.1
+10	IncCritChance	% Chance to Take a Critical Strike	-0.1
 11	TypeStatusChance	% increased Chance to Inflict Shock, Freeze, Burn and Curse	1
 12	MentalStatusChance	% increased Chance to Inflict Mental Statuses	1
 13	StatusPower	% increased Status Power	1
-14	IncTypeStatus	% reduced Chance to Receive Shock, Freeze, Burn and Curse	0.1
-15	IncMentalStatus	% reduced Chance to Receive Mental Statuses	0.1
+14	IncTypeStatus	% Chance to Receive Shock, Freeze, Burn and Curse	-0.1
+15	IncMentalStatus	% Chance to Receive Mental Statuses	-0.1
 16	ResistPhysical	% added Physical Resistance	0.1
 17	ResistProjectile	% added Projectile Resistance	0.1
 18	ResistElectric	% added Electric Resistance	0.1

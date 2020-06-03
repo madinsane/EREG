@@ -15,5 +15,10 @@ namespace Assets.Scripts
         public float Value { get; set; }
         [Ignore]
         public float RealValue { get; set; }
+
+        public Modifier Copy()
+        {
+            return (Modifier)MemberwiseClone();
+        }
     }
 }

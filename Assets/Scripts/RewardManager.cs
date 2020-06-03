@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -19,11 +20,16 @@ namespace Assets.Scripts
         public SpriteAtlas gearAtlas;
 
         private List<Modifier> modifiers;
-        private Dictionary<int, Gear> gear;
+        private List<Gear> gear;
 
         public static object GetPropValue(object src, string propName)
         {
             return src.GetType().GetProperty(propName).GetValue(src, null);
+        }
+
+        public static void SetStat(UnitStats unit, string propName, float increase)
+        {
+            unit.GetType().GetProperty(propName).SetValue(unit, (float)unit.GetType().GetProperty(propName).GetValue(unit, null) + increase);
         }
 
         private void LoadModifiers()
@@ -43,7 +49,7 @@ namespace Assets.Scripts
 
         private void LoadGear()
         {
-            gear = new Dictionary<int, Gear>();
+            gear = new List<Gear>();
             using (var reader = new StreamReader(Application.dataPath + Constants.DATA_PATH + Constants.GEAR_PATH))
             using (var csvUnit = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
@@ -51,7 +57,7 @@ namespace Assets.Scripts
                 IEnumerable records = csvUnit.GetRecords<Gear>();
                 foreach (Gear gear in records)
                 {
-                    this.gear.Add(gear.Id, gear);
+                    this.gear.Add(gear);
                 }
             }
         }
@@ -62,12 +68,56 @@ namespace Assets.Scripts
             {
                 LoadGear();
             }
-            return gear[id];
+            return gear[id].Copy();
         }
 
         public Sprite GetGearSprite(Gear gear)
         {
             return gearAtlas.GetSprite(gear.SpriteName);
+        }
+
+        public Gear CreateGear(Constants.Slot slot)
+        {
+            if (modifiers == null)
+            {
+                LoadModifiers();
+            }
+            if (gear == null)
+            {
+                LoadGear();
+            }
+            List<Modifier> chosenMods = new List<Modifier>();
+            int level = gameManager.Level + 40;
+            Gear newGear = gear.FindLast(x => x.RLvl <= level && x.Slot == slot).Copy();
+            for (int i=0; i<newGear.Affixes; i++)
+            {
+                Modifier newMod = PickMod();
+                chosenMods.Add(newMod);
+            }
+            chosenMods = CombineMods(chosenMods, level);
+            newGear.mods = chosenMods;
+            return newGear;
+        }
+
+        private Modifier PickMod()
+        {
+            int roll = Damage.RandomInt(0, modifiers.Count - 1);
+            Modifier newMod = modifiers[roll].Copy();
+            return newMod;
+        }
+
+        private List<Modifier> CombineMods(List<Modifier> mods, int level)
+        {
+            var grouped = mods.GroupBy(i => i.Id);
+            List<Modifier> combined = new List<Modifier>();
+            foreach (var grp in grouped)
+            {
+                int count = grp.Count();
+                Modifier mod = modifiers[grp.Key];
+                mod.RealValue = mod.Value * level * count;
+                combined.Add(mod);
+            }
+            return combined;
         }
     }
 }

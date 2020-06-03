@@ -6,9 +6,9 @@ namespace Assets.Scripts
 {
     public class Unit : MonoBehaviour
     {
-        public int CurrentHealth { get; private set; }
-        public int CurrentMana { get; private set; }
-        public UnitStats Stats { get; private set; }
+        public float CurrentHealth { get; private set; }
+        public float CurrentMana { get; private set; }
+        public UnitStats Stats { get; protected set; }
         public UnitManager unitManager;
         public int Id { get; protected set; }
         public string NameStr { get; set; }

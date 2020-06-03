@@ -88,6 +88,8 @@ namespace Assets.Scripts
                 };
             }
             player.ChangeUnit(LoadStats(0), baseSkills, "You");
+            player.SetBaseStats(player.Stats);
+            player.InitGear();
         }
 
         internal void InitTurns()
@@ -413,11 +415,11 @@ namespace Assets.Scripts
             return baseStats;
         }
 
-        private int ScaleStat(int statBase, int statScaling, int unitScaling, float statMulti)
+        private float ScaleStat(float statBase, float statScaling, float unitScaling, float statMulti)
         {
             float unitMulti = (float)unitScaling / 100;
-            int scaleAdd = statScaling * gameManager.Level;
-            statBase = (int)((statBase + scaleAdd) * statMulti * unitMulti);
+            float scaleAdd = statScaling * gameManager.Level;
+            statBase = ((statBase + scaleAdd) * statMulti * unitMulti);
             return statBase;
         }
 

@@ -12,6 +12,8 @@ namespace Assets.Scripts
     {
         private Dictionary<int, ItemStats> items;
         private Gear[] gear;
+        private UnitStats playerBase;
+
         public RewardManager rewards;
         public GearPanel[] gearPanels;
 
@@ -23,7 +25,6 @@ namespace Assets.Scripts
         private void Awake()
         {
             IsPlayer = true;
-            InitGear();
         }
 
         public void InitGear()
@@ -37,7 +38,25 @@ namespace Assets.Scripts
             gear[(int)Constants.Slot.Shield] = rewards.GetGear(45);
             gear[(int)Constants.Slot.Amulet] = rewards.GetGear(54);
             gear[(int)Constants.Slot.Ring] = rewards.GetGear(63);
+            gear[(int)Constants.Slot.Helm] = rewards.CreateGear(Constants.Slot.Helm);
             UpdateGearPanels();
+            UpdateGearStats();
+        }
+
+        public void UpdateGearStats()
+        {
+            Stats = playerBase.Copy();
+            for (int i=0; i<gear.Length; i++)
+            {
+                if (gear[i].mods == null)
+                {
+                    continue;
+                }
+                foreach (Modifier mod in gear[i].mods)
+                {
+                    RewardManager.SetStat(Stats, mod.Stat, mod.RealValue);
+                }
+            }
         }
 
         public void UpdateGearPanels()
@@ -46,6 +65,11 @@ namespace Assets.Scripts
             {
                 gearPanels[i].ChangeGear(gear[i], rewards.GetGearSprite(gear[i]));
             }
+        }
+
+        public void SetBaseStats(UnitStats stats)
+        {
+            playerBase = stats.Copy();
         }
 
         public ItemStats GetItem(int id)
