@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -87,15 +88,7 @@ namespace Assets.Scripts
                     GetSkill(9),
                     GetSkill(17),
                     GetSkill(5),
-                    GetSkill(17),
-                    GetSkill(17),
-                    GetSkill(17),
-                    GetSkill(17),
-                    GetSkill(17),
-                    GetSkill(17),
-                    GetSkill(17),
-                    GetSkill(17),
-                    GetSkill(17),
+                    GetSkill(65),
                     GetSkill(25)
                 };
             }
@@ -155,8 +148,9 @@ namespace Assets.Scripts
 
         internal void MonsterCast(int pos)
         {
-            int castChoice = Damage.RandomInt(0, monsters[pos].Skills.Count-1);
-            StartCoroutine(CastSkill(monsters[pos].Skills[castChoice], monsters[pos]));
+            List<SkillStats> activeSkills = monsters[pos].Skills.FindAll(x => x.SkillType != Constants.SkillTypes.Passive);
+            int castChoice = Damage.RandomInt(0, activeSkills.Count-1);
+            StartCoroutine(CastSkill(activeSkills[castChoice], monsters[pos]));
         }
 
         private void ShowOneMore()
@@ -505,6 +499,15 @@ namespace Assets.Scripts
         public void PrepareSkill(SkillStats skill)
         {
             currentSkill = skill;
+            if (skill.SkillType == Constants.SkillTypes.Heal || skill.TargetType == Constants.TargetTypes.All ||
+                (skill.SkillType == Constants.SkillTypes.Buff && skill.Power > 0) ||
+                skill.SkillType == Constants.SkillTypes.Break)
+            {
+                StartCoroutine(CastSkill(skill, player));
+                ChangeTargeting(false);
+                IsCasting = false;
+                return;
+            }
             ChangeDescription("Using " + skill.NameStr + " (choose a target)");
             ChangeTargeting(true);
             IsCasting = true;
@@ -554,6 +557,48 @@ namespace Assets.Scripts
                     yield return new WaitForSeconds(waitDuration);
                     DoHit(skill, caster, player, false, Constants.MAX_ENEMIES);
                 }
+            } 
+            else if (skill.SkillType == Constants.SkillTypes.Heal)
+            {
+                float waitDuration;
+                if (skill.TargetType == Constants.TargetTypes.All && !caster.IsPlayer)
+                {
+                    for (int i = 0; i < monsters.Length; i++)
+                    {
+                        if (monsters[i].enabled)
+                        {
+                            waitDuration = gameManager.PlayParticle(skill.SkillType, i);
+                            yield return new WaitForSeconds(waitDuration / 2);
+                            DoHeal(skill, caster, monsters[i], caster.IsPlayer, i);
+                        }
+                    }
+                } else if (skill.TargetType == Constants.TargetTypes.Single && !caster.IsPlayer)
+                {
+                    float[] temp = new float[Constants.MAX_ENEMIES];
+                    for (int i = 0; i < monsters.Length; i++)
+                    {
+                        if (monsters[i].enabled)
+                        {
+                            temp[i] = monsters[i].CurrentHealth;
+                        } else
+                        {
+                            temp[i] = Mathf.Infinity;
+                        }
+                    }
+                    int pos = Array.IndexOf(temp, temp.Min());
+                    waitDuration = gameManager.PlayParticle(skill.SkillType, pos);
+                    yield return new WaitForSeconds(waitDuration);
+                    DoHeal(skill, caster, monsters[pos], caster.IsPlayer, pos);
+                } else
+                {
+                    waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
+                    yield return new WaitForSeconds(waitDuration);
+                    DoHeal(skill, caster, caster, true, Constants.MAX_ENEMIES);
+                }
+            } 
+            else
+            {
+                log.Add("WIP skill");
             }
             ClearDescription();
             if (Turn != Turns.EndGame)
@@ -611,6 +656,25 @@ namespace Assets.Scripts
             monster.CheckedType[(int)type-1] = true;
         }
 
+        private void DoHeal(SkillStats skill, Unit caster, Unit target, bool isPlayer, int pos)
+        {
+            int heal = Damage.Heal(skill, caster.Stats);
+            target.ChangeHealth(heal);
+            StartCoroutine(DisplayText(pos, "+" + heal.ToString(), false, false, false));
+            if (isPlayer)
+            {
+                log.Add("You healed for " + heal);
+            } else
+            {
+                log.Add(caster.NameStr + " healed " + target.NameStr + " for " + heal);
+            }
+            if (!isPlayer)
+            {
+                monsterDisplay[pos].UpdateFill(monsters[pos]);
+            }
+            UpdateGlobes();
+        }
+
         private void DoHit(SkillStats skill, Unit caster, Unit target, bool isPlayer, int pos)
         {
             Damage.DamagePacket hit;
@@ -643,6 +707,13 @@ namespace Assets.Scripts
             {
                 ShowOneMore();
                 caster.OneMore = true;
+                if (isPlayer)
+                {
+                    log.Add("You knocked " + target.NameStr + " down");
+                } else
+                {
+                    log.Add(caster.NameStr + " knocks you down");
+                }
             }
             target.TakeHit(hit);
             if (isPlayer)

@@ -116,7 +116,7 @@ namespace Assets.Scripts
             {
                 int count = grp.Count();
                 Modifier mod = modifiers[grp.Key];
-                mod.RealValue = mod.Value * level * count;
+                mod.RealValue = mod.Value * (level + Constants.AFFIX_BASE_VALUE) * count;
                 combined.Add(mod);
             }
             return combined;

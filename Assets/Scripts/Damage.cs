@@ -55,6 +55,13 @@ namespace Assets.Scripts
             return false;
         }
 
+        internal static int Heal(SkillStats skill, UnitStats caster)
+        {
+            float power = caster.MagicPower;
+            power *= (float)skill.Power / 100;
+            return (int)power;
+        }
+
         internal static DamagePacket Hit(SkillStats skill, UnitStats attacker, UnitStats defender)
         {
             //Check evasion
