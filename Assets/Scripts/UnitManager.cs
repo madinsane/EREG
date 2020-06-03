@@ -595,7 +595,30 @@ namespace Assets.Scripts
                     yield return new WaitForSeconds(waitDuration);
                     DoHeal(skill, caster, caster, true, Constants.MAX_ENEMIES);
                 }
-            } 
+            } else if (skill.SkillType == Constants.SkillTypes.Break)
+            {
+                float waitDuration;
+                if (!caster.IsPlayer)
+                {
+                    waitDuration = gameManager.PlayParticle(skill.SkillType, Array.IndexOf(monsters, caster));
+                    yield return new WaitForSeconds(waitDuration);
+                } else
+                {
+                    waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
+                    yield return new WaitForSeconds(waitDuration);
+                }
+                if (caster.GetStatus() == skill.StatusType)
+                {
+                    caster.RemoveStatus();
+                    log.Add("You broke free from your status affliction");
+                } else
+                {
+                    log.Add("You tried to break, but you weren't afflicted by that status");
+                }
+            } else if (skill.SkillType == Constants.SkillTypes.Status)
+            {
+
+            }
             else
             {
                 log.Add("WIP skill");
