@@ -88,16 +88,16 @@ Id	Name	NameStr	Description	SpriteName	RLvl	Cost	CostType	SkillType	TargetType	D
 86	megido	Megido	Deal medium Almighty damage to all opponents\nDamage cannot be Resisted	battlesphere	20	150	1	1	1	0	150	100	100	100	0	0	100	0	1
 87	megidola	Megidola	Deal heavy Almighty damage to all opponents\nDamage cannot be Resisted	battlesphere	30	200	1	1	1	0	225	100	100	100	0	0	100	0	1
 88	megidolaon	Megidolaon	Deal severe Almighty damage to all opponents\nDamage cannot be Resisted	battlesphere	40	250	1	1	1	0	300	100	100	100	0	0	100	0	1
-89	haste	Haste	Grants Haste to one target\nHaste increases Speed granting more frequent turns	haste_new	0	80	1	13	0	0	100	0	0	0	0	0	0	4	1
-90	haste_aura	Haste Aura	Grants Haste to all allies\nHaste increases Speed granting more frequent turns	haste_new	20	120	1	13	1	0	100	0	0	0	0	0	0	4	1
+89	haste	Haste	Grants Haste to one target\nHaste increases Speed granting more frequent turns	haste_new	0	80	1	13	0	0	-100	0	0	0	0	0	0	4	1
+90	haste_aura	Haste Aura	Grants Haste to all allies\nHaste increases Speed granting more frequent turns	haste_new	20	120	1	13	1	0	-100	0	0	0	0	0	0	4	1
 91	defiance	Defiance	Grants Defiance to one target\nDefiance increases Defense reducing damage taken	condensation_shield_new	0	80	1	13	0	0	100	0	0	0	0	0	0	2	1
 92	defiance_aura	Defiance Aura	Grants Defiance to all allies\nDefiance increases Defense reducing damage taken	condensation_shield_new	20	120	1	13	1	0	100	0	0	0	0	0	0	2	1
 93	might	Might	Grants Might to one target\nMight increases Power increasing damage dealt	infusion	0	80	1	13	0	0	100	0	0	0	0	0	0	1	1
 94	might_aura	Might Aura	Grants Might to all allies\nMight increases Power increasing damage dealt	infusion	20	120	1	13	1	0	100	0	0	0	0	0	0	1	1
 95	evasion	Evasion	Grants Evasion to one target\nEvasion increases Accuracy increasing Hit chance and Dodge decreasing chance to be Hit	phase_shift_new	0	80	1	13	0	0	100	0	0	0	0	0	0	3	1
 96	evasion_aura	Evasion Aura	Grants Evasion to all allies\nEvasion increases Accuracy increasing Hit chance and Dodge decreasing chance to be Hit	phase_shift_new	20	120	1	13	1	0	100	0	0	0	0	0	0	3	1
-97	cripple	Cripple	Inflict Cripple on one target\nCripple decreases Speed granting less frequent turns	slow_new	0	80	1	13	0	0	-100	0	0	0	0	0	0	4	1
-98	mass_cripple	Mass Cripple	Inflict Cripple on all opponents\nCripple decreases Speed granting less frequent turns	slow_new	20	120	1	13	1	0	-100	0	0	0	0	0	0	4	1
+97	cripple	Cripple	Inflict Cripple on one target\nCripple decreases Speed granting less frequent turns	slow_new	0	80	1	13	0	0	100	0	0	0	0	0	0	4	1
+98	mass_cripple	Mass Cripple	Inflict Cripple on all opponents\nCripple decreases Speed granting less frequent turns	slow_new	20	120	1	13	1	0	100	0	0	0	0	0	0	4	1
 99	vulnerability	Vulnerability	Inflict Vulnerability on one target\nVulnerability decreases Defense increasing damage taken	shatter_new	0	80	1	13	0	0	-100	0	0	0	0	0	0	2	1
 100	mass_vulnerability	Mass Vulnerability	Inflict Vulnerability on all opponents\nVulnerability decreases Defense increasing damage taken	shatter_new	20	120	1	13	1	0	-100	0	0	0	0	0	0	2	1
 101	weakness	Weakness	Inflict Weakness on one target\nWeakness decreases Power reducing damage dealt	warp_weapon_new	0	80	1	13	0	0	-100	0	0	0	0	0	0	1	1
@@ -112,8 +112,8 @@ Id	Name	NameStr	Description	SpriteName	RLvl	Cost	CostType	SkillType	TargetType	D
 110	mass_frenzy	Mass Frenzy	Inflict Berserk on all opponents	berserker_rage_new	20	150	1	15	1	0	100	100	0	0	8	50	100	0	1
 111	confusion	Confusion	Inflict Confusion on one target	confuse_new	0	100	1	15	0	0	100	100	0	0	9	50	100	0	1
 112	mass_confusion	Mass Confusion	Inflict Confusion on all opponents	confuse_new	20	150	1	15	1	0	100	100	0	0	9	50	100	0	1
-113	conversion	Conversion	Brainwash one target	enslavement_new	10	150	1	15	0	0	100	100	0	0	10	50	100	0	1
-114	mass_conversion	Mass Conversion	Brainwash all opponents	enslavement_new	30	225	1	15	1	0	100	100	0	0	10	50	100	0	1
+113	conversion	Conversion	Brainwash one target	enslavement_new	10	150	1	18	0	0	100	100	0	0	10	50	100	0	1
+114	mass_conversion	Mass Conversion	Brainwash all opponents	enslavement_new	30	225	1	18	1	0	100	100	0	0	10	50	100	0	1
 115	terror	Terror	Inflict Fear on one target	cause_fear_new	0	100	1	15	0	0	100	100	0	0	11	50	100	0	1
 116	mass_terror	Mass Terror	Inflict Fear on all opponents	cause_fear_new	20	150	1	15	1	0	100	100	0	0	11	50	100	0	1
 117	short_fuse	Short Fuse	Deal light Blast damage to one target\nBlast damage is delayed	lees_rapid_deconstruction_new	8	80	1	16	0	0	100	100	0	0	5	100	150	0	1

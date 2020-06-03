@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace Assets.Scripts
 {
@@ -69,6 +70,54 @@ namespace Assets.Scripts
             }
         }
 
+        public void AddBuff(Constants.BuffTypes buff, float multi, int duration = 4)
+        {
+            if (Effects == null)
+            {
+                Effects = new List<Effect>();
+            }
+            //Swap multi for speed
+            if (buff == Constants.BuffTypes.Speed)
+            {
+                if (multi < 1)
+                {
+                    multi = 1;
+                } else
+                {
+                    multi = (1f/3f);
+                }
+            }
+            if (Effects.Find(x => x.BuffType == buff) != null)
+            {
+                unitManager.log.Add("Can't stack buff on " + NameStr);
+                return;
+            }
+            Effects.Add(new Effect(Constants.EffectType.Buff, buff, Constants.StatusTypes.None, multi, duration));
+            switch (buff)
+            {
+                case Constants.BuffTypes.Damage:
+                    Stats.AttackPower *= (Constants.BUFF_MULTIPLIER * multi);
+                    Stats.MagicPower *= (Constants.BUFF_MULTIPLIER * multi);
+                    break;
+                case Constants.BuffTypes.Defense:
+                    Stats.AttackDefense *= (Constants.BUFF_MULTIPLIER * multi);
+                    Stats.MagicDefense *= (Constants.BUFF_MULTIPLIER * multi);
+                    break;
+                case Constants.BuffTypes.Evasion:
+                    Stats.Accuracy *= (Constants.BUFF_MULTIPLIER * multi);
+                    Stats.Evasion *= (Constants.BUFF_MULTIPLIER * multi);
+                    break;
+                case Constants.BuffTypes.Speed:
+                    Stats.Speed = (int)(Stats.Speed * Constants.BUFF_MULTIPLIER * multi);
+                    break;
+            }
+            UpdateColor();
+        }
+
+        public virtual void UpdateColor()
+        {
+
+        }
 
         public Constants.StatusTypes GetStatus()
         {
@@ -168,7 +217,7 @@ namespace Assets.Scripts
             }
         }
 
-        public virtual void ApplyDuration()
+        public void ApplyDuration()
         {
             if (Effects == null)
             {
@@ -195,9 +244,51 @@ namespace Assets.Scripts
                     unitManager.log.Add("Confuse wears off " + NameStr);
                 }
             }
+            List<Effect> buffs = GetBuffs();
+            if (buffs != null)
+            {
+                if (buffs.Count != 0)
+                {
+                    foreach (Effect buff in buffs)
+                    {
+                        if (buff.Duration <= 0)
+                        {
+                            switch (buff.BuffType)
+                            {
+                                case Constants.BuffTypes.Damage:
+                                    Stats.AttackPower /= (Constants.BUFF_MULTIPLIER * buff.Power);
+                                    Stats.MagicPower /= (Constants.BUFF_MULTIPLIER * buff.Power);
+                                    unitManager.log.Add("Damage buff wears off " + NameStr);
+                                    break;
+                                case Constants.BuffTypes.Defense:
+                                    Stats.AttackDefense /= (Constants.BUFF_MULTIPLIER * buff.Power);
+                                    Stats.MagicDefense /= (Constants.BUFF_MULTIPLIER * buff.Power);
+                                    unitManager.log.Add("Defense buff wears off " + NameStr);
+                                    break;
+                                case Constants.BuffTypes.Evasion:
+                                    Stats.Accuracy /= (Constants.BUFF_MULTIPLIER * buff.Power);
+                                    Stats.Evasion /= (Constants.BUFF_MULTIPLIER * buff.Power);
+                                    unitManager.log.Add("Evasion buff wears off " + NameStr);
+                                    break;
+                                case Constants.BuffTypes.Speed:
+                                    Stats.Speed = (int)(Stats.Speed / (Constants.BUFF_MULTIPLIER * buff.Power));
+                                    unitManager.log.Add("Speed buff wears off " + NameStr);
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
             Effects.RemoveAll(x => x.Duration <= 0);
             Constants.StatusTypes status = GetStatus();
             Stats.Status = status;
+            UpdateColor();
+        }
+
+        private List<Effect> GetBuffs()
+        {
+            List<Effect> buffs = Effects.FindAll(x => x.Type == Constants.EffectType.Buff);
+            return buffs;
         }
 
         public void ApplyBurn()

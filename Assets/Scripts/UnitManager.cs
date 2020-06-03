@@ -89,7 +89,9 @@ namespace Assets.Scripts
                     GetSkill(17),
                     GetSkill(5),
                     GetSkill(65),
-                    GetSkill(117)
+                    GetSkill(121),
+                    GetSkill(89),
+                    GetSkill(97)
                 };
             }
             player.ChangeUnit(LoadStats(0), baseSkills, "You");
@@ -805,6 +807,81 @@ namespace Assets.Scripts
                     yield return new WaitForSeconds(waitDuration);
                     DoStatus(skill, caster, player, false, Constants.MAX_ENEMIES);
                 }
+            } else if (skill.SkillType == Constants.SkillTypes.Buff && skill.Power >= 0)
+            {
+                //Buff
+                float waitDuration;
+                if (skill.TargetType == Constants.TargetTypes.All && !caster.IsPlayer)
+                {
+                    for (int i = 0; i < monsters.Length; i++)
+                    {
+                        if (monsters[i].enabled)
+                        {
+                            waitDuration = gameManager.PlayParticle(skill.SkillType, i);
+                            yield return new WaitForSeconds(waitDuration / 2);
+                            DoBuff(skill, caster, monsters[i], caster.IsPlayer, i);
+                        }
+                    }
+                }
+                else if (skill.TargetType == Constants.TargetTypes.Single && !caster.IsPlayer)
+                {
+                    float[] temp = new float[Constants.MAX_ENEMIES];
+                    for (int i = 0; i < monsters.Length; i++)
+                    {
+                        if (monsters[i].enabled)
+                        {
+                            temp[i] = monsters[i].CurrentHealth;
+                        }
+                        else
+                        {
+                            temp[i] = Mathf.Infinity;
+                        }
+                    }
+                    int pos = Array.IndexOf(temp, temp.Min());
+                    waitDuration = gameManager.PlayParticle(skill.SkillType, pos);
+                    yield return new WaitForSeconds(waitDuration);
+                    DoBuff(skill, caster, monsters[pos], caster.IsPlayer, pos);
+                }
+                else
+                {
+                    waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
+                    yield return new WaitForSeconds(waitDuration);
+                    DoBuff(skill, caster, caster, true, Constants.MAX_ENEMIES);
+                }
+            } else if (skill.SkillType == Constants.SkillTypes.Buff && skill.Power <= 0)
+            {
+                //Debuff
+                float waitDuration;
+                //Get Targets
+                if (skill.TargetType == Constants.TargetTypes.All && caster.IsPlayer)
+                {
+                    for (int i = 0; i < monsters.Length; i++)
+                    {
+                        if (monsters[i].enabled)
+                        {
+                            waitDuration = gameManager.PlayParticle(skill.SkillType, i);
+                            yield return new WaitForSeconds(waitDuration / 2);
+                            DoBuff(skill, caster, monsters[i], caster.IsPlayer, i);
+                        }
+                    }
+                }
+                else if (skill.TargetType == Constants.TargetTypes.Single && caster.IsPlayer)
+                {
+                    int targetPos = GetFirstTargetPos();
+                    if (targetPos != -1)
+                    {
+                        waitDuration = gameManager.PlayParticle(skill.SkillType, targetPos);
+                        Monster target = GetFirstTarget();
+                        yield return new WaitForSeconds(waitDuration);
+                        DoBuff(skill, caster, target, caster.IsPlayer, targetPos);
+                    }
+                }
+                else if (!caster.IsPlayer)
+                {
+                    waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
+                    yield return new WaitForSeconds(waitDuration);
+                    DoBuff(skill, caster, player, false, Constants.MAX_ENEMIES);
+                }
             }
             else
             {
@@ -843,6 +920,28 @@ namespace Assets.Scripts
                 ChangeDescription("You are Dead");
                 yield return new WaitForSeconds(5f);
                 SceneManager.LoadScene(0);
+            }
+        }
+
+        private void DoBuff(SkillStats skill, Unit caster, Unit target, bool isPlayer, int pos)
+        {
+            if (skill.Power >= 0)
+            {
+                target.AddBuff(skill.BuffType, 1);
+                StartCoroutine(DisplayText(pos, "Buff", false, false, false));
+                if (isPlayer)
+                {
+                    log.Add("You received a buff");
+                }
+                else
+                {
+                    log.Add(caster.NameStr + " buffed " + target.NameStr);
+                }
+            } else
+            {
+                target.AddBuff(skill.BuffType, 0.5f);
+                StartCoroutine(DisplayText(pos, "Debuff", false, false, false));
+                log.Add(caster.NameStr + " debuffed " + target.NameStr);
             }
         }
 

@@ -74,36 +74,8 @@ namespace Assets.Scripts
             ColorChange();
         }
 
-        public override void ApplyDuration()
+        public override void UpdateColor()
         {
-            if (Effects == null)
-            {
-                return;
-            }
-            foreach (Effect effect in Effects)
-            {
-                effect.Duration--;
-            }
-            Constants.StatusTypes type = GetStatus();
-            if (type == Constants.StatusTypes.Berserk || type == Constants.StatusTypes.Confuse)
-            {
-                if (type == Constants.StatusTypes.Berserk)
-                {
-                    Stats.AttackDefense *= Constants.BERSERK_MODIFIER;
-                    Stats.AttackPower *= Constants.BERSERK_MODIFIER;
-                    Stats.MagicDefense *= Constants.BERSERK_MODIFIER;
-                    unitManager.log.Add("Berserk wears off " + NameStr);
-                }
-                else
-                {
-                    Stats.Accuracy *= Constants.CONFUSE_MODIFIER;
-                    Stats.Evasion *= Constants.CONFUSE_MODIFIER;
-                    unitManager.log.Add("Confuse wears off " + NameStr);
-                }
-            }
-            Effects.RemoveAll(x => x.Duration <= 0);
-            Constants.StatusTypes status = GetStatus();
-            Stats.Status = status;
             ColorChange();
         }
 

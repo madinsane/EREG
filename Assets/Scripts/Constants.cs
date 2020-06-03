@@ -34,6 +34,7 @@
         public const float BERSERK_MODIFIER = 2f;
         public const float CONFUSE_MODIFIER = 3f;
         public const float GUARD_MODIFIER = 2f;
+        public const float BUFF_MULTIPLIER = 1.5f;
 
         public const string DISABLED_GUI_BACK = "disabled-base";
         public const string ENABLED_GUI_BACK = "enabled-base";

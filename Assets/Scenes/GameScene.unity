@@ -3732,6 +3732,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 2588351718802958870, guid: 285f9ab258a33544bb4272ff4a50b3f8, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2588351719726227237, guid: 285f9ab258a33544bb4272ff4a50b3f8, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4110,6 +4114,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 119260, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 658759593, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
       propertyPath: m_Camera
       value: 
@@ -4118,6 +4126,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 955805782, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172380262, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1245546014, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
       propertyPath: m_Camera
       value: 
@@ -4126,6 +4142,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1662272813, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713149020, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1780813431, guid: f4d87eca511a2eb4dbbaff92bdc51b01, type: 3}
       propertyPath: m_Camera
       value: 

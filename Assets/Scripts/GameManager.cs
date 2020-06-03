@@ -89,6 +89,10 @@ namespace Assets.Scripts
         {
             unitManager.ClearMonsters();
             Level++;
+            if (Level > 1)
+            {
+                unitManager.player.ClearEffects();
+            }
             levelText.text = "Level: " + Level;
             log.Add("Advanced to Level " + Level);
             if (Level % Constants.BACKGROUND_CHANGE_LVLS == 0)
