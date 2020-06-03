@@ -47,6 +47,66 @@ namespace Assets.Scripts
             }
         }
 
+        public override void AddStatus(Constants.StatusTypes type, int statusPower, int duration = 2)
+        {
+            if (Effects == null)
+            {
+                Effects = new List<Effect>();
+            }
+            RemoveStatus();
+            Effects.Add(new Effect(Constants.EffectType.Status, Constants.BuffTypes.None, type, statusPower, duration));
+            if (type == Constants.StatusTypes.Berserk || type == Constants.StatusTypes.Confuse)
+            {
+                if (type == Constants.StatusTypes.Berserk)
+                {
+                    Stats.AttackDefense /= Constants.BERSERK_MODIFIER;
+                    Stats.AttackPower /= Constants.BERSERK_MODIFIER;
+                    Stats.MagicDefense /= Constants.BERSERK_MODIFIER;
+                    unitManager.log.Add(NameStr + " Berserks");
+                }
+                else
+                {
+                    Stats.Accuracy /= Constants.CONFUSE_MODIFIER;
+                    Stats.Evasion /= Constants.CONFUSE_MODIFIER;
+                    unitManager.log.Add(NameStr + " is Confused");
+                }
+            }
+            ColorChange();
+        }
+
+        public override void ApplyDuration()
+        {
+            if (Effects == null)
+            {
+                return;
+            }
+            foreach (Effect effect in Effects)
+            {
+                effect.Duration--;
+            }
+            Constants.StatusTypes type = GetStatus();
+            if (type == Constants.StatusTypes.Berserk || type == Constants.StatusTypes.Confuse)
+            {
+                if (type == Constants.StatusTypes.Berserk)
+                {
+                    Stats.AttackDefense *= Constants.BERSERK_MODIFIER;
+                    Stats.AttackPower *= Constants.BERSERK_MODIFIER;
+                    Stats.MagicDefense *= Constants.BERSERK_MODIFIER;
+                    unitManager.log.Add("Berserk wears off " + NameStr);
+                }
+                else
+                {
+                    Stats.Accuracy *= Constants.CONFUSE_MODIFIER;
+                    Stats.Evasion *= Constants.CONFUSE_MODIFIER;
+                    unitManager.log.Add("Confuse wears off " + NameStr);
+                }
+            }
+            Effects.RemoveAll(x => x.Duration <= 0);
+            Constants.StatusTypes status = GetStatus();
+            Stats.Status = status;
+            ColorChange();
+        }
+
         public override void TakeHit(Damage.DamagePacket hit)
         {
             if (hit.hit)
@@ -57,7 +117,8 @@ namespace Assets.Scripts
                 }
                 if (hit.status != Constants.StatusTypes.None)
                 {
-                    AddStatus(hit.status, hit.statusPower);
+                    AddStatus(hit.status, hit.statusPower, hit.statusDuration);
+                    Stats.Status = hit.status;
                 }
                 if (hit.removeStatus)
                 {

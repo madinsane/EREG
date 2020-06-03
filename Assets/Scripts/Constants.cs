@@ -29,6 +29,11 @@
         public const int MAX_SKILLS = 16;
         public const int BACKGROUND_CHANGE_LVLS = 10;
         public const int AFFIX_BASE_VALUE = 5;
+        public const int FEAR_PLAYER_COST = 100;
+        public const float CURSE_COST = 5f;
+        public const float BERSERK_MODIFIER = 2f;
+        public const float CONFUSE_MODIFIER = 3f;
+        public const float GUARD_MODIFIER = 2f;
 
         public const string DISABLED_GUI_BACK = "disabled-base";
         public const string ENABLED_GUI_BACK = "enabled-base";

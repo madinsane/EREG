@@ -41,7 +41,7 @@ namespace Assets.Scripts
 
         void Start()
         {
-            StartGame();
+            //StartGame();
         }
 
         private void Awake()

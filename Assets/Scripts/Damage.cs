@@ -19,8 +19,9 @@ namespace Assets.Scripts
             public Constants.StatusTypes status;
             public Constants.StatusTypes returnStatus;
             public bool isCrit;
+            public int statusDuration;
 
-            public DamagePacket(bool hit, int power = 0, int statusPower = 0, bool isWeak = false, bool isTechnical = false, bool removeStatus = false, Constants.StatusTypes status = Constants.StatusTypes.None, Constants.StatusTypes returnStatus = Constants.StatusTypes.None, bool isCrit = false) : this()
+            public DamagePacket(bool hit, int power = 0, int statusPower = 0, bool isWeak = false, bool isTechnical = false, bool removeStatus = false, Constants.StatusTypes status = Constants.StatusTypes.None, Constants.StatusTypes returnStatus = Constants.StatusTypes.None, bool isCrit = false, int statusDuration = 2) : this()
             {
                 this.hit = hit;
                 damage = power;
@@ -31,6 +32,7 @@ namespace Assets.Scripts
                 this.status = status;
                 this.returnStatus = returnStatus;
                 this.isCrit = isCrit;
+                this.statusDuration = statusDuration;
             }
         }
 
@@ -62,6 +64,51 @@ namespace Assets.Scripts
             return (int)power;
         }
 
+        internal static KeyValuePair<bool, int> Status(SkillStats skill, UnitStats attacker, UnitStats defender)
+        {
+            bool status = false;
+            if (skill.StatusType == Constants.StatusTypes.Blast)
+            {
+                float power = attacker.MagicPower;
+                power *= (float)attacker.StatusPower / 100;
+                power *= (float)skill.StatusPower / 100;
+                return new KeyValuePair<bool, int>(true, (int)power);
+            }
+            //Check evasion
+            float accuracy = skill.Accuracy * ((float)attacker.Accuracy / 100);
+            //Always hit if evasion <= 0
+            if (defender.Evasion > 0)
+            {
+                accuracy /= (float)defender.Evasion / 100;
+                int evasionRoll = RandomInt(1, 100);
+                if (accuracy < evasionRoll)
+                {
+                    return new KeyValuePair<bool, int> (false, 0);
+                }
+            }
+            //Check Status
+            float statusChance = skill.StatusChance;
+            int statusDuration = 2;
+            if (statusChance > 0)
+            {
+                bool statusAttempt;
+                if (skill.StatusType >= Constants.StatusTypes.Sleep)
+                {
+                    statusAttempt = TryChance(statusChance, attacker.MentalStatusChance, defender.IncMentalStatus);
+                    statusDuration = 4;
+                }
+                else
+                {
+                    statusAttempt = TryChance(statusChance, attacker.TypeStatusChance, defender.IncTypeStatus);
+                }
+                if (statusAttempt)
+                {
+                    status = true;
+                }
+            }
+            return new KeyValuePair<bool, int>(status, statusDuration);
+        }
+
         internal static DamagePacket Hit(SkillStats skill, UnitStats attacker, UnitStats defender)
         {
             //Check evasion
@@ -81,6 +128,7 @@ namespace Assets.Scripts
             float power = 0;
             float defense = 0;
             float resist = 0;
+            int statusDuration = 2;
             switch (skill.DamageType)
             {
                 case Constants.DamageTypes.Physical:
@@ -111,6 +159,7 @@ namespace Assets.Scripts
                     power = attacker.MagicPower;
                     defense = defender.MagicDefense;
                     resist = defender.ResistFire;
+                    statusDuration = 4;
                     break;
                 case Constants.DamageTypes.Wind:
                     power = attacker.MagicPower;
@@ -136,6 +185,7 @@ namespace Assets.Scripts
                     power = attacker.MagicPower;
                     defense = defender.MagicDefense;
                     resist = defender.ResistDark;
+                    statusDuration = 4;
                     break;
             }
             //Check Weakness
@@ -273,7 +323,7 @@ namespace Assets.Scripts
                 power /= defense / 100;
             }
             power *= (float)skill.Power / 100;
-            DamagePacket packet = new DamagePacket(true, (int)power, (int)statusPower, isWeak, isTechnical, removeStatus, status, returnStatus, isCrit);
+            DamagePacket packet = new DamagePacket(true, (int)power, (int)statusPower, isWeak, isTechnical, removeStatus, status, returnStatus, isCrit, statusDuration);
             return packet;
         }
     }

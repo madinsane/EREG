@@ -89,7 +89,7 @@ namespace Assets.Scripts
                     GetSkill(17),
                     GetSkill(5),
                     GetSkill(65),
-                    GetSkill(25)
+                    GetSkill(117)
                 };
             }
             player.ChangeUnit(LoadStats(0), baseSkills, "You");
@@ -113,6 +113,15 @@ namespace Assets.Scripts
 
         internal void AdvanceTurn()
         {
+            if (Turn == Turns.Player)
+            {
+                DoBlast(Constants.MAX_ENEMIES, player);
+            }
+            else
+            {
+                DoBlast((int)Turn - 1, monsters[(int)Turn - 1]);
+            }
+            HideOneMore();
             turnCounters.Clear();
             turnCounters.Add(new KeyValuePair<Turns, int>(Turns.Player, player.TurnCounter));
             for (int i=0; i<monsters.Length; i++)
@@ -124,14 +133,157 @@ namespace Assets.Scripts
             }
             turnCounters.Sort((x, y) => x.Value.CompareTo(y.Value));
             Turn = turnCounters.First().Key;
-            Debug.Log(Turn);
             if (Turn == Turns.Player)
             {
+                
+                log.Add("Your Turn");
+                player.ApplyDuration();
                 player.TurnCounter += player.Stats.Speed;
+                DoStatus(Constants.MAX_ENEMIES, player);
             } else
             {
+                log.Add("Enemy Turn");
+                monsters[(int)Turn - 1].ApplyDuration();
                 monsters[(int)Turn - 1].TurnCounter += monsters[(int)Turn - 1].Stats.Speed;
-                MonsterCast((int)Turn - 1);
+                DoStatus((int)Turn - 1, monsters[(int)Turn - 1]);
+            }
+        }
+
+        private void DoBlast(int pos, Unit unit)
+        {
+            if (unit.GetStatus() == Constants.StatusTypes.Blast)
+            {
+                int damage = unit.ApplyBlast();
+                if (pos == Constants.MAX_ENEMIES)
+                {
+                    log.Add("Blast hits you for " + damage);
+                    UpdateGlobes();
+                } else
+                {
+                    log.Add("Blast hits " + monsters[pos].NameStr + " for " + damage);
+                    monsterDisplay[pos].UpdateFill(monsters[pos]);
+                }
+                unit.RemoveStatus();
+            }
+            if (!CheckAlive())
+            {
+                HideAllHealthBars();
+                rewards.GenerateRewards();
+            }
+        }
+
+        private void DoStatus(int pos, Unit unit)
+        {
+            Constants.StatusTypes status = unit.GetStatus();
+            switch (status)
+            {
+                case Constants.StatusTypes.None:
+                    if (!unit.IsPlayer)
+                    {
+                        MonsterCast((int)Turn - 1);
+                    }
+                    break;
+                case Constants.StatusTypes.Blast:
+                    if (!unit.IsPlayer)
+                    {
+                        StartCoroutine(DisplayText(pos, "Detonating"));
+                        MonsterCast((int)Turn - 1);
+                    }
+                    break;
+                case Constants.StatusTypes.Shock:
+                    StartCoroutine(DisplayText(pos, "Shocked"));
+                    if (unit.IsPlayer)
+                    {
+                        log.Add("You are shocked");
+                    } else
+                    {
+                        log.Add(unit.NameStr + " is shocked");
+                    }
+                    AdvanceTurn();
+                    break;
+                case Constants.StatusTypes.Freeze:
+                    StartCoroutine(DisplayText(pos, "Frozen"));
+                    if (unit.IsPlayer)
+                    {
+                        log.Add("You are frozen");
+                    }
+                    else
+                    {
+                        log.Add(unit.NameStr + " is frozen");
+                    }
+                    AdvanceTurn();
+                    break;
+                case Constants.StatusTypes.Burn:
+                    StartCoroutine(DisplayText(pos, "Burning\nTaking damage"));
+                    unit.ApplyBurn();
+                    if (unit.IsPlayer)
+                    {
+                        log.Add("You are burning");
+                        UpdateGlobes();
+                    }
+                    else
+                    {
+                        log.Add(unit.NameStr + " is burning");
+                        monsterDisplay[pos].UpdateFill(monsters[pos]);
+                        MonsterCast((int)Turn - 1);
+                    }
+                    break;
+                case Constants.StatusTypes.Curse:
+                    StartCoroutine(DisplayText(pos, "Cursed\nLosing health"));
+                    unit.ApplyCurse(-1);
+                    if (unit.IsPlayer)
+                    {
+                        log.Add("You are cursed");
+                        UpdateGlobes();
+                    }
+                    else
+                    {
+                        log.Add(unit.NameStr + " is cursed");
+                        monsterDisplay[pos].UpdateFill(monsters[pos]);
+                        MonsterCast((int)Turn - 1);
+                    }
+                    break;
+                case Constants.StatusTypes.Sleep:
+                    StartCoroutine(DisplayText(pos, "Sleeping\nGaining health"));
+                    unit.ApplyCurse(1);
+                    if (unit.IsPlayer)
+                    {
+                        log.Add("You are sleeping");
+                        UpdateGlobes();
+                    }
+                    else
+                    {
+                        log.Add(unit.NameStr + " is sleeping");
+                        monsterDisplay[pos].UpdateFill(monsters[pos]);
+                    }
+                    AdvanceTurn();
+                    break;
+                case Constants.StatusTypes.Brainwash:
+                    StartCoroutine(DisplayText(pos, "Brainwashed"));
+                    if (unit.IsPlayer)
+                    {
+                        log.Add("You are brainwashed");
+                    }
+                    else
+                    {
+                        log.Add(unit.NameStr + " is brainwashed");
+                    }
+                    AdvanceTurn();
+                    break;
+                case Constants.StatusTypes.Fear:
+                    StartCoroutine(DisplayText(pos, "Terrified\nLosing willpower"));
+                    if (unit.IsPlayer)
+                    {
+                        log.Add("You are terrified");
+                        unit.ApplyCost(100, Constants.CostTypes.Spell);
+                        UpdateGlobes();
+                    }
+                    else
+                    {
+                        log.Add(unit.NameStr + " is terrfied");
+                    }
+                    AdvanceTurn();
+                    break;
             }
         }
 
@@ -615,9 +767,39 @@ namespace Assets.Scripts
                 {
                     log.Add("You tried to break, but you weren't afflicted by that status");
                 }
-            } else if (skill.SkillType == Constants.SkillTypes.Status)
+            } else if (skill.SkillType == Constants.SkillTypes.Status || skill.SkillType == Constants.SkillTypes.Blast)
             {
-
+                float waitDuration;
+                //Get Targets
+                if (skill.TargetType == Constants.TargetTypes.All && caster.IsPlayer)
+                {
+                    for (int i = 0; i < monsters.Length; i++)
+                    {
+                        if (monsters[i].enabled)
+                        {
+                            waitDuration = gameManager.PlayParticle(skill.SkillType, i);
+                            yield return new WaitForSeconds(waitDuration / 2);
+                            DoStatus(skill, caster, monsters[i], caster.IsPlayer, i);
+                        }
+                    }
+                }
+                else if (skill.TargetType == Constants.TargetTypes.Single && caster.IsPlayer)
+                {
+                    int targetPos = GetFirstTargetPos();
+                    if (targetPos != -1)
+                    {
+                        waitDuration = gameManager.PlayParticle(skill.SkillType, targetPos);
+                        Monster target = GetFirstTarget();
+                        yield return new WaitForSeconds(waitDuration);
+                        DoStatus(skill, caster, target, caster.IsPlayer, targetPos);
+                    }
+                }
+                else if (!caster.IsPlayer)
+                {
+                    waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
+                    yield return new WaitForSeconds(waitDuration);
+                    DoStatus(skill, caster, player, false, Constants.MAX_ENEMIES);
+                }
             }
             else
             {
@@ -636,7 +818,7 @@ namespace Assets.Scripts
                     if (caster.OneMore)
                     {
                         caster.OneMore = false;
-                        StartCoroutine(HideOneMoreDelay());
+                        HideOneMore();
                         if (!caster.IsPlayer)
                         {
                             MonsterCast((int)Turn - 1);
@@ -656,6 +838,41 @@ namespace Assets.Scripts
                 ChangeDescription("You are Dead");
                 yield return new WaitForSeconds(5f);
                 SceneManager.LoadScene(0);
+            }
+        }
+
+        private void DoStatus(SkillStats skill, Unit caster, Unit target, bool isPlayer, int pos)
+        {
+            KeyValuePair<bool, int> hit = Damage.Status(skill, caster.Stats, target.Stats);
+            if (hit.Key)
+            {
+                StartCoroutine(DisplayText(pos, "Hit", false, false, false));
+                if (isPlayer)
+                {
+                    log.Add("You hit " + target.NameStr + " with " + skill.NameStr);
+                }
+                else
+                {
+                    log.Add(caster.NameStr + " hit you with " + skill.NameStr);
+                }
+                if (skill.StatusType == Constants.StatusTypes.Blast)
+                {
+                    target.AddStatus(skill.StatusType, hit.Value, 1);
+                }
+                target.AddStatus(skill.StatusType, skill.StatusPower, hit.Value);
+            }
+            else
+            {
+                if (isPlayer)
+                {
+                    StartCoroutine(DisplayText(pos, "Miss", false, false, false));
+                    log.Add("You missed " + target.NameStr + " with " + skill.NameStr);
+                }
+                else
+                {
+                    StartCoroutine(DisplayText(pos, "Dodge", false, false, false));
+                    log.Add("You dodged " + target.NameStr + "'s " + skill.NameStr);
+                }
             }
         }
 
@@ -746,7 +963,7 @@ namespace Assets.Scripts
             UpdateGlobes();
         }
 
-        private IEnumerator DisplayText(int pos, string damage, bool isWeak, bool isTechnical, bool isCrit)
+        private IEnumerator DisplayText(int pos, string damage, bool isWeak = false, bool isTechnical = false, bool isCrit = false)
         {
             HitDisplay display;
             if (pos < Constants.MAX_ENEMIES)
