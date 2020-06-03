@@ -654,7 +654,7 @@ namespace Assets.Scripts
         {
             currentSkill = skill;
             if (skill.SkillType == Constants.SkillTypes.Heal || skill.TargetType == Constants.TargetTypes.All ||
-                (skill.SkillType == Constants.SkillTypes.Buff && skill.Power > 0) ||
+                (skill.SkillType == Constants.SkillTypes.Buff && skill.Power >= 0) ||
                 skill.SkillType == Constants.SkillTypes.Break)
             {
                 StartCoroutine(CastSkill(skill, player));
@@ -682,6 +682,13 @@ namespace Assets.Scripts
                 log.Add(caster.NameStr + " forgot how to use spells");
                 AdvanceTurn();
             }
+            //Guard
+            if (skill.SkillType == Constants.SkillTypes.Hidden && skill.BuffType == Constants.BuffTypes.Guard)
+            {
+                float waitDuration = gameManager.PlayParticle(Constants.SkillTypes.Buff, Constants.MAX_ENEMIES);
+                yield return new WaitForSeconds(waitDuration * 1f);
+                DoBuff(skill, caster, caster, true, Constants.MAX_ENEMIES);
+            } else
             //Find defender(s)
             if (skill.SkillType <= Constants.SkillTypes.Dark || skill.SkillType == Constants.SkillTypes.Hidden)
             {
@@ -713,7 +720,7 @@ namespace Assets.Scripts
                 else if (!caster.IsPlayer)
                 {
                     waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
-                    yield return new WaitForSeconds(waitDuration);
+                    yield return new WaitForSeconds(waitDuration * 1f);
                     DoHit(skill, caster, player, false, Constants.MAX_ENEMIES);
                 }
             } 
@@ -746,12 +753,12 @@ namespace Assets.Scripts
                     }
                     int pos = Array.IndexOf(temp, temp.Min());
                     waitDuration = gameManager.PlayParticle(skill.SkillType, pos);
-                    yield return new WaitForSeconds(waitDuration);
+                    yield return new WaitForSeconds(waitDuration * 1f);
                     DoHeal(skill, caster, monsters[pos], caster.IsPlayer, pos);
                 } else
                 {
                     waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
-                    yield return new WaitForSeconds(waitDuration);
+                    yield return new WaitForSeconds(waitDuration * 1f);
                     DoHeal(skill, caster, caster, true, Constants.MAX_ENEMIES);
                 }
             } else if (skill.SkillType == Constants.SkillTypes.Break)
@@ -760,11 +767,11 @@ namespace Assets.Scripts
                 if (!caster.IsPlayer)
                 {
                     waitDuration = gameManager.PlayParticle(skill.SkillType, Array.IndexOf(monsters, caster));
-                    yield return new WaitForSeconds(waitDuration);
+                    yield return new WaitForSeconds(waitDuration * 1f);
                 } else
                 {
                     waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
-                    yield return new WaitForSeconds(waitDuration);
+                    yield return new WaitForSeconds(waitDuration * 1f);
                 }
                 if (caster.GetStatus() == skill.StatusType)
                 {
@@ -797,14 +804,14 @@ namespace Assets.Scripts
                     {
                         waitDuration = gameManager.PlayParticle(skill.SkillType, targetPos);
                         Monster target = GetFirstTarget();
-                        yield return new WaitForSeconds(waitDuration);
+                        yield return new WaitForSeconds(waitDuration * 1f);
                         DoStatus(skill, caster, target, caster.IsPlayer, targetPos);
                     }
                 }
                 else if (!caster.IsPlayer)
                 {
                     waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
-                    yield return new WaitForSeconds(waitDuration);
+                    yield return new WaitForSeconds(waitDuration * 1f);
                     DoStatus(skill, caster, player, false, Constants.MAX_ENEMIES);
                 }
             } else if (skill.SkillType == Constants.SkillTypes.Buff && skill.Power >= 0)
@@ -839,13 +846,13 @@ namespace Assets.Scripts
                     }
                     int pos = Array.IndexOf(temp, temp.Min());
                     waitDuration = gameManager.PlayParticle(skill.SkillType, pos);
-                    yield return new WaitForSeconds(waitDuration);
+                    yield return new WaitForSeconds(waitDuration * 1f);
                     DoBuff(skill, caster, monsters[pos], caster.IsPlayer, pos);
                 }
                 else
                 {
                     waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
-                    yield return new WaitForSeconds(waitDuration);
+                    yield return new WaitForSeconds(waitDuration * 1f);
                     DoBuff(skill, caster, caster, true, Constants.MAX_ENEMIES);
                 }
             } else if (skill.SkillType == Constants.SkillTypes.Buff && skill.Power <= 0)
@@ -872,14 +879,14 @@ namespace Assets.Scripts
                     {
                         waitDuration = gameManager.PlayParticle(skill.SkillType, targetPos);
                         Monster target = GetFirstTarget();
-                        yield return new WaitForSeconds(waitDuration);
+                        yield return new WaitForSeconds(waitDuration * 1f);
                         DoBuff(skill, caster, target, caster.IsPlayer, targetPos);
                     }
                 }
                 else if (!caster.IsPlayer)
                 {
                     waitDuration = gameManager.PlayParticle(skill.SkillType, Constants.MAX_ENEMIES);
-                    yield return new WaitForSeconds(waitDuration);
+                    yield return new WaitForSeconds(waitDuration * 1f);
                     DoBuff(skill, caster, player, false, Constants.MAX_ENEMIES);
                 }
             }
@@ -912,6 +919,7 @@ namespace Assets.Scripts
                     else
                     {
                         HideOneMore();
+                        yield return new WaitForSeconds(1f);
                         AdvanceTurn();
                     }
                 }
@@ -927,7 +935,14 @@ namespace Assets.Scripts
         {
             if (skill.Power >= 0)
             {
-                target.AddBuff(skill.BuffType, 1);
+                if (skill.BuffType == Constants.BuffTypes.Guard)
+                {
+                    target.AddBuff(skill.BuffType, 1, 1);
+                }
+                else
+                {
+                    target.AddBuff(skill.BuffType, 1);
+                }
                 StartCoroutine(DisplayText(pos, "Buff", false, false, false));
                 if (isPlayer)
                 {

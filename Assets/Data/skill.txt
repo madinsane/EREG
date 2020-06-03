@@ -130,3 +130,4 @@ Id	Name	NameStr	Description	SpriteName	RLvl	Cost	CostType	SkillType	TargetType	D
 128	confuse_break	Confuse Break	Break out of Confuse	cure_poison_new	5	80	1	17	0	0	0	0	0	0	9	0	0	0	1
 129	brainwash_break	Brainwash Break	Break out of Brainwash	cure_poison_new	5	80	1	17	0	0	0	0	0	0	10	0	0	0	1
 130	fear_break	Fear Break	Break out of Fear	cure_poison_new	5	80	1	17	0	0	0	0	0	0	11	0	0	0	1
+131	guard	Guard	Guard		0	0	0	18	1	0	0	0	0	0	0	0	0	5	1

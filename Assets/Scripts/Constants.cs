@@ -76,7 +76,7 @@
         }
         public enum BuffTypes
         {
-            None, Damage, Defense, Evasion, Speed
+            None, Damage, Defense, Evasion, Speed, Guard
         }
         public enum ItemTypes
         {

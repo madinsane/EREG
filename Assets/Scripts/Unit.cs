@@ -110,6 +110,10 @@ namespace Assets.Scripts
                 case Constants.BuffTypes.Speed:
                     Stats.Speed = (int)(Stats.Speed * Constants.BUFF_MULTIPLIER * multi);
                     break;
+                case Constants.BuffTypes.Guard:
+                    Stats.AttackDefense *= Constants.GUARD_MODIFIER;
+                    Stats.MagicDefense *= Constants.GUARD_MODIFIER;
+                    break;
             }
             UpdateColor();
         }
@@ -273,6 +277,11 @@ namespace Assets.Scripts
                                 case Constants.BuffTypes.Speed:
                                     Stats.Speed = (int)(Stats.Speed / (Constants.BUFF_MULTIPLIER * buff.Power));
                                     unitManager.log.Add("Speed buff wears off " + NameStr);
+                                    break;
+                                case Constants.BuffTypes.Guard:
+                                    Stats.AttackDefense /= Constants.GUARD_MODIFIER;
+                                    Stats.MagicDefense /= Constants.GUARD_MODIFIER;
+                                    unitManager.log.Add("Guard buff wears off " + NameStr);
                                     break;
                             }
                         }
