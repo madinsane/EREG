@@ -112,8 +112,8 @@ Id	Name	NameStr	Description	SpriteName	RLvl	Cost	CostType	SkillType	TargetType	D
 110	mass_frenzy	Mass Frenzy	Inflict Berserk on all opponents	berserker_rage_new	20	150	1	15	1	0	100	100	0	0	8	50	100	0	1
 111	confusion	Confusion	Inflict Confusion on one target	confuse_new	0	100	1	15	0	0	100	100	0	0	9	50	100	0	1
 112	mass_confusion	Mass Confusion	Inflict Confusion on all opponents	confuse_new	20	150	1	15	1	0	100	100	0	0	9	50	100	0	1
-113	conversion	Conversion	Brainwash one target	enslavement_new	10	150	1	15	0	0	100	100	0	0	10	50	100	0	1
-114	mass_conversion	Mass Conversion	Brainwash all opponents	enslavement_new	30	225	1	15	1	0	100	100	0	0	10	50	100	0	1
+113	conversion	Conversion	Brainwash one target	enslavement_new	10	150	1	18	0	0	100	100	0	0	10	50	100	0	1
+114	mass_conversion	Mass Conversion	Brainwash all opponents	enslavement_new	30	225	1	18	1	0	100	100	0	0	10	50	100	0	1
 115	terror	Terror	Inflict Fear on one target	cause_fear_new	0	100	1	15	0	0	100	100	0	0	11	50	100	0	1
 116	mass_terror	Mass Terror	Inflict Fear on all opponents	cause_fear_new	20	150	1	15	1	0	100	100	0	0	11	50	100	0	1
 117	short_fuse	Short Fuse	Deal light Blast damage to one target\nBlast damage is delayed	lees_rapid_deconstruction_new	8	80	1	16	0	0	100	100	0	0	5	100	150	0	1

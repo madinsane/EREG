@@ -675,6 +675,11 @@ namespace Assets.Scripts
             {
                 ChangeDescription(caster.NameStr + " uses " + skill.NameStr);
             }
+            if (caster.GetStatus() == Constants.StatusTypes.Forget && skill.CostType == Constants.CostTypes.Spell)
+            {
+                log.Add(caster.NameStr + " forgot how to use spells");
+                AdvanceTurn();
+            }
             //Find defender(s)
             if (skill.SkillType <= Constants.SkillTypes.Dark || skill.SkillType == Constants.SkillTypes.Hidden)
             {
