@@ -3,6 +3,7 @@
     public static class Constants
     {
         public const string DATA_PATH = "/Data/";
+        public const string LOG_PATH = "/Logs/";
         public const string UNIT_PATH = "unit.txt";
         public const string SKILL_PATH = "skill.txt";
         public const string MONSTER_PATH = "monster.txt";

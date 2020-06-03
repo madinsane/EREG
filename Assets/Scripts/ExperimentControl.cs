@@ -8,7 +8,7 @@ namespace Assets.Scripts
 {
     public static class ExperimentControl
     {
-        static public bool active = true;
+        static public bool active = false;
         static public bool set = false;
     }
 }

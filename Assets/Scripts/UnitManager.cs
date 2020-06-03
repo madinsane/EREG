@@ -87,11 +87,8 @@ namespace Assets.Scripts
                     GetSkill(1),
                     GetSkill(9),
                     GetSkill(17),
-                    GetSkill(5),
-                    GetSkill(65),
-                    GetSkill(121),
-                    GetSkill(89),
-                    GetSkill(97)
+                    GetSkill(25),
+                    GetSkill(65)
                 };
             }
             player.ChangeUnit(LoadStats(0), baseSkills, "You");
@@ -115,6 +112,12 @@ namespace Assets.Scripts
 
         internal void AdvanceTurn()
         {
+            foreach (Monster monster in monsters)
+            {
+                monster.IsDown = false;
+                monster.UpdateColor();
+            }
+            player.IsDown = false;
             if (Turn == Turns.Player)
             {
                 DoBlast(Constants.MAX_ENEMIES, player);
@@ -179,7 +182,7 @@ namespace Assets.Scripts
             Constants.StatusTypes status = unit.GetStatus();
             switch (status)
             {
-                case Constants.StatusTypes.None:
+                default:
                     if (!unit.IsPlayer)
                     {
                         MonsterCast((int)Turn - 1);
@@ -946,17 +949,17 @@ namespace Assets.Scripts
                 StartCoroutine(DisplayText(pos, "Buff", false, false, false));
                 if (isPlayer)
                 {
-                    log.Add("You received a buff");
+                    log.Add("You received a buff of " + skill.NameStr);
                 }
                 else
                 {
-                    log.Add(caster.NameStr + " buffed " + target.NameStr);
+                    log.Add(caster.NameStr + " buffed " + target.NameStr + " with " + skill.NameStr);
                 }
             } else
             {
                 target.AddBuff(skill.BuffType, 0.5f);
                 StartCoroutine(DisplayText(pos, "Debuff", false, false, false));
-                log.Add(caster.NameStr + " debuffed " + target.NameStr);
+                log.Add(caster.NameStr + " debuffed " + target.NameStr + " with " + skill.NameStr);
             }
         }
 
@@ -1059,7 +1062,7 @@ namespace Assets.Scripts
                 } else
                 {
                     StartCoroutine(DisplayText(pos, "Dodge", hit.isWeak, hit.isTechnical, hit.isCrit));
-                    log.Add("You dodged " + target.NameStr + "'s " + skill.NameStr);
+                    log.Add("You dodged " + caster.NameStr + "'s " + skill.NameStr);
                 }
             }
             if ((hit.isCrit || hit.isWeak) && !target.IsDown)

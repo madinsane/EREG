@@ -1,4 +1,37 @@
-This is help text
-lots of very useful text
-I promise
-:)
+How to Play
+The goal of the game is to get to as high a level as possible, defeating all the monsters in a level will allow you to advance to the next level.
+As the levels increase so too will the strength of your foes.
+At the end of each level you will have the chance to choose a reward which you can use to increase your strength.
+
+Combat
+This is a turn based game, during your turn you may choose a skill or use a potion.
+Since you will rarely have opportunities to restore your resources (Health and Mana), you must spend them wisely.
+Damaging skills are used to damage the enemy, each skill has a damage type and enemies may be weak to certain damage types. Try to find their weakness, you can use Analysis to track your progress on each enemy type.
+If you hit an enemy's weakness then the enemy will take additional damage and be knocked down (yellow) granting you an extra turn (but you do not gain an extra turn if the enemy is already knocked down).
+You can also knock enemies down with Critical Strikes which are random but you can increase this chance with Gear or certain Skills.
+
+Statuses
+There are many statuses that can be used to give you an advantage in combat. If you hit an enemy with certain types that pair with a specific status then your skill will Technical which deals significantly more damage.
+Statuses:
+Shock - Prevents actions, Attacks cause Technical (and pass the status on)
+Freeze - Prevents actions, Attacks cause Technical (do not pass on the status)
+Burn - Damage over time
+Curse - Current health based damage over time
+Blast - Delayed damage, ignores defense and can't be evaded
+Sleep - Prevents actions, but restores health. Any hit causes Technical
+Forget - Prevents casting spells
+Berserk - Massively increases offensive power and dramatically reduces defensive strength
+Confuse - Greatly decreases accuracy and evasion
+Fear - Prevents actions and drains mana
+
+Skills
+This menu lets you cast more powerful skills you have learned (you can learn up to 16)
+
+Items
+This menu lets you use potions (which cost a turn to use)
+
+Stats
+This menu views your current stats
+
+Rewards
+At the end of a level you will be able to select a skill, gear piece or potion. You can only choose one, so choose wisely.
