@@ -85,7 +85,7 @@ namespace Assets.Scripts
                     GetSkill(1),
                     GetSkill(9),
                     GetSkill(17),
-                    GetSkill(17),
+                    GetSkill(5),
                     GetSkill(17),
                     GetSkill(17),
                     GetSkill(17),
@@ -518,9 +518,12 @@ namespace Assets.Scripts
                 {
                     for (int i = 0; i < monsters.Length; i++)
                     {
-                        waitDuration = gameManager.PlayParticle(skill.SkillType, i);
-                        yield return new WaitForSeconds(waitDuration);
-                        DoHit(skill, caster, monsters[i], caster.IsPlayer, i);
+                        if (monsters[i].enabled)
+                        {
+                            waitDuration = gameManager.PlayParticle(skill.SkillType, i);
+                            yield return new WaitForSeconds(waitDuration / 2);
+                            DoHit(skill, caster, monsters[i], caster.IsPlayer, i);
+                        }
                     }
                 }
                 else if (skill.TargetType == Constants.TargetTypes.Single && caster.IsPlayer)

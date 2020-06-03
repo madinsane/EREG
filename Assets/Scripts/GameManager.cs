@@ -90,7 +90,7 @@ namespace Assets.Scripts
             unitManager.ClearMonsters();
             Level++;
             levelText.text = "Level: " + Level;
-            Debug.Log(Level);
+            log.Add("Advanced to Level " + Level);
             if (Level % Constants.BACKGROUND_CHANGE_LVLS == 0)
             {
                 int background = (int)(((float)Level / Constants.BACKGROUND_CHANGE_LVLS) % 10)+1;
