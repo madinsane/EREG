@@ -1,6 +1,6 @@
 Id	Name	NameStr	Description	SpriteName	RLvl	Cost	CostType	SkillType	TargetType	DamageType	Power	Accuracy	CritChance	CritMulti	StatusType	StatusChance	StatusPower	BuffType	HitCount
 0	attack	Attack			0	0	0	18	0	1	100	100	100	100	0	0	100	0	1
-1	spark	Spark	Deal light Electric damage to one target\nChance of inflicting Shock	lightning_bolt_new	0	40	1	4	0	3	100	100	100	100	1	5	100	0	1
+1	spark	Spark	Deal light Electric damage to one target\nChance of inflicting Shock	lightning_bolt_new	0	40	1	4	0	3	100	100	100	100	1	100	100	0	1
 2	bolt	Bolt	Deal medium Electric damage to one target\nChance of inflicting Shock	lightning_bolt_new	10	60	1	4	0	3	200	100	100	100	1	5	100	0	1
 3	lightning	Lightning	Deal heavy Electric damage to one target\nChance of inflicting Shock	lightning_bolt_new	20	80	1	4	0	3	300	100	100	100	1	5	100	0	1
 4	discharge	Discharge	Deal severe Electric damage to one target\nChance of inflicting Shock	lightning_bolt_new	30	100	1	4	0	3	400	100	100	100	1	5	100	0	1
@@ -68,10 +68,10 @@ Id	Name	NameStr	Description	SpriteName	RLvl	Cost	CostType	SkillType	TargetType	D
 66	prayer	Prayer	Medium healing for one target	regeneration_new	10	30	1	12	0	0	200	100	100	100	0	0	100	0	1
 67	cleansing	Cleansing	Major healing for one target	regeneration_new	20	40	1	12	0	0	300	100	100	100	0	0	100	0	1
 68	redemption	Redemption	Dramatic healing for one target	regeneration_new	30	50	1	12	0	0	400	100	100	100	0	0	100	0	1
-69	healing circle	Healing Circle	Light healing for all allies		5	50	1	12	1	0	100	100	100	100	0	0	100	0	1
-70	blessing	Blessing	Medium healing for all allies		15	75	1	12	1	0	200	100	100	100	0	0	100	0	1
-71	consecrate	Consecrate	Major healing for all allies		25	100	1	12	1	0	300	100	100	100	0	0	100	0	1
-72	salvation	Salvation	Dramatic healing for all allies		35	125	1	12	1	0	400	100	100	100	0	0	100	0	1
+69	healing circle	Healing Circle	Light healing for all allies	regeneration_new	5	50	1	12	1	0	100	100	100	100	0	0	100	0	1
+70	blessing	Blessing	Medium healing for all allies	regeneration_new	15	75	1	12	1	0	200	100	100	100	0	0	100	0	1
+71	consecrate	Consecrate	Major healing for all allies	regeneration_new	25	100	1	12	1	0	300	100	100	100	0	0	100	0	1
+72	salvation	Salvation	Dramatic healing for all allies	regeneration_new	35	125	1	12	1	0	400	100	100	100	0	0	100	0	1
 73	bash	Bash	Deal light Physical damage to one target	sure_blade_new	0	80	0	2	0	1	200	100	100	100	0	0	100	0	1
 74	giant_slice	Giant Slice	Deal medium Physical damage to one target	sure_blade_new	10	120	0	2	0	1	400	100	100	100	0	0	100	0	1
 75	vicious_strike	Vicious Strike	Deal heavy Physical damage to one target	sure_blade_new	20	160	0	2	0	1	600	100	100	100	0	0	100	0	1

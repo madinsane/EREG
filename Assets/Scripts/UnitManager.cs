@@ -35,6 +35,7 @@ namespace Assets.Scripts
         public HitDisplay playerDisplay;
         public TextMeshProUGUI description;
         public RewardManager rewards;
+        public TextMeshProUGUI oneMoreText;
 
         public enum Turns
         {
@@ -156,6 +157,16 @@ namespace Assets.Scripts
         {
             int castChoice = Damage.RandomInt(0, monsters[pos].Skills.Count-1);
             StartCoroutine(CastSkill(monsters[pos].Skills[castChoice], monsters[pos]));
+        }
+
+        private void ShowOneMore()
+        {
+            oneMoreText.enabled = true;
+        }
+
+        private void HideOneMore()
+        {
+            oneMoreText.enabled = false;
         }
 
         internal void UpdateTarget(int direction, int counter = 0)
@@ -554,7 +565,23 @@ namespace Assets.Scripts
                     rewards.GenerateRewards();
                 } else
                 {
-                    AdvanceTurn();
+                    if (caster.OneMore)
+                    {
+                        caster.OneMore = false;
+                        StartCoroutine(HideOneMoreDelay());
+                        if (!caster.IsPlayer)
+                        {
+                            MonsterCast((int)Turn - 1);
+                        } else
+                        {
+                            ChangeDescription("Knocked one down! Take another turn");
+                        }
+                    }
+                    else
+                    {
+                        HideOneMore();
+                        AdvanceTurn();
+                    }
                 }
             } else
             {
@@ -562,6 +589,12 @@ namespace Assets.Scripts
                 yield return new WaitForSeconds(5f);
                 SceneManager.LoadScene(0);
             }
+        }
+
+        private IEnumerator HideOneMoreDelay()
+        {
+            yield return new WaitForSeconds(1f);
+            HideOneMore();
         }
 
         private void HideAllHealthBars()
@@ -605,6 +638,11 @@ namespace Assets.Scripts
                     StartCoroutine(DisplayText(pos, "Dodge", hit.isWeak, hit.isTechnical, hit.isCrit));
                     log.Add("You dodged " + target.NameStr + "'s " + skill.NameStr);
                 }
+            }
+            if ((hit.isCrit || hit.isWeak) && !target.IsDown)
+            {
+                ShowOneMore();
+                caster.OneMore = true;
             }
             target.TakeHit(hit);
             if (isPlayer)

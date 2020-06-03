@@ -27,7 +27,48 @@ namespace Assets.Scripts
         {
             IsPlayer = false;
             SetSprite(sprite);
+            ClearEffects();
+            IsDown = false;
+            ColorChange();
             ChangeUnit(stats, skills, nameStr);
+        }
+
+        protected void ColorChange()
+        {
+            if (GetStatus() != Constants.StatusTypes.None)
+            {
+                spriteRenderer.color = new Color(129f/255, 255f/255, 233f/255, 255f/255);
+            } else if (IsDown)
+            {
+                spriteRenderer.color = new Color(255f/255, 237f/255, 112f/255, 255f/255);
+            } else
+            {
+                spriteRenderer.color = Color.white;
+            }
+        }
+
+        public override void TakeHit(Damage.DamagePacket hit)
+        {
+            if (hit.hit)
+            {
+                if (hit.damage > 0)
+                {
+                    ChangeHealth(-hit.damage);
+                }
+                if (hit.status != Constants.StatusTypes.None)
+                {
+                    AddStatus(hit.status, hit.statusPower);
+                }
+                if (hit.removeStatus)
+                {
+                    RemoveStatus();
+                }
+                if (!IsDown && (hit.isWeak || hit.isCrit))
+                {
+                    IsDown = true;
+                }
+                ColorChange();
+            }
         }
 
         public override void Die()

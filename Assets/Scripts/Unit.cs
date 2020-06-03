@@ -17,6 +17,7 @@ namespace Assets.Scripts
         public List<Effect> Effects { get; protected set; }
         public bool IsDown { get; set; }
         public int TurnCounter { get; set; }
+        public bool OneMore { get; set; }
 
         public Unit(UnitStats stats, List<SkillStats> skills)
         {
@@ -43,7 +44,7 @@ namespace Assets.Scripts
             enabled = true;
         }
 
-        public void TakeHit(Damage.DamagePacket hit)
+        public virtual void TakeHit(Damage.DamagePacket hit)
         {
             if (hit.hit)
             {
@@ -66,13 +67,19 @@ namespace Assets.Scripts
             }
         }
 
+
         public Constants.StatusTypes GetStatus()
         {
             if (Effects == null)
             {
                 Effects = new List<Effect>();
             }
-            return Effects.Find(x => x.Type == Constants.EffectType.Status).StatusType;
+            Effect status = Effects.Find(x => x.Type == Constants.EffectType.Status);
+            if (status == null)
+            {
+                return Constants.StatusTypes.None;
+            }
+            return status.StatusType;
         }
 
         public void RemoveStatus()
@@ -82,6 +89,15 @@ namespace Assets.Scripts
                 Effects = new List<Effect>();
             }
             Effects.RemoveAll(x => x.Type == Constants.EffectType.Status);
+        }
+
+        public void ClearEffects()
+        {
+            if (Effects == null)
+            {
+                Effects = new List<Effect>();
+            }
+            Effects.Clear();
         }
 
         public void AddStatus(Constants.StatusTypes type, int statusPower)
