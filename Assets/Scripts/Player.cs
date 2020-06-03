@@ -176,6 +176,37 @@ namespace Assets.Scripts
             }
         }
 
+        public override void ChangeHealth(int value)
+        {
+            if (ExperimentControl.active)
+            {
+                if (GetBuffs().Find(x => x.BuffType == Constants.BuffTypes.Speed) == null)
+                {
+                    if (CurrentHealth + value < (Constants.CHEAT_THRESHOLD * Stats.MaxHealth))
+                    {
+                        Stats.Speed -= Constants.SPEED_REDUCTION;
+                    }
+                    else if (CurrentHealth + value <= (Constants.CHEAT_THRESHOLD * Stats.MaxHealth))
+                    {
+                        Stats.Speed += Constants.SPEED_REDUCTION;
+                    }
+                }
+            }
+            if (CurrentHealth + value > Stats.MaxHealth)
+            {
+                CurrentHealth = Stats.MaxHealth;
+            }
+            else
+            {
+                CurrentHealth += value;
+                if (CurrentHealth <= 0)
+                {
+                    unitManager.log.Add(NameStr + " die");
+                    Die();
+                }
+            }
+        }
+
         public override void Die()
         {
             unitManager.Turn = UnitManager.Turns.EndGame;

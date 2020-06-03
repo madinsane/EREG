@@ -45,11 +45,20 @@ namespace Assets.Scripts
             return random.Next(min, max+1);
         }
 
-        static bool TryChance(float outSkillChance, float outUnitChance, float incChance)
+        static bool TryChance(float outSkillChance, float outUnitChance, float incChance, bool isPlayer)
         {
             float chance = outSkillChance * (outUnitChance / 100);
             chance *= incChance / 100;
             int roll = RandomInt(1, 100);
+            int roll2 = RandomInt(1, 100);
+            //Lucky
+            if (ExperimentControl.active)
+            {
+                if (roll2 < roll)
+                {
+                    roll = roll2;
+                }
+            }
             if (chance >= roll)
             {
                 return true;
@@ -67,6 +76,15 @@ namespace Assets.Scripts
         internal static KeyValuePair<bool, int> Status(SkillStats skill, UnitStats attacker, UnitStats defender)
         {
             bool status = false;
+            bool playerAttacker = false;
+            bool playerDefender = false;
+            if (attacker.Id == 0)
+            {
+                playerAttacker = true;
+            } else if (defender.Id == 0)
+            {
+                playerDefender = true;
+            }
             if (skill.StatusType == Constants.StatusTypes.Blast)
             {
                 float power = attacker.MagicPower;
@@ -81,6 +99,17 @@ namespace Assets.Scripts
             {
                 accuracy /= (float)defender.Evasion / 100;
                 int evasionRoll = RandomInt(1, 100);
+                if (ExperimentControl.active)
+                {
+                    if (playerDefender)
+                    {
+                        int evasionRoll2 = RandomInt(1, 100);
+                        if (evasionRoll2 > evasionRoll)
+                        {
+                            evasionRoll = evasionRoll2;
+                        }
+                    }
+                }
                 if (accuracy < evasionRoll)
                 {
                     return new KeyValuePair<bool, int> (false, 0);
@@ -94,12 +123,12 @@ namespace Assets.Scripts
                 bool statusAttempt;
                 if (skill.StatusType >= Constants.StatusTypes.Sleep)
                 {
-                    statusAttempt = TryChance(statusChance, attacker.MentalStatusChance, defender.IncMentalStatus);
+                    statusAttempt = TryChance(statusChance, attacker.MentalStatusChance, defender.IncMentalStatus, playerAttacker);
                     statusDuration = 4;
                 }
                 else
                 {
-                    statusAttempt = TryChance(statusChance, attacker.TypeStatusChance, defender.IncTypeStatus);
+                    statusAttempt = TryChance(statusChance, attacker.TypeStatusChance, defender.IncTypeStatus, playerAttacker);
                 }
                 if (statusAttempt)
                 {
@@ -111,6 +140,16 @@ namespace Assets.Scripts
 
         internal static DamagePacket Hit(SkillStats skill, UnitStats attacker, UnitStats defender)
         {
+            bool playerAttacker = false;
+            bool playerDefender = false;
+            if (attacker.Id == 0)
+            {
+                playerAttacker = true;
+            }
+            else if (defender.Id == 0)
+            {
+                playerDefender = true;
+            }
             //Check evasion
             float accuracy = skill.Accuracy * ((float)attacker.Accuracy / 100);
             //Always hit if evasion <= 0
@@ -118,6 +157,17 @@ namespace Assets.Scripts
             {
                 accuracy /= (float)defender.Evasion / 100;
                 int evasionRoll = RandomInt(1, 100);
+                if (ExperimentControl.active)
+                {
+                    if (playerDefender)
+                    {
+                        int evasionRoll2 = RandomInt(1, 100);
+                        if (evasionRoll2 > evasionRoll)
+                        {
+                            evasionRoll = evasionRoll2;
+                        }
+                    }
+                }
                 if (accuracy < evasionRoll)
                 {
                     return new DamagePacket(false);
@@ -277,7 +327,7 @@ namespace Assets.Scripts
             }
             //Check Crit
             bool isCrit = false;
-            if (TryChance(skill.CritChance, attacker.CritChance, defender.IncCritChance))
+            if (TryChance(skill.CritChance, attacker.CritChance, defender.IncCritChance, playerAttacker))
             {
                 isCrit = true;
                 float critMulti = attacker.CritMulti * ((float)skill.CritMulti / 100);
@@ -298,10 +348,10 @@ namespace Assets.Scripts
                     bool statusAttempt;
                     if (skill.StatusType >= Constants.StatusTypes.Sleep)
                     {
-                        statusAttempt = TryChance(statusChance, attacker.MentalStatusChance, defender.IncMentalStatus);
+                        statusAttempt = TryChance(statusChance, attacker.MentalStatusChance, defender.IncMentalStatus, playerAttacker);
                     } else
                     {
-                        statusAttempt = TryChance(statusChance, attacker.TypeStatusChance, defender.IncTypeStatus);
+                        statusAttempt = TryChance(statusChance, attacker.TypeStatusChance, defender.IncTypeStatus, playerAttacker);
                     }
                     if (statusAttempt)
                     {

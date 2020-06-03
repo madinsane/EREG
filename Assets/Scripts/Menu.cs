@@ -14,6 +14,27 @@ namespace Assets.Scripts
 
         public void NewGame()
         {
+            if (ExperimentControl.set)
+            {
+                int activateExperiment = Damage.RandomInt(0, 1);
+                if (activateExperiment == 0)
+                {
+                    ExperimentControl.active = true;
+                } else
+                {
+                    ExperimentControl.active = false;
+                }
+                ExperimentControl.set = true;
+            } else
+            {
+                if (ExperimentControl.active)
+                {
+                    ExperimentControl.active = false;
+                } else
+                {
+                    ExperimentControl.active = true;
+                }
+            }
             SceneManager.LoadScene(1);
         }
 

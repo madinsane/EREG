@@ -8,8 +8,8 @@ namespace Assets.Scripts
 {
     public class Unit : MonoBehaviour
     {
-        public float CurrentHealth { get; private set; }
-        public float CurrentMana { get; private set; }
+        public float CurrentHealth { get; protected set; }
+        public float CurrentMana { get; protected set; }
         public UnitStats Stats { get; protected set; }
         public UnitManager unitManager;
         public int Id { get; protected set; }
@@ -285,8 +285,12 @@ namespace Assets.Scripts
             UpdateColor();
         }
 
-        private List<Effect> GetBuffs()
+        protected List<Effect> GetBuffs()
         {
+            if (Effects == null)
+            {
+                Effects = new List<Effect>();
+            }
             List<Effect> buffs = Effects.FindAll(x => x.Type == Constants.EffectType.Buff);
             return buffs;
         }
@@ -310,7 +314,7 @@ namespace Assets.Scripts
             ChangeHealth(multiplier * (int)(CurrentHealth * (power / 100)));
         }
 
-        public void ChangeHealth(int value)
+        public virtual void ChangeHealth(int value)
         {
             if (CurrentHealth + value > Stats.MaxHealth)
             {

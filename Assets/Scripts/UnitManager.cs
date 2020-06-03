@@ -975,7 +975,7 @@ namespace Assets.Scripts
                 else
                 {
                     StartCoroutine(DisplayText(pos, "Dodge", false, false, false));
-                    log.Add("You dodged " + target.NameStr + "'s " + skill.NameStr);
+                    log.Add("You dodged " + caster.NameStr + "'s " + skill.NameStr);
                 }
             }
         }
