@@ -82,5 +82,9 @@
             Helm, Chest, Gloves, Boots, Weapon,
             Shield, Amulet, Ring
         }
+        public enum RewardTypes
+        {
+            Skill, Gear, Item
+        }
     }
 }

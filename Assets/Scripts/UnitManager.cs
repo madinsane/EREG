@@ -34,6 +34,7 @@ namespace Assets.Scripts
         public HitDisplay[] monsterDisplay;
         public HitDisplay playerDisplay;
         public TextMeshProUGUI description;
+        public RewardManager rewards;
 
         public enum Turns
         {
@@ -128,6 +129,17 @@ namespace Assets.Scripts
                 monsters[(int)Turn - 1].TurnCounter += monsters[(int)Turn - 1].Stats.Speed;
                 MonsterCast((int)Turn - 1);
             }
+        }
+
+        public SkillStats ChooseSkillReward()
+        {
+            if (skills == null)
+            {
+                LoadSkills();
+            }
+            List<SkillStats> allowedSkills = skills.FindAll(x => x.RLvl <= gameManager.Level);
+            int roll = Damage.RandomInt(0, allowedSkills.Count - 1);
+            return allowedSkills[roll];
         }
 
         internal void MonsterCast(int pos)
@@ -526,7 +538,7 @@ namespace Assets.Scripts
                 {
                     yield return new WaitForSeconds(1f);
                     HideAllHealthBars();
-                    gameManager.StartRound();
+                    rewards.GenerateRewards();
                 } else
                 {
                     AdvanceTurn();

@@ -62,10 +62,10 @@ Id	Name	NameStr	Slot	SpriteName	RLvl	Affixes
 60	frozen_charm	Frozen Charm	6	urand_air_new	30	6
 61	shadow_pendant	Shadow Pendant	6	urand_brooch_of_shielding_new	40	7
 62	dragon_heart	Dragon Heart	6	urand_vitality	50	8
-63	iron_ring	Iron Ring	7	iron	0	0
-64	gold_ring	Gold Ring	7	gold	1	1
-65	ruby_ring	Ruby Ring	7	gold_red	5	2
-66	emerald_ring	Emerald Ring	7	gold_green	10	3
+63	iron_ring	Iron Ring	7	iron_ring	0	0
+64	gold_ring	Gold Ring	7	gold_ring	1	1
+65	ruby_ring	Ruby Ring	7	gold_red_ring	5	2
+66	emerald_ring	Emerald Ring	7	gold_green_ring	10	3
 67	diamond_ring	Diamond Ring	7	ring_gold_white	15	4
 68	seal	Seal	7	urand_robustness	20	5
 69	imbued_ring	Imbued Ring	7	urand_shadows_old	30	6

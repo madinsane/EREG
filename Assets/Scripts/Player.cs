@@ -43,6 +43,25 @@ namespace Assets.Scripts
             UpdateGearStats();
         }
 
+        public void AddGear(Constants.Slot slot, Gear newGear)
+        {
+            gear[(int)slot] = newGear;
+            UpdateGearPanels();
+            UpdateGearStats();
+        }
+
+        public void AddSkill(SkillStats skill)
+        {
+            Skills.Add(skill);
+            unitManager.gameManager.ShowSkills();
+        }
+
+        public void AddItem(ItemStats item)
+        {
+            items[item.Id].Quantity++;
+            unitManager.gameManager.ShowItems();
+        }
+
         public void UpdateGearStats()
         {
             Stats = playerBase.Copy();
@@ -79,6 +98,16 @@ namespace Assets.Scripts
                 LoadItems();
             }
             return items[id];
+        }
+
+        public ItemStats ChooseItem()
+        {
+            if (items == null)
+            {
+                LoadItems();
+            }
+            int roll = Damage.RandomInt(0, items.Count - 1);
+            return items[roll];
         }
 
         public void UseItem(int id)

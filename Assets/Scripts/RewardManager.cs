@@ -18,6 +18,8 @@ namespace Assets.Scripts
         public UnitManager unitManager;
         public GameManager gameManager;
         public SpriteAtlas gearAtlas;
+        public GameObject rewardPanel;
+        public RewardPanel[] rewards;
 
         private List<Modifier> modifiers;
         private List<Gear> gear;
@@ -87,7 +89,7 @@ namespace Assets.Scripts
                 LoadGear();
             }
             List<Modifier> chosenMods = new List<Modifier>();
-            int level = gameManager.Level + 40;
+            int level = gameManager.Level;
             Gear newGear = gear.FindLast(x => x.RLvl <= level && x.Slot == slot).Copy();
             for (int i=0; i<newGear.Affixes; i++)
             {
@@ -119,5 +121,38 @@ namespace Assets.Scripts
             }
             return combined;
         }
+
+        public void GenerateRewards()
+        {
+            SkillStats skill = unitManager.ChooseSkillReward();
+            int chosenSlot = Damage.RandomInt(0, (int)Constants.Slot.Ring);
+            Gear gear = CreateGear((Constants.Slot)chosenSlot);
+            ItemStats item = unitManager.player.ChooseItem();
+            rewards[(int)Constants.RewardTypes.Skill].ChangeReward(skill, gameManager.GetSkillSprite(skill));
+            rewards[(int)Constants.RewardTypes.Gear].ChangeReward(gear, gearAtlas.GetSprite(gear.SpriteName));
+            rewards[(int)Constants.RewardTypes.Item].ChangeReward(item, gearAtlas.GetSprite(item.SpriteName));
+            rewardPanel.SetActive(true);
+        }
+
+        public void PickedReward(Constants.RewardTypes type, object reward)
+        {
+            switch (type)
+            {
+                case Constants.RewardTypes.Skill:
+                    unitManager.player.AddSkill((SkillStats)reward);
+                    break;
+                case Constants.RewardTypes.Gear:
+                    Gear newGear = (Gear)reward;
+                    unitManager.player.AddGear(newGear.Slot, newGear);
+                    break;
+                case Constants.RewardTypes.Item:
+                    unitManager.player.AddItem((ItemStats)reward);
+                    break;
+            }
+            rewardPanel.SetActive(false);
+            gameManager.StartRound();
+        }
+
+        
     }
 }

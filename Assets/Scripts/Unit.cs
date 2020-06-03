@@ -12,7 +12,7 @@ namespace Assets.Scripts
         public UnitManager unitManager;
         public int Id { get; protected set; }
         public string NameStr { get; set; }
-        public List<SkillStats> Skills { get; private set; }
+        public List<SkillStats> Skills { get; protected set; }
         public bool IsPlayer { get; protected set; }
         public List<Effect> Effects { get; protected set; }
         public bool IsDown { get; set; }

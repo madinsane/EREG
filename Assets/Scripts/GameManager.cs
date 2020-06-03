@@ -464,6 +464,11 @@ namespace Assets.Scripts
             return particleBps[partMap[type]].main.duration;
         }
 
+        public Sprite GetSkillSprite(SkillStats skill)
+        {
+            return guiAtlas.GetSprite(skill.SpriteName);
+        }
+
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.LeftBracket))
