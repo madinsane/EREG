@@ -30,6 +30,7 @@ namespace Assets.Scripts
 
         public bool IsReplacing { get; set; } = false;
         public SkillStats NewSkill { get; set; }
+        public int id;
 
         private int itemId = 0;
         private int skillCost = 0;
@@ -110,7 +111,7 @@ namespace Assets.Scripts
         {
             if (IsReplacing)
             {
-                ChangeSkill(NewSkill.Id, gameManager.GetSkillSprite(NewSkill), NewSkill.Cost, NewSkill.CostType);
+                gameManager.unitManager.player.SwapSkill(id, NewSkill);
                 gameManager.EndReplacing();
             }
             else

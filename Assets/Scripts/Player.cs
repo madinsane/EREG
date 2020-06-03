@@ -71,6 +71,11 @@ namespace Assets.Scripts
             unitManager.gameManager.SetReplacing(skill);
         }
 
+        public void SwapSkill(int pos, SkillStats newSkill)
+        {
+            Skills[pos] = newSkill;
+        }
+
         public void AddItem(ItemStats item)
         {
             items[item.Id].Quantity++;

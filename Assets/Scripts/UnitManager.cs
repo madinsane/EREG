@@ -85,6 +85,16 @@ namespace Assets.Scripts
                     GetSkill(1),
                     GetSkill(9),
                     GetSkill(17),
+                    GetSkill(17),
+                    GetSkill(17),
+                    GetSkill(17),
+                    GetSkill(17),
+                    GetSkill(17),
+                    GetSkill(17),
+                    GetSkill(17),
+                    GetSkill(17),
+                    GetSkill(17),
+                    GetSkill(17),
                     GetSkill(25)
                 };
             }
