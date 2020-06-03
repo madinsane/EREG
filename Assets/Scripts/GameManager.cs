@@ -315,6 +315,26 @@ namespace Assets.Scripts
             }          
         }
 
+        public void SetReplacing(SkillStats newSkill)
+        {
+            foreach (ItemPanel itemPanel in itemPanels)
+            {
+                itemPanel.IsReplacing = true;
+                itemPanel.NewSkill = newSkill;
+            }
+        }
+
+        public void EndReplacing()
+        {
+            foreach (ItemPanel itemPanel in itemPanels)
+            {
+                itemPanel.IsReplacing = false;
+                itemPanel.NewSkill = null;
+            }
+            unitManager.ClearDescription();
+            ShowSkills();
+        }
+
         public void ShowSkills()
         {
             actionBoxText.SetActive(false);

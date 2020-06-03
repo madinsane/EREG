@@ -21,11 +21,15 @@ namespace Assets.Scripts
         public Sprite itemBackImg;
         public Player player;
         public Tooltip tooltip;
+        public GameManager gameManager;
 
         public Color itemColor;
         public Color hpColor;
         public Color mpColor;
         public Color disabled;
+
+        public bool IsReplacing { get; set; } = false;
+        public SkillStats NewSkill { get; set; }
 
         private int itemId = 0;
         private int skillCost = 0;
@@ -104,27 +108,36 @@ namespace Assets.Scripts
 
         public void Activate()
         {
-            if (isItem)
+            if (IsReplacing)
             {
-                if (player.unitManager.Turn == UnitManager.Turns.Player)
-                {
-                    //Use item
-                    player.UseItem(itemId);
-                }
-            } else
+                ChangeSkill(NewSkill.Id, gameManager.GetSkillSprite(NewSkill), NewSkill.Cost, NewSkill.CostType);
+                gameManager.EndReplacing();
+            }
+            else
             {
-                if (player.unitManager.Turn == UnitManager.Turns.Player && player.CheckCost(skillCost, costType))
+                if (isItem)
                 {
-                    SkillStats skill = player.unitManager.GetSkill(itemId);
-                    if (skill.SkillType == Constants.SkillTypes.Break)
+                    if (player.unitManager.Turn == UnitManager.Turns.Player)
                     {
-                        if (player.GetStatus() != skill.StatusType)
-                        {
-                            return;
-                        }
+                        //Use item
+                        player.UseItem(itemId);
                     }
-                    //Use skill
-                    player.unitManager.PrepareSkill(skill);
+                }
+                else
+                {
+                    if (player.unitManager.Turn == UnitManager.Turns.Player && player.CheckCost(skillCost, costType))
+                    {
+                        SkillStats skill = player.unitManager.GetSkill(itemId);
+                        if (skill.SkillType == Constants.SkillTypes.Break)
+                        {
+                            if (player.GetStatus() != skill.StatusType)
+                            {
+                                return;
+                            }
+                        }
+                        //Use skill
+                        player.unitManager.PrepareSkill(skill);
+                    }
                 }
             }
             UpdateDisplay();

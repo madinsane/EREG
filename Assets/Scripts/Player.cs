@@ -52,8 +52,23 @@ namespace Assets.Scripts
 
         public void AddSkill(SkillStats skill)
         {
-            Skills.Add(skill);
+            if (Skills.Count >= Constants.MAX_SKILLS)
+            {
+                ReplaceSkill(skill);
+            }
+            else
+            {
+                Skills.Add(skill);
+            }
             unitManager.gameManager.ShowSkills();
+        }
+
+        private void ReplaceSkill(SkillStats skill)
+        {
+            rewards.rewardPanel.SetActive(false);
+            unitManager.ChangeDescription("Choose a Skill to replace");
+            unitManager.gameManager.ShowSkills();
+            unitManager.gameManager.SetReplacing(skill);
         }
 
         public void AddItem(ItemStats item)

@@ -3193,6 +3193,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 117418503, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 137620576, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
@@ -3201,6 +3205,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 137620576, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 196144574, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
@@ -3209,6 +3217,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 196144574, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 332953834, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
@@ -3217,6 +3229,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 332953834, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 369901917, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3229,6 +3245,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 470451501, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 485262784, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
@@ -3237,6 +3257,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 485262784, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 499541956, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: unitManager
       value: 
@@ -3249,6 +3273,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 575097134, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 585190352, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
@@ -3257,6 +3285,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 585190352, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 619659651, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3269,6 +3301,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 668050267, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 753799982, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
@@ -3277,6 +3313,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 753799982, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 814691216, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
@@ -3285,6 +3325,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 814691216, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 916917465, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
@@ -3293,6 +3337,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 916917465, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 1109192195, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: player
       value: 
@@ -3301,6 +3349,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 1109192195, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 1174935547, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3317,6 +3369,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 1478809932, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 1533959124, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3329,6 +3385,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 1633880520, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 1689674623, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 101.25
@@ -3341,6 +3401,10 @@ PrefabInstance:
       propertyPath: tooltip
       value: 
       objectReference: {fileID: 86093787}
+    - target: {fileID: 2082744988, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1842739403}
     - target: {fileID: 520223219234017587, guid: f4b23d3a550229e4c81efdaa975a05be, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0

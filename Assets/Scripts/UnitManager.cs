@@ -137,7 +137,7 @@ namespace Assets.Scripts
             {
                 LoadSkills();
             }
-            List<SkillStats> allowedSkills = skills.FindAll(x => x.RLvl <= gameManager.Level);
+            List<SkillStats> allowedSkills = skills.FindAll(x => x.RLvl <= gameManager.Level && x.SkillType != Constants.SkillTypes.Hidden);
             int roll = Damage.RandomInt(0, allowedSkills.Count - 1);
             return allowedSkills[roll];
         }

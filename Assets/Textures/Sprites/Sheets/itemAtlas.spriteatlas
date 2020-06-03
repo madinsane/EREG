@@ -1304,7 +1304,7 @@ SpriteAtlas:
   - eye_cyan
   - ice_dragon_hide_old
   - buckler_3_old
-  - gold
+  - gold_ring
   - dagger_3
   - orcish_ringmail
   - spear_5
@@ -1373,7 +1373,7 @@ SpriteAtlas:
   - urand_wyrmbane_old
   - strawberry_old
   - urand_vitality
-  - iron
+  - iron_ring
   - tomahawk_1
   - halberd_5
   - bullwhip_2
@@ -1831,7 +1831,7 @@ SpriteAtlas:
   - urand_arc_blade
   - shimmering_dragon_scales
   - battle_axe_3
-  - gold_red
+  - gold_red_ring
   - light_blue_old
   - potion_purple_red
   - urand_dyrovepreva_old
@@ -1944,7 +1944,7 @@ SpriteAtlas:
   - staff_9
   - ice_dragon_armor_old
   - bullwhip_3
-  - gold_green
+  - gold_green_ring
   - piece_of_ambrosia_new
   - urand_finger
   - scroll_new
