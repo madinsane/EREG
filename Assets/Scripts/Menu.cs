@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
     public class Menu : MonoBehaviour
     {
         public GameObject quitPanel;
+        public Text quitText;
 
         public void NewGame()
         {
@@ -40,6 +42,7 @@ namespace Assets.Scripts
 
         public void QuitGame()
         {
+            //quitText.text = Application.streamingAssetsPath.ToString();
             Application.Quit(0);
         }
 

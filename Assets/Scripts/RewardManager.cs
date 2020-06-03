@@ -37,7 +37,7 @@ namespace Assets.Scripts
         private void LoadModifiers()
         {
             modifiers = new List<Modifier>();
-            using (var reader = new StreamReader(Application.dataPath + Constants.DATA_PATH + Constants.MODIFIER_PATH))
+            using (var reader = new StreamReader(Application.streamingAssetsPath + Constants.DATA_PATH + Constants.MODIFIER_PATH))
             using (var csvUnit = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 csvUnit.Configuration.Delimiter = "\t";
@@ -52,7 +52,7 @@ namespace Assets.Scripts
         private void LoadGear()
         {
             gear = new List<Gear>();
-            using (var reader = new StreamReader(Application.dataPath + Constants.DATA_PATH + Constants.GEAR_PATH))
+            using (var reader = new StreamReader(Application.streamingAssetsPath + Constants.DATA_PATH + Constants.GEAR_PATH))
             using (var csvUnit = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 csvUnit.Configuration.Delimiter = "\t";

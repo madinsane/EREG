@@ -25,7 +25,8 @@ namespace Assets.Scripts
             displayText = "";
             textBox.text = displayText;
             logName = DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss");
-            File.Create(Application.dataPath + Constants.LOG_PATH + logName + ".txt");
+            File.Create(Application.streamingAssetsPath + Constants.LOG_PATH + logName + ".txt");
+            //log.Add(Application.streamingAssetsPath);
         }
 
         internal void Add(string line)
@@ -42,7 +43,7 @@ namespace Assets.Scripts
                 displayText += entry + "\n";
             }
             textBox.text = displayText;
-            using (StreamWriter w = File.AppendText(Application.dataPath + Constants.LOG_PATH + logName + ".txt"))
+            using (StreamWriter w = File.AppendText(Application.streamingAssetsPath + Constants.LOG_PATH + logName + ".txt"))
             {
                 if (!doneHeader)
                 {

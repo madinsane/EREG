@@ -87,7 +87,7 @@ namespace Assets.Scripts
 
         private void LoadHelp()
         {
-            helpText = File.ReadAllText(Application.dataPath + Constants.DATA_PATH + Constants.HELP_PATH);
+            helpText = File.ReadAllText(Application.streamingAssetsPath + Constants.DATA_PATH + Constants.HELP_PATH);
         }
 
         private void Update()

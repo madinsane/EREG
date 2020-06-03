@@ -41,12 +41,13 @@ namespace Assets.Scripts
 
         void Start()
         {
-            //StartGame();
+            StartGame();
         }
 
         private void Awake()
         {
-            StartGame();
+            
+            
         }
 
         private void InitPartMap()
@@ -157,7 +158,7 @@ namespace Assets.Scripts
         internal void LoadMonsterTierData()
         {
             monsterTiers = new List<MonsterTier>();
-            using (var reader = new StreamReader(Application.dataPath + Constants.DATA_PATH + Constants.MONSTERTIER_PATH))
+            using (var reader = new StreamReader(Application.streamingAssetsPath + Constants.DATA_PATH + Constants.MONSTERTIER_PATH))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 csv.Configuration.Delimiter = "\t";

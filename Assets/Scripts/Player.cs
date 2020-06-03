@@ -157,7 +157,7 @@ namespace Assets.Scripts
         private void LoadItems()
         {
             items = new Dictionary<int, ItemStats>();
-            using (var reader = new StreamReader(Application.dataPath + Constants.DATA_PATH + Constants.ITEM_PATH))
+            using (var reader = new StreamReader(Application.streamingAssetsPath + Constants.DATA_PATH + Constants.ITEM_PATH))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 csv.Configuration.Delimiter = "\t";

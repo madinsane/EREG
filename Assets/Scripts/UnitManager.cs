@@ -406,7 +406,7 @@ namespace Assets.Scripts
                     return stats[id];
                 }
             }
-            using (var reader = new StreamReader(Application.dataPath + Constants.DATA_PATH + Constants.UNIT_PATH))
+            using (var reader = new StreamReader(Application.streamingAssetsPath + Constants.DATA_PATH + Constants.UNIT_PATH))
             using (var csvUnit = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 csvUnit.Configuration.Delimiter = "\t";
@@ -430,7 +430,7 @@ namespace Assets.Scripts
         internal void LoadSkills()
         {
             skills = new List<SkillStats>();
-            using (var reader = new StreamReader(Application.dataPath + Constants.DATA_PATH + Constants.SKILL_PATH))
+            using (var reader = new StreamReader(Application.streamingAssetsPath + Constants.DATA_PATH + Constants.SKILL_PATH))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 csv.Configuration.Delimiter = "\t";
@@ -454,7 +454,7 @@ namespace Assets.Scripts
         internal void LoadMonsterData()
         {
             monsterData = new List<MonsterData>();
-            using (var reader = new StreamReader(Application.dataPath + Constants.DATA_PATH + Constants.MONSTER_PATH))
+            using (var reader = new StreamReader(Application.streamingAssetsPath + Constants.DATA_PATH + Constants.MONSTER_PATH))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 csv.Configuration.Delimiter = "\t";

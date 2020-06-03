@@ -1,4 +1,0 @@
-Id	Name	NameStr	Description	SpriteName	Type	Value
-0	health_potion	Health Potion	Restores 80% Health	ruby_new	0	80
-1	mana_potion	Mana Potion	Restores 50% Mana	sky_blue	1	50
-2	elixir	Elixir	Removes any Status effects from self (Does not affect buffs or debuffs such as Cripple)	yellow_new	2	0
