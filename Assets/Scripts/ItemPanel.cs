@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Defines an item panel
+    /// </summary>
     public class ItemPanel : MonoBehaviour
     {
         public Image itemBack;
@@ -36,6 +39,13 @@ namespace Assets.Scripts
         private Constants.CostTypes costType;
         private bool isItem = false;
 
+        /// <summary>
+        /// Changes skill in panel
+        /// </summary>
+        /// <param name="skillId">Id of skill</param>
+        /// <param name="skill">Sprite of skill</param>
+        /// <param name="cost">Cost of skill</param>
+        /// <param name="costType">Type of cost</param>
         public void ChangeSkill(int skillId, Sprite skill, int cost, Constants.CostTypes costType)
         {
             isItem = false;
@@ -62,6 +72,11 @@ namespace Assets.Scripts
             UpdateDisplay();
         }
 
+        /// <summary>
+        /// Changes displayed item
+        /// </summary>
+        /// <param name="itemId">Id of item</param>
+        /// <param name="item">Sprite of item</param>
         public void ChangeItem(int itemId, Sprite item)
         {
             isItem = true;
@@ -73,6 +88,9 @@ namespace Assets.Scripts
             UpdateDisplay();
         }
 
+        /// <summary>
+        /// Updates the panel display
+        /// </summary>
         public void UpdateDisplay()
         {
             if (isItem)
@@ -93,6 +111,9 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Displays tooltip
+        /// </summary>
         public void DisplayTooltip()
         {
             if (isItem)
@@ -106,6 +127,9 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Selects item
+        /// </summary>
         public void Activate()
         {
             if (IsReplacing)

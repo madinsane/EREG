@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Controls the event log
+    /// </summary>
     public class Log : MonoBehaviour
     {
         private List<string> log;
@@ -29,6 +32,10 @@ namespace Assets.Scripts
             //log.Add(Application.streamingAssetsPath);
         }
 
+        /// <summary>
+        /// Adds a line to the log
+        /// </summary>
+        /// <param name="line">Line to add</param>
         internal void Add(string line)
         {
             if (log.Count >= maxLines)

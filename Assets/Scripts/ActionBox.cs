@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Controls the UI boxes
+    /// </summary>
     public class ActionBox: MonoBehaviour
     {
         public Text text;
@@ -24,6 +27,9 @@ namespace Assets.Scripts
             isDisplayingStats = false;
         }
 
+        /// <summary>
+        /// Sets the help text to be displayed
+        /// </summary>
         public void DisplayHelp()
         {
             if (helpText == "" || helpText == null)
@@ -34,11 +40,18 @@ namespace Assets.Scripts
             isDisplayingStats = false;
         }
 
+        /// <summary>
+        /// Sets the stats display to be set to given param
+        /// </summary>
+        /// <param name="enabled">Whether to enable or disable stat display</param>
         public void SetStatDisplay(bool enabled)
         {
             isDisplayingStats = enabled;
         }
 
+        /// <summary>
+        /// Builds and displays the text of the stats
+        /// </summary>
         public void DisplayStats()
         {
             if (player == null)
@@ -85,6 +98,9 @@ namespace Assets.Scripts
             text.text = sb.ToString();
         }
 
+        /// <summary>
+        /// Loads help text from file
+        /// </summary>
         private void LoadHelp()
         {
             helpText = File.ReadAllText(Application.streamingAssetsPath + Constants.DATA_PATH + Constants.HELP_PATH);

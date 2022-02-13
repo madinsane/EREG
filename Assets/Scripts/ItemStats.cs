@@ -3,6 +3,9 @@ using CsvHelper.Configuration.Attributes;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Defines stats of item
+    /// </summary>
     public class ItemStats
     {
         public int Id { get; set; }

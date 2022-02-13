@@ -2,6 +2,9 @@
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Defines a tier of monsters
+    /// </summary>
     class MonsterTier
     {
         public int Tier { get; set; }

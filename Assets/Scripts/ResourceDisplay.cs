@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Displays player resources
+    /// </summary>
     public class ResourceDisplay : MonoBehaviour
     {
         public UnitManager unitManager;
@@ -21,6 +24,10 @@ namespace Assets.Scripts
             return 1;
         }
 
+        /// <summary>
+        /// Sets globe fill amount
+        /// </summary>
+        /// <param name="newValue">Value to fill</param>
         public void SetGlobe(float newValue)
         {
             resource.fillAmount = newValue;

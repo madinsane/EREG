@@ -40,10 +40,11 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 8e449eba10b8da148af1478976016504, type: 3}
-    totalSpriteSurfaceArea: 979968
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -1964,5 +1965,6 @@ SpriteAtlas:
   - claymore_blessed
   - shortbow_1
   - needle-c
+  m_RenderDataMap: {}
   m_Tag: itemAtlas
   m_IsVariant: 0

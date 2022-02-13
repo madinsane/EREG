@@ -50,6 +50,9 @@ namespace Assets.Scripts
             
         }
 
+        /// <summary>
+        /// Initialises part map
+        /// </summary>
         private void InitPartMap()
         {
             partMap = new Dictionary<Constants.SkillTypes, int>
@@ -75,6 +78,9 @@ namespace Assets.Scripts
 
         }
 
+        /// <summary>
+        /// Begins a new game
+        /// </summary>
         public void StartGame()
         {
             unitManager.Turn = UnitManager.Turns.Player;
@@ -86,6 +92,9 @@ namespace Assets.Scripts
             StartRound();
         }
 
+        /// <summary>
+        /// Controls round start
+        /// </summary>
         public void StartRound()
         {
             unitManager.ClearMonsters();
@@ -155,6 +164,9 @@ namespace Assets.Scripts
             unitManager.InitTurns();
         }
 
+        /// <summary>
+        /// Loads monster tiers
+        /// </summary>
         internal void LoadMonsterTierData()
         {
             monsterTiers = new List<MonsterTier>();
@@ -195,6 +207,10 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Chooses monsters to place
+        /// </summary>
+        /// <returns>Chosen monsters</returns>
         List<MonsterData> PickMonsters()
         {
             if (monsterTiers == null)
@@ -297,11 +313,19 @@ namespace Assets.Scripts
             return chosen;
         }
 
+        /// <summary>
+        /// Gets monster tiers
+        /// </summary>
+        /// <param name="tier">Tier to find matches</param>
+        /// <returns>Monster tier</returns>
         MonsterTier GetTier(int tier)
         {
             return monsterTiers.Find(x => x.Tier == tier);
         }
 
+        /// <summary>
+        /// Displays items
+        /// </summary>
         public void ShowItems()
         {
             actionBoxText.SetActive(false);
@@ -320,6 +344,10 @@ namespace Assets.Scripts
             }          
         }
 
+        /// <summary>
+        /// Replaces item panels
+        /// </summary>
+        /// <param name="newSkill">Skill to replace with</param>
         public void SetReplacing(SkillStats newSkill)
         {
             foreach (ItemPanel itemPanel in itemPanels)
@@ -329,6 +357,9 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Finishes replacing panels
+        /// </summary>
         public void EndReplacing()
         {
             foreach (ItemPanel itemPanel in itemPanels)
@@ -340,6 +371,9 @@ namespace Assets.Scripts
             ShowSkills();
         }
 
+        /// <summary>
+        /// Shows skill panels
+        /// </summary>
         public void ShowSkills()
         {
             actionBoxText.SetActive(false);
@@ -359,6 +393,9 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Shows help
+        /// </summary>
         public void ShowHelp()
         {
             actionBoxText.SetActive(true);
@@ -367,6 +404,9 @@ namespace Assets.Scripts
             actionBox.DisplayHelp();
         }
 
+        /// <summary>
+        /// Shows stats
+        /// </summary>
         public void ShowStats()
         {
             actionBoxText.SetActive(true);
@@ -374,6 +414,9 @@ namespace Assets.Scripts
             actionBox.SetStatDisplay(true);
         }
 
+        /// <summary>
+        /// Toggles enemy analysis
+        /// </summary>
         public void ToggleAnalysis()
         {
             unitManager.IsCasting = false;
@@ -390,6 +433,11 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Displays analysis of monster
+        /// </summary>
+        /// <param name="unit">Stats of unit</param>
+        /// <param name="monster">Data for monster</param>
         public void DisplayAnalysis(UnitStats unit, MonsterData monster)
         {
             if (tooltip == null)
@@ -416,6 +464,11 @@ namespace Assets.Scripts
             tooltipStatic.text = tooltip.ToString();
         }
 
+        /// <summary>
+        /// Copies a particle
+        /// </summary>
+        /// <param name="part">Old particle</param>
+        /// <param name="newPart">New particle</param>
         private void CopyParticle(ParticleSystem part, ParticleSystem newPart)
         {
             ParticleSystem.MainModule main = part.main;
@@ -456,6 +509,11 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Checks skill type against particle map
+        /// </summary>
+        /// <param name="type">Type of skill</param>
+        /// <returns></returns>
         public bool CheckParticle(Constants.SkillTypes type)
         {
             if (!partMap.ContainsKey(type))
@@ -465,6 +523,12 @@ namespace Assets.Scripts
             return true;
         }
 
+        /// <summary>
+        /// Plays particle effect
+        /// </summary>
+        /// <param name="type">Type of skill</param>
+        /// <param name="pos">Position of effect</param>
+        /// <returns></returns>
         public float PlayParticle(Constants.SkillTypes type, int pos)
         {
             if (partMap == null)
@@ -489,6 +553,11 @@ namespace Assets.Scripts
             return particleBps[partMap[type]].main.duration;
         }
 
+        /// <summary>
+        /// Gets sprite for skill
+        /// </summary>
+        /// <param name="skill">Skill to get sprite for</param>
+        /// <returns>Sprite used for skill</returns>
         public Sprite GetSkillSprite(SkillStats skill)
         {
             return guiAtlas.GetSprite(skill.SpriteName);

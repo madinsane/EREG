@@ -2,6 +2,9 @@
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Describes stats of a unit
+    /// </summary>
     public class UnitStats
     {
         public int Id { get; set; }

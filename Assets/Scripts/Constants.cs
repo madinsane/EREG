@@ -1,5 +1,9 @@
 ﻿namespace Assets.Scripts
 {
+
+    /// <summary>
+    /// Defines the global constants
+    /// </summary>
     public static class Constants
     {
         public const string DATA_PATH = "/Data/";

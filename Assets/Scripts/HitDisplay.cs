@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Controls display of hits
+    /// </summary>
     public class HitDisplay : MonoBehaviour
     {
         public TextMeshProUGUI damage;
@@ -17,6 +20,10 @@ namespace Assets.Scripts
         public TextMeshProUGUI crit;
         public Image healthBar;
 
+        /// <summary>
+        /// Controls health bar display
+        /// </summary>
+        /// <param name="unit">Unit to change</param>
         public void UpdateFill(Unit unit)
         {
             if (healthBar == null)
@@ -28,6 +35,9 @@ namespace Assets.Scripts
             healthBar.fillAmount = value;
         }
 
+        /// <summary>
+        /// Hides all effect text
+        /// </summary>
         public void HideAll()
         {
             damage.gameObject.SetActive(false);
@@ -36,6 +46,9 @@ namespace Assets.Scripts
             crit.gameObject.SetActive(false);
         }
 
+        /// <summary>
+        /// Hides health bars
+        /// </summary>
         public void HideHealth()
         {
             healthBar.gameObject.SetActive(false);

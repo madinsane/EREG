@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Defines a monster
+    /// </summary>
     public class Monster : Unit
     {
         public SpriteRenderer spriteRenderer;
@@ -17,12 +20,23 @@ namespace Assets.Scripts
             IsPlayer = false;
         }
 
+        /// <summary>
+        /// Sets monster sprite
+        /// </summary>
+        /// <param name="sprite">Sprite to use</param>
         public void SetSprite(Sprite sprite)
         {
             spriteRenderer.sprite = sprite;
             spriteRenderer.enabled = true;
         }
 
+        /// <summary>
+        /// Changes the current monster
+        /// </summary>
+        /// <param name="stats">Monster stats</param>
+        /// <param name="skills">Monster skills</param>
+        /// <param name="sprite">Sprite to use</param>
+        /// <param name="nameStr">Monster name</param>
         public void ChangeMonster(UnitStats stats, List<SkillStats> skills, Sprite sprite, string nameStr)
         {
             IsPlayer = false;
@@ -33,6 +47,9 @@ namespace Assets.Scripts
             ChangeUnit(stats, skills, nameStr);
         }
 
+        /// <summary>
+        /// Changes sprite color
+        /// </summary>
         protected void ColorChange()
         {
             if (GetStatus() != Constants.StatusTypes.None)
@@ -47,6 +64,12 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Adds a status
+        /// </summary>
+        /// <param name="type">Type of status</param>
+        /// <param name="statusPower">Power of status</param>
+        /// <param name="duration">Status duration in turns (default 2)</param>
         public override void AddStatus(Constants.StatusTypes type, int statusPower, int duration = 2)
         {
             if (Effects == null)
@@ -74,11 +97,18 @@ namespace Assets.Scripts
             ColorChange();
         }
 
+        /// <summary>
+        /// Updates the sprite color
+        /// </summary>
         public override void UpdateColor()
         {
             ColorChange();
         }
 
+        /// <summary>
+        /// Applies damage packet to monster
+        /// </summary>
+        /// <param name="hit">Packet to use</param>
         public override void TakeHit(Damage.DamagePacket hit)
         {
             if (hit.hit)
@@ -104,6 +134,9 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Kills the monster
+        /// </summary>
         public override void Die()
         {
             spriteRenderer.enabled = false;

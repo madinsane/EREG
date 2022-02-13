@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Defines an effect
+    /// </summary>
     public class Effect
     {
         public Constants.EffectType Type { get; set; }
@@ -15,6 +18,14 @@ namespace Assets.Scripts
         public float Power { get; set; }
         public int Duration { get; set; }
 
+        /// <summary>
+        /// Initialises an effect
+        /// </summary>
+        /// <param name="type">Type of effect</param>
+        /// <param name="buffType">Type of buff</param>
+        /// <param name="statusType">Type of status</param>
+        /// <param name="power">Power of effect</param>
+        /// <param name="duration">Duration of effect</param>
         public Effect(Constants.EffectType type, Constants.BuffTypes buffType = Constants.BuffTypes.None,
             Constants.StatusTypes statusType = Constants.StatusTypes.None, float power = 0, int duration = 2)
         {

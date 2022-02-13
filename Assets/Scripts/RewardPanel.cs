@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Describes a reward panel
+    /// </summary>
     public class RewardPanel : MonoBehaviour
     {
         public RewardManager rewards;
@@ -18,6 +21,11 @@ namespace Assets.Scripts
         private Gear gear;
         private ItemStats item;
 
+        /// <summary>
+        /// Changes the rewards and sprites
+        /// </summary>
+        /// <param name="reward">Reward object</param>
+        /// <param name="sprite">Reward sprite</param>
         public void ChangeReward(object reward, Sprite sprite)
         {
             switch (rewardType)
@@ -35,6 +43,9 @@ namespace Assets.Scripts
             image.sprite = sprite;
         }
 
+        /// <summary>
+        /// Chooses a reward
+        /// </summary>
         public void ChooseReward()
         {
             switch (rewardType)
@@ -51,6 +62,9 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Displays reward tooltip
+        /// </summary>
         public void DisplayTooltip()
         {
             StringBuilder sb = new StringBuilder();

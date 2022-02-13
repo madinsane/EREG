@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Defines how damage is handled
+    /// </summary>
     public static class Damage
     {
         static System.Random random;
@@ -21,6 +24,19 @@ namespace Assets.Scripts
             public bool isCrit;
             public int statusDuration;
 
+            /// <summary>
+            /// Initialises a damage packet
+            /// </summary>
+            /// <param name="hit">If hit was successful</param>
+            /// <param name="power">Amount of damage</param>
+            /// <param name="statusPower">Power of the status</param>
+            /// <param name="isWeak">Has hit a weak target</param>
+            /// <param name="isTechnical">Is a technical hit</param>
+            /// <param name="removeStatus">Will clear statuses</param>
+            /// <param name="status">Type of status</param>
+            /// <param name="returnStatus">Type of status to return</param>
+            /// <param name="isCrit">Is a critical hit</param>
+            /// <param name="statusDuration">Duration of the status</param>
             public DamagePacket(bool hit, int power = 0, int statusPower = 0, bool isWeak = false, bool isTechnical = false, bool removeStatus = false, Constants.StatusTypes status = Constants.StatusTypes.None, Constants.StatusTypes returnStatus = Constants.StatusTypes.None, bool isCrit = false, int statusDuration = 2) : this()
             {
                 this.hit = hit;
@@ -36,6 +52,12 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Generates a random integer between values inclusive
+        /// </summary>
+        /// <param name="min">Minimum value</param>
+        /// <param name="max">Maximum value</param>
+        /// <returns>Random integer</returns>
         internal static int RandomInt(int min, int max)
         {
             if (random == null)
@@ -45,6 +67,14 @@ namespace Assets.Scripts
             return random.Next(min, max+1);
         }
 
+        /// <summary>
+        /// Rolls a chance
+        /// </summary>
+        /// <param name="outSkillChance">Outgoing chance from the skill</param>
+        /// <param name="outUnitChance">Outgoing chance from the unit</param>
+        /// <param name="incChance">Modifier to chance</param>
+        /// <param name="isPlayer"></param>
+        /// <returns>If chance was successful</returns>
         static bool TryChance(float outSkillChance, float outUnitChance, float incChance, bool isPlayer)
         {
             float chance = outSkillChance * (outUnitChance / 100);
@@ -66,6 +96,12 @@ namespace Assets.Scripts
             return false;
         }
 
+        /// <summary>
+        /// Calculates the power of a heal
+        /// </summary>
+        /// <param name="skill">Skill using heal</param>
+        /// <param name="caster">Caster using heal</param>
+        /// <returns>Power of the heal</returns>
         internal static int Heal(SkillStats skill, UnitStats caster)
         {
             float power = caster.MagicPower;
@@ -73,6 +109,13 @@ namespace Assets.Scripts
             return (int)power;
         }
 
+        /// <summary>
+        /// Calculates status effects
+        /// </summary>
+        /// <param name="skill">Skill applying status</param>
+        /// <param name="attacker">Attacker using the status</param>
+        /// <param name="defender">Defender receiving the status</param>
+        /// <returns>A pair of status and status duration</returns>
         internal static KeyValuePair<bool, int> Status(SkillStats skill, UnitStats attacker, UnitStats defender)
         {
             bool status = false;
@@ -138,6 +181,13 @@ namespace Assets.Scripts
             return new KeyValuePair<bool, int>(status, statusDuration);
         }
 
+        /// <summary>
+        /// Calculates the type and damage of a hit
+        /// </summary>
+        /// <param name="skill">Skill applying the hit</param>
+        /// <param name="attacker">Attacker sending the hit</param>
+        /// <param name="defender">Defender receiving the hit</param>
+        /// <returns>A damage packet with hit data</returns>
         internal static DamagePacket Hit(SkillStats skill, UnitStats attacker, UnitStats defender)
         {
             bool playerAttacker = false;

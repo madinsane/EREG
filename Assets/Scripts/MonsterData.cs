@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Defines monster data
+    /// </summary>
     public class MonsterData
     {
         public int Id { get; set; }

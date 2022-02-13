@@ -40,10 +40,11 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 7c04e7bc4967cf14b887d3484934a492, type: 3}
-    totalSpriteSurfaceArea: 1313792
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -2616,5 +2617,6 @@ SpriteAtlas:
   - executioner
   - asmodeus
   - vashnia
+  m_RenderDataMap: {}
   m_Tag: monsterAtlas
   m_IsVariant: 0

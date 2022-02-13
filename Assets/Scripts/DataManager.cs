@@ -8,8 +8,16 @@ using System.Collections.Generic;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Manages loading data files
+    /// </summary>
     public static class DataManager
     {
+        /// <summary>
+        /// Reads the units file
+        /// </summary>
+        /// <param name="path">File path to read from</param>
+        /// <returns>Records from file</returns>
         public static IEnumerable ReadUnits(string path)
         {
             using (var reader = new StreamReader(path))
@@ -21,6 +29,11 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Reads the skills file
+        /// </summary>
+        /// <param name="path">File path to read from</param>
+        /// <returns>Records from file</returns>
         public static IEnumerable ReadSkills(string path)
         {
             using (var reader = new StreamReader(path))
@@ -32,6 +45,11 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Reads the monsters file
+        /// </summary>
+        /// <param name="path">File path to read from</param>
+        /// <returns>Records from file</returns>
         public static IEnumerable<MonsterData> ReadMonsters(string path)
         {
             using (var reader = new StreamReader(path))

@@ -8,6 +8,9 @@ using UnityEngine.PlayerLoop;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Defines the player
+    /// </summary>
     public class Player : Unit
     {
         private Dictionary<int, ItemStats> items;
@@ -27,6 +30,9 @@ namespace Assets.Scripts
             IsPlayer = true;
         }
 
+        /// <summary>
+        /// Initialises the player's gear
+        /// </summary>
         public void InitGear()
         {
             gear = new Gear[(int)Constants.Slot.Ring + 1];
@@ -43,6 +49,11 @@ namespace Assets.Scripts
             UpdateGearStats();
         }
 
+        /// <summary>
+        /// Adds gear to player
+        /// </summary>
+        /// <param name="slot">Slot to use</param>
+        /// <param name="newGear">Gear item to add</param>
         public void AddGear(Constants.Slot slot, Gear newGear)
         {
             gear[(int)slot] = newGear;
@@ -50,6 +61,10 @@ namespace Assets.Scripts
             UpdateGearStats();
         }
 
+        /// <summary>
+        /// Adds or replaces a skill
+        /// </summary>
+        /// <param name="skill">New skill to use</param>
         public void AddSkill(SkillStats skill)
         {
             if (Skills.Count >= Constants.MAX_SKILLS)
@@ -63,6 +78,10 @@ namespace Assets.Scripts
             unitManager.gameManager.ShowSkills();
         }
 
+        /// <summary>
+        /// Handles replacing a skill
+        /// </summary>
+        /// <param name="skill">New skill to use</param>
         private void ReplaceSkill(SkillStats skill)
         {
             rewards.rewardPanel.SetActive(false);
@@ -71,17 +90,29 @@ namespace Assets.Scripts
             unitManager.gameManager.SetReplacing(skill);
         }
 
+        /// <summary>
+        /// Swaps a skill for another
+        /// </summary>
+        /// <param name="pos">Position of skill to be swapped</param>
+        /// <param name="newSkill">New skill to use</param>
         public void SwapSkill(int pos, SkillStats newSkill)
         {
             Skills[pos] = newSkill;
         }
 
+        /// <summary>
+        /// Adds an item to player
+        /// </summary>
+        /// <param name="item">Item to add</param>
         public void AddItem(ItemStats item)
         {
             items[item.Id].Quantity++;
             unitManager.gameManager.ShowItems();
         }
 
+        /// <summary>
+        /// Updates stats from gear
+        /// </summary>
         public void UpdateGearStats()
         {
             Stats = playerBase.Copy();
@@ -98,6 +129,9 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Updates panels containing gear
+        /// </summary>
         public void UpdateGearPanels()
         {
             for (int i=0; i<gear.Length; i++)
@@ -106,11 +140,20 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Sets base stats of the player
+        /// </summary>
+        /// <param name="stats">Stats to copy from</param>
         public void SetBaseStats(UnitStats stats)
         {
             playerBase = stats.Copy();
         }
 
+        /// <summary>
+        /// Gets an item from data
+        /// </summary>
+        /// <param name="id">Id of target item</param>
+        /// <returns>Item matching id</returns>
         public ItemStats GetItem(int id)
         {
             if (items == null)
@@ -120,6 +163,10 @@ namespace Assets.Scripts
             return items[id];
         }
 
+        /// <summary>
+        /// Chooses a random item
+        /// </summary>
+        /// <returns>Randomly chosen item</returns>
         public ItemStats ChooseItem()
         {
             if (items == null)
@@ -130,6 +177,10 @@ namespace Assets.Scripts
             return items[roll];
         }
 
+        /// <summary>
+        /// Uses item with matching id
+        /// </summary>
+        /// <param name="id">Id of item to use</param>
         public void UseItem(int id)
         {
             ItemStats item = GetItem(id);
@@ -154,6 +205,9 @@ namespace Assets.Scripts
             unitManager.AdvanceTurn();
         }
 
+        /// <summary>
+        /// Loads items from data
+        /// </summary>
         private void LoadItems()
         {
             items = new Dictionary<int, ItemStats>();
@@ -176,6 +230,10 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Changes player health
+        /// </summary>
+        /// <param name="value">Amount to change health by</param>
         public override void ChangeHealth(int value)
         {
             if (ExperimentControl.active)
@@ -207,6 +265,9 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Kills the player
+        /// </summary>
         public override void Die()
         {
             unitManager.Turn = UnitManager.Turns.EndGame;

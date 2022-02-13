@@ -14,6 +14,9 @@ using UnityEngine.UIElements;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Manages all units
+    /// </summary>
     public class UnitManager : MonoBehaviour
     {
         private Dictionary<int, UnitStats> stats;
@@ -59,12 +62,19 @@ namespace Assets.Scripts
             IsCasting = false;
         }
 
+        /// <summary>
+        /// Changes targeting
+        /// </summary>
+        /// <param name="isTargeting">Should target</param>
         internal void ChangeTargeting(bool isTargeting)
         {
             this.isTargeting = isTargeting;
             HideTargets();
         }
 
+        /// <summary>
+        /// Target reference
+        /// </summary>
         internal void InitTargetRef()
         {
             targetRef = new Dictionary<int, int>
@@ -77,6 +87,9 @@ namespace Assets.Scripts
             };
         }
 
+        /// <summary>
+        /// Initialises the player
+        /// </summary>
         internal void InitPlayer()
         {
             if (baseSkills == null)
@@ -96,6 +109,9 @@ namespace Assets.Scripts
             player.InitGear();
         }
 
+        /// <summary>
+        /// Initialises the turn counter
+        /// </summary>
         internal void InitTurns()
         {
             if (turnCounters == null)
@@ -110,6 +126,9 @@ namespace Assets.Scripts
             Turn = Turns.Player;
         }
 
+        /// <summary>
+        /// Advances the turn counter
+        /// </summary>
         internal void AdvanceTurn()
         {
             foreach (Monster monster in monsters)
@@ -154,6 +173,11 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Applies blast
+        /// </summary>
+        /// <param name="pos">Unit position</param>
+        /// <param name="unit">Unit targeted</param>
         private void DoBlast(int pos, Unit unit)
         {
             if (unit.GetStatus() == Constants.StatusTypes.Blast)
@@ -177,6 +201,11 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Applies status
+        /// </summary>
+        /// <param name="pos">Unit position</param>
+        /// <param name="unit">Unit targeted</param>
         private void DoStatus(int pos, Unit unit)
         {
             Constants.StatusTypes status = unit.GetStatus();
@@ -292,6 +321,10 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Chooses a skill reward
+        /// </summary>
+        /// <returns>Skill chosen</returns>
         public SkillStats ChooseSkillReward()
         {
             if (skills == null)
@@ -303,6 +336,10 @@ namespace Assets.Scripts
             return allowedSkills[roll];
         }
 
+        /// <summary>
+        /// Monster casts
+        /// </summary>
+        /// <param name="pos">Position to aim at</param>
         internal void MonsterCast(int pos)
         {
             List<SkillStats> activeSkills = monsters[pos].Skills.FindAll(x => x.SkillType != Constants.SkillTypes.Passive);
@@ -310,16 +347,27 @@ namespace Assets.Scripts
             StartCoroutine(CastSkill(activeSkills[castChoice], monsters[pos]));
         }
 
+        /// <summary>
+        /// Shows one more text
+        /// </summary>
         private void ShowOneMore()
         {
             oneMoreText.enabled = true;
         }
 
+        /// <summary>
+        /// Hides one more text
+        /// </summary>
         private void HideOneMore()
         {
             oneMoreText.enabled = false;
         }
 
+        /// <summary>
+        /// Updates targeting
+        /// </summary>
+        /// <param name="direction">Target direction</param>
+        /// <param name="counter">Target counter</param>
         internal void UpdateTarget(int direction, int counter = 0)
         {
             if (targetRef == null)
@@ -364,6 +412,9 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Hides targets
+        /// </summary>
         public void HideTargets()
         {
             foreach (SpriteRenderer renderer in targets)
@@ -373,6 +424,10 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Shows target at position
+        /// </summary>
+        /// <param name="pos">Position to show</param>
         public void ShowTarget(int pos)
         {
             if (isTargeting)
@@ -388,11 +443,20 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Gets player stats
+        /// </summary>
+        /// <returns></returns>
         internal UnitStats GetPlayerStats()
         {
             return player.Stats;
         }
 
+        /// <summary>
+        /// Loads unit stats
+        /// </summary>
+        /// <param name="id">Id of unit to load</param>
+        /// <returns>Stats of unit</returns>
         internal UnitStats LoadStats(int id)
         {
             if (stats == null)
@@ -427,6 +491,9 @@ namespace Assets.Scripts
             return stats[id];
         }
 
+        /// <summary>
+        /// Loads skills from file
+        /// </summary>
         internal void LoadSkills()
         {
             skills = new List<SkillStats>();
@@ -442,6 +509,11 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Gets skills from file
+        /// </summary>
+        /// <param name="id">Id of skill to get</param>
+        /// <returns>Skill with id</returns>
         internal SkillStats GetSkill(int id)
         {
             if (skills == null)
@@ -451,6 +523,9 @@ namespace Assets.Scripts
             return skills[id];
         }
 
+        /// <summary>
+        /// Loads monster data from file
+        /// </summary>
         internal void LoadMonsterData()
         {
             monsterData = new List<MonsterData>();
@@ -466,6 +541,11 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Gets monster data with id
+        /// </summary>
+        /// <param name="id">Id of data to get</param>
+        /// <returns>Monster data at id</returns>
         internal MonsterData GetMonsterData(int id)
         {
             if (monsterData == null)
@@ -475,22 +555,38 @@ namespace Assets.Scripts
             return monsterData[id];
         }
 
+        /// <summary>
+        /// Links monster data and unit
+        /// </summary>
+        /// <param name="id">Monster data id</param>
         internal void LinkMonster(int id)
         {
             monsterData[id].Sprite = monsterAtlas.GetSprite(monsterData[id].SpriteName);
             monsterData[id].Unit = LoadStats(monsterData[id].UnitId);
         }
 
+        /// <summary>
+        /// Clears description
+        /// </summary>
         public void ClearDescription()
         {
             description.text = "";
         }
 
+        /// <summary>
+        /// Changes description
+        /// </summary>
+        /// <param name="newDesc">New description</param>
         public void ChangeDescription(string newDesc)
         {
             description.text = newDesc;
         }
 
+        /// <summary>
+        /// Chooses monster skills
+        /// </summary>
+        /// <param name="monster">Monster data</param>
+        /// <returns>List of skills</returns>
         internal SkillStats[] ChooseSkills(MonsterData monster)
         {
             SkillStats[] chosenSkills = new SkillStats[monster.SkillTypeFull.Length+Constants.FORCED_SKILLS];
@@ -510,6 +606,12 @@ namespace Assets.Scripts
             return chosenSkills;
         }
 
+        /// <summary>
+        /// Finds skills by level and type
+        /// </summary>
+        /// <param name="level">Current level</param>
+        /// <param name="type">Skill type</param>
+        /// <returns>List of matching skills</returns>
         internal List<SkillStats> FindSkills(int level, Constants.SkillTypes type)
         {
             if (skills == null)
@@ -534,6 +636,12 @@ namespace Assets.Scripts
             return foundSkills;
         } 
 
+        /// <summary>
+        /// Creates a monster
+        /// </summary>
+        /// <param name="position">Position to add monster</param>
+        /// <param name="monster">Data of monster</param>
+        /// <param name="monsterSkills">Skills of monster</param>
         internal void MakeMonster(int position, MonsterData monster, List<SkillStats> monsterSkills)
         {
             monsterSkills.RemoveAll(x => x == null);
@@ -542,6 +650,11 @@ namespace Assets.Scripts
             ActiveMonsters++;
         }
 
+        /// <summary>
+        /// Gets monster by name
+        /// </summary>
+        /// <param name="name">Name of monster</param>
+        /// <returns>Matching monster data</returns>
         internal MonsterData GetMonsterByName(string name)
         {
             if (monsterData == null)
@@ -551,6 +664,9 @@ namespace Assets.Scripts
             return monsterData.Find(x => x.Name.Equals(name));
         }
 
+        /// <summary>
+        /// Clears monsters
+        /// </summary>
         internal void ClearMonsters()
         {
             for (int i=0; i<monsters.Length; i++)
@@ -561,6 +677,12 @@ namespace Assets.Scripts
             HideTargets();
         }
 
+        /// <summary>
+        /// Scales monster stats
+        /// </summary>
+        /// <param name="unitToScale">Monster to scale</param>
+        /// <param name="statMulti">Stat multiplier</param>
+        /// <returns>New stats</returns>
         internal UnitStats ScaleMonster(UnitStats unitToScale, float statMulti)
         {
             //Get base
@@ -599,6 +721,14 @@ namespace Assets.Scripts
             return baseStats;
         }
 
+        /// <summary>
+        /// Scales a stat
+        /// </summary>
+        /// <param name="statBase">Base value of stat</param>
+        /// <param name="statScaling">Stat scaler</param>
+        /// <param name="unitScaling">Unit scaler</param>
+        /// <param name="statMulti">Stat multiplier</param>
+        /// <returns>Scaled stat</returns>
         private float ScaleStat(float statBase, float statScaling, float unitScaling, float statMulti)
         {
             float unitMulti = (float)unitScaling / 100;
@@ -607,6 +737,10 @@ namespace Assets.Scripts
             return statBase;
         }
 
+        /// <summary>
+        /// Gets first target
+        /// </summary>
+        /// <returns>Gets first monster target</returns>
         private Monster GetFirstTarget()
         {
             for (int i=0; i<targets.Length; i++)
@@ -619,6 +753,10 @@ namespace Assets.Scripts
             return null;
         }
 
+        /// <summary>
+        /// Gets first target position
+        /// </summary>
+        /// <returns>Position of first target</returns>
         private int GetFirstTargetPos()
         {
             for (int i = 0; i < targets.Length; i++)
@@ -631,6 +769,10 @@ namespace Assets.Scripts
             return -1;
         }
 
+        /// <summary>
+        /// Checks if monsters are alive
+        /// </summary>
+        /// <returns>If any monster is alive</returns>
         public bool CheckAlive()
         {
             bool alive = false;
@@ -645,6 +787,10 @@ namespace Assets.Scripts
             return alive;
         }
 
+        /// <summary>
+        /// Prepares skill by id 
+        /// </summary>
+        /// <param name="id">Id of skill to prepare</param>
         public void PrepareSkill(int id)
         {
             if (Turn == Turns.Player)
@@ -653,6 +799,10 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Prepares skill by skill data
+        /// </summary>
+        /// <param name="skill">Skill data</param>
         public void PrepareSkill(SkillStats skill)
         {
             currentSkill = skill;
@@ -670,6 +820,12 @@ namespace Assets.Scripts
             IsCasting = true;
         }
 
+        /// <summary>
+        /// Casts a skill
+        /// </summary>
+        /// <param name="skill">Skill to cast</param>
+        /// <param name="caster">Source of skill</param>
+        /// <returns></returns>
         public IEnumerator CastSkill(SkillStats skill, Unit caster)
         {
             if (caster.IsPlayer)
@@ -934,6 +1090,14 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Applies buffs
+        /// </summary>
+        /// <param name="skill">Skill used</param>
+        /// <param name="caster">Source</param>
+        /// <param name="target">Target</param>
+        /// <param name="isPlayer">Player is involved</param>
+        /// <param name="pos">Target position</param>
         private void DoBuff(SkillStats skill, Unit caster, Unit target, bool isPlayer, int pos)
         {
             if (skill.Power >= 0)
@@ -963,6 +1127,14 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Applies status
+        /// </summary>
+        /// <param name="skill">Skill used</param>
+        /// <param name="caster">Source</param>
+        /// <param name="target">Target</param>
+        /// <param name="isPlayer">If player is involved</param>
+        /// <param name="pos">Target position</param>
         private void DoStatus(SkillStats skill, Unit caster, Unit target, bool isPlayer, int pos)
         {
             KeyValuePair<bool, int> hit = Damage.Status(skill, caster.Stats, target.Stats);
@@ -998,12 +1170,19 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Delays hiding one more text
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator HideOneMoreDelay()
         {
             yield return new WaitForSeconds(1f);
             HideOneMore();
         }
 
+        /// <summary>
+        /// Hides all health bars
+        /// </summary>
         private void HideAllHealthBars()
         {
             foreach (HitDisplay display in monsterDisplay)
@@ -1012,12 +1191,25 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Updates analysis data
+        /// </summary>
+        /// <param name="target">Unit to analyse</param>
+        /// <param name="type">Damage type</param>
         private void UpdateAnalysis(Unit target, Constants.DamageTypes type)
         {
             MonsterData monster = monsterData.Find(x => x.UnitId == target.Id);
             monster.CheckedType[(int)type-1] = true;
         }
 
+        /// <summary>
+        /// Applies heal effect
+        /// </summary>
+        /// <param name="skill">Skill used</param>
+        /// <param name="caster">Source</param>
+        /// <param name="target">Target</param>
+        /// <param name="isPlayer">Is player involved</param>
+        /// <param name="pos">Target position</param>
         private void DoHeal(SkillStats skill, Unit caster, Unit target, bool isPlayer, int pos)
         {
             int heal = Damage.Heal(skill, caster.Stats);
@@ -1037,6 +1229,14 @@ namespace Assets.Scripts
             UpdateGlobes();
         }
 
+        /// <summary>
+        /// Applies a hit
+        /// </summary>
+        /// <param name="skill">Skill used</param>
+        /// <param name="caster">Source</param>
+        /// <param name="target">Target</param>
+        /// <param name="isPlayer">Is player involved</param>
+        /// <param name="pos">Target position</param>
         private void DoHit(SkillStats skill, Unit caster, Unit target, bool isPlayer, int pos)
         {
             Damage.DamagePacket hit;
@@ -1085,6 +1285,15 @@ namespace Assets.Scripts
             UpdateGlobes();
         }
 
+        /// <summary>
+        /// Displays battle text
+        /// </summary>
+        /// <param name="pos">Target position</param>
+        /// <param name="damage">Damage value</param>
+        /// <param name="isWeak">Hit a weak target</param>
+        /// <param name="isTechnical">Was a technical</param>
+        /// <param name="isCrit">Was a critical hit</param>
+        /// <returns></returns>
         private IEnumerator DisplayText(int pos, string damage, bool isWeak = false, bool isTechnical = false, bool isCrit = false)
         {
             HitDisplay display;
@@ -1113,6 +1322,9 @@ namespace Assets.Scripts
             display.HideAll();
         }
 
+        /// <summary>
+        /// Updates resource globes
+        /// </summary>
         public void UpdateGlobes()
         {
             float hpPercent = (float)player.CurrentHealth / player.Stats.MaxHealth;

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Defines an item
+    /// </summary>
     public class Gear
     {
         public int Id { get; set; }

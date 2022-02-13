@@ -8,10 +8,17 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Describes a tooltip
+    /// </summary>
     public class Tooltip : MonoBehaviour
     {
         public Text tooltip;
 
+        /// <summary>
+        /// Adds a tooltip
+        /// </summary>
+        /// <param name="text">Tooltip text</param>
         public void AddTooltip(string text)
         {
             text = text.Replace("\\n", "\n");
@@ -19,6 +26,9 @@ namespace Assets.Scripts
             tooltip.text = text;
         }
 
+        /// <summary>
+        /// Clears a tooltip
+        /// </summary>
         public void ClearTooltip()
         {
             tooltip.text = "";

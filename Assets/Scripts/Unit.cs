@@ -6,6 +6,9 @@ using UnityEngine.PlayerLoop;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Describes a unit
+    /// </summary>
     public class Unit : MonoBehaviour
     {
         public float CurrentHealth { get; protected set; }
@@ -29,12 +32,21 @@ namespace Assets.Scripts
             InitResources();
         }
 
+        /// <summary>
+        /// Initialises resources
+        /// </summary>
         void InitResources()
         {
             CurrentHealth = Stats.MaxHealth;
             CurrentMana = Stats.MaxMana;
         }
 
+        /// <summary>
+        /// Changes the unit
+        /// </summary>
+        /// <param name="stats">New stats</param>
+        /// <param name="skills">New skill set</param>
+        /// <param name="nameStr">New name</param>
         public void ChangeUnit(UnitStats stats, List<SkillStats> skills, string nameStr)
         {
             Id = stats.Id;
@@ -46,6 +58,10 @@ namespace Assets.Scripts
             enabled = true;
         }
 
+        /// <summary>
+        /// Takes a hit
+        /// </summary>
+        /// <param name="hit">Packet to take</param>
         public virtual void TakeHit(Damage.DamagePacket hit)
         {
             if (hit.hit)
@@ -69,7 +85,13 @@ namespace Assets.Scripts
                 }
             }
         }
-
+        
+        /// <summary>
+        /// Adds a buff
+        /// </summary>
+        /// <param name="buff">Buff type</param>
+        /// <param name="multi">Buff multiplier</param>
+        /// <param name="duration">Buff duration</param>
         public void AddBuff(Constants.BuffTypes buff, float multi, int duration = 4)
         {
             if (Effects == null)
@@ -123,6 +145,10 @@ namespace Assets.Scripts
 
         }
 
+        /// <summary>
+        /// Gets status type
+        /// </summary>
+        /// <returns>Type of status</returns>
         public Constants.StatusTypes GetStatus()
         {
             if (Effects == null)
@@ -137,6 +163,10 @@ namespace Assets.Scripts
             return status.StatusType;
         }
 
+        /// <summary>
+        /// Gets power of status
+        /// </summary>
+        /// <returns>Power of status</returns>
         public float GetStatusPower()
         {
             if (Effects == null)
@@ -151,6 +181,9 @@ namespace Assets.Scripts
             return status.Power;
         }
 
+        /// <summary>
+        /// Removes a status
+        /// </summary>
         public void RemoveStatus()
         {
             if (Effects == null)
@@ -182,6 +215,9 @@ namespace Assets.Scripts
             Stats.Status = Constants.StatusTypes.None;
         }
 
+        /// <summary>
+        /// Clears all effects
+        /// </summary>
         public void ClearEffects()
         {
             if (Effects == null)
@@ -196,6 +232,12 @@ namespace Assets.Scripts
             Stats.Status = Constants.StatusTypes.None;
         }
 
+        /// <summary>
+        /// Adds a status
+        /// </summary>
+        /// <param name="type">Type of status</param>
+        /// <param name="statusPower">Power of status</param>
+        /// <param name="duration">Duration of status</param>
         public virtual void AddStatus(Constants.StatusTypes type, int statusPower, int duration = 2)
         {
             if (Effects == null)
@@ -221,6 +263,9 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Applies duration of effects
+        /// </summary>
         public void ApplyDuration()
         {
             if (Effects == null)
@@ -294,6 +339,10 @@ namespace Assets.Scripts
             UpdateColor();
         }
 
+        /// <summary>
+        /// Gets a list of buffs
+        /// </summary>
+        /// <returns>List of buffs</returns>
         protected List<Effect> GetBuffs()
         {
             if (Effects == null)
@@ -304,11 +353,18 @@ namespace Assets.Scripts
             return buffs;
         }
 
+        /// <summary>
+        /// Applies burn effect
+        /// </summary>
         public void ApplyBurn()
         {
             ChangeHealth(-(int)GetStatusPower());
         }
 
+        /// <summary>
+        /// Applies blast effect
+        /// </summary>
+        /// <returns></returns>
         public int ApplyBlast()
         {
             int damage = (int)GetStatusPower();
@@ -316,6 +372,10 @@ namespace Assets.Scripts
             return damage;
         }
 
+        /// <summary>
+        /// Applies curse effect
+        /// </summary>
+        /// <param name="multiplier"></param>
         public void ApplyCurse(int multiplier)
         {
             float power = GetStatusPower();
@@ -323,6 +383,10 @@ namespace Assets.Scripts
             ChangeHealth(multiplier * (int)(CurrentHealth * (power / 100)));
         }
 
+        /// <summary>
+        /// Changes unit health
+        /// </summary>
+        /// <param name="value">Value to change by</param>
         public virtual void ChangeHealth(int value)
         {
             if (CurrentHealth + value > Stats.MaxHealth)
@@ -340,6 +404,12 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Checks cost of a skill
+        /// </summary>
+        /// <param name="value">Skill cost</param>
+        /// <param name="skillType">Skill type</param>
+        /// <returns>If can be cast</returns>
         public bool CheckCost(int value, Constants.CostTypes skillType)
         {
             if (skillType == Constants.CostTypes.Attack)
@@ -358,6 +428,11 @@ namespace Assets.Scripts
             return true;
         }
 
+        /// <summary>
+        /// Applies the cost
+        /// </summary>
+        /// <param name="value">Skill cost</param>
+        /// <param name="skillType">Skill type</param>
         public void ApplyCost(int value, Constants.CostTypes skillType)
         {
             if (skillType == Constants.CostTypes.Attack)
@@ -378,6 +453,9 @@ namespace Assets.Scripts
             unitManager.UpdateGlobes();
         }
 
+        /// <summary>
+        /// Kills the unit
+        /// </summary>
         public virtual void Die()
         {
             enabled = false;

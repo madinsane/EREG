@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Defines item modifier
+    /// </summary>
     public class Modifier
     {
         public int Id { get; set; }

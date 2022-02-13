@@ -40,10 +40,11 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: cc5e76c8351f6ac4c8175b52b1afe034, type: 3}
-    totalSpriteSurfaceArea: 6855840
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -70,5 +71,6 @@ SpriteAtlas:
   - battleback3
   - battleback10
   - battleback2
+  m_RenderDataMap: {}
   m_Tag: backgroundAtlas
   m_IsVariant: 0

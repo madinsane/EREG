@@ -40,10 +40,11 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 7d05a759aa0627a44a6085e49c1ec275, type: 3}
-    totalSpriteSurfaceArea: 512000
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -1050,5 +1051,6 @@ SpriteAtlas:
   - vampiric_draining_new
   - haste_old
   - animate_skeleton
+  m_RenderDataMap: {}
   m_Tag: guiAtlas
   m_IsVariant: 0

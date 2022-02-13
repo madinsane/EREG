@@ -13,6 +13,9 @@ using UnityEngine.U2D;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Manages rewards
+    /// </summary>
     public class RewardManager : MonoBehaviour
     {
         public UnitManager unitManager;
@@ -24,16 +27,31 @@ namespace Assets.Scripts
         private List<Modifier> modifiers;
         private List<Gear> gear;
 
+        /// <summary>
+        /// Gets value of a property
+        /// </summary>
+        /// <param name="src">Source object</param>
+        /// <param name="propName">Property name</param>
+        /// <returns></returns>
         public static object GetPropValue(object src, string propName)
         {
             return src.GetType().GetProperty(propName).GetValue(src, null);
         }
 
+        /// <summary>
+        /// Sets value of a property
+        /// </summary>
+        /// <param name="unit">Unit to modify</param>
+        /// <param name="propName">Property name</param>
+        /// <param name="increase">Value to add</param>
         public static void SetStat(UnitStats unit, string propName, float increase)
         {
             unit.GetType().GetProperty(propName).SetValue(unit, (float)unit.GetType().GetProperty(propName).GetValue(unit, null) + increase);
         }
 
+        /// <summary>
+        /// Loads modifiers from file
+        /// </summary>
         private void LoadModifiers()
         {
             modifiers = new List<Modifier>();
@@ -49,6 +67,9 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Loads gear from file
+        /// </summary>
         private void LoadGear()
         {
             gear = new List<Gear>();
@@ -64,6 +85,11 @@ namespace Assets.Scripts
             }
         }
 
+        /// <summary>
+        /// Gets gear from data
+        /// </summary>
+        /// <param name="id">Id to find</param>
+        /// <returns>Copy of gear item</returns>
         public Gear GetGear(int id)
         {
             if (gear == null)
@@ -73,11 +99,21 @@ namespace Assets.Scripts
             return gear[id].Copy();
         }
 
+        /// <summary>
+        /// Gets sprite for gear
+        /// </summary>
+        /// <param name="gear">Gear to get sprite from</param>
+        /// <returns>Sprite for the gear</returns>
         public Sprite GetGearSprite(Gear gear)
         {
             return gearAtlas.GetSprite(gear.SpriteName);
         }
 
+        /// <summary>
+        /// Creates a gear item in given slot
+        /// </summary>
+        /// <param name="slot">Slot to add to</param>
+        /// <returns>Gear object</returns>
         public Gear CreateGear(Constants.Slot slot)
         {
             if (modifiers == null)
@@ -101,6 +137,10 @@ namespace Assets.Scripts
             return newGear;
         }
 
+        /// <summary>
+        /// Chooses a modifier
+        /// </summary>
+        /// <returns>Chosen modifier</returns>
         private Modifier PickMod()
         {
             int roll = Damage.RandomInt(0, modifiers.Count - 1);
@@ -108,6 +148,12 @@ namespace Assets.Scripts
             return newMod;
         }
 
+        /// <summary>
+        /// Combines similar modifiers
+        /// </summary>
+        /// <param name="mods">Mods list</param>
+        /// <param name="level">Current level</param>
+        /// <returns>New list with combined mods</returns>
         private List<Modifier> CombineMods(List<Modifier> mods, int level)
         {
             var grouped = mods.GroupBy(i => i.Id);
@@ -122,6 +168,9 @@ namespace Assets.Scripts
             return combined;
         }
 
+        /// <summary>
+        /// Generates rewards
+        /// </summary>
         public void GenerateRewards()
         {
             SkillStats skill = unitManager.ChooseSkillReward();
@@ -134,6 +183,11 @@ namespace Assets.Scripts
             rewardPanel.SetActive(true);
         }
 
+        /// <summary>
+        /// Handles reward being selected
+        /// </summary>
+        /// <param name="type">Type of reward</param>
+        /// <param name="reward">Reward object</param>
         public void PickedReward(Constants.RewardTypes type, object reward)
         {
             switch (type)
@@ -152,7 +206,5 @@ namespace Assets.Scripts
             rewardPanel.SetActive(false);
             gameManager.StartRound();
         }
-
-        
     }
 }

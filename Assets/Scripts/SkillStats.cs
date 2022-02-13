@@ -1,5 +1,8 @@
 ﻿namespace Assets.Scripts
 {
+    /// <summary>
+    /// Describes a skill's stats
+    /// </summary>
     public class SkillStats
     {
         public int Id { get; set; }
